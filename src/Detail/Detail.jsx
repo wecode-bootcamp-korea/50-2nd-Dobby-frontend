@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Detail.scss';
 import deliveryFee from './배송정보.jpg';
+
 const Detail = () => {
+  const [price, setPrice] = useState('');
+  const [count, setCount] = useState(1);
+  const plus = () => {
+    setCount(count + 1);
+  };
+  const minus = () => {
+    setCount(count - 1);
+  };
+  //콘솔에 count,setcount 해봤는데 콘솔창에 안뜸 질문하기!
+  console.log({ setCount });
   return (
     <>
       <div className="Detail">
@@ -21,13 +32,21 @@ const Detail = () => {
                 <h2>평점 : 4.9점</h2>
                 <h3>50,000원</h3>
                 <div className="numberBox">
-                  <button className="quantity">+</button>
+                  <button onClick={plus} className="quantity">
+                    +
+                  </button>
                   <input
                     className="quantity number"
                     type="number"
-                    value="1"
+                    value={count}
                   ></input>
-                  <button className="quantity">-</button>
+                  <button
+                    disabled={count === 1}
+                    onClick={minus}
+                    className="quantity"
+                  >
+                    -
+                  </button>
                 </div>
                 <img className="deliveryFee" src={deliveryFee} alt="배송정보" />{' '}
                 <div>배송비 30,000원 이상 무료배송</div>
