@@ -19,12 +19,12 @@ const Signup = () => {
           type="text"
           placeholder="비밀번호를 입력해주세요"
         />
-        <input className="name" type="text" placeholder="이름을 입력해주세요" />
         <input
-          className="phonenumber"
+          className="passwordConfir"
           type="text"
-          placeholder="휴대폰 번호를 입력해주세요"
+          placeholder="비밀번호를 다시한번 입력해주세요"
         />
+        <input className="name" type="text" placeholder="이름을 입력해주세요" />
         <input
           className="nickname"
           type="text"
