@@ -11,10 +11,12 @@
     font-weight: bolder;
     margin-bottom: 13px;
   }
+
   .intoText {
     font-weight: 600;
     color: #a8a8a8;
   }
+
   .loginTextFrame {
     display: flex;
     justify-content: center;
@@ -27,6 +29,7 @@
       margin-bottom: 35px;
     }
   }
+
   .inputFrame {
     display: flex;
     flex-direction: column;
@@ -50,9 +53,7 @@
       background-color: #5e97ff;
       border: none;
       border-radius: 5px;
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
     }
     .underline {
       width: 400px;
@@ -60,29 +61,27 @@
       margin-top: 12px;
     }
   }
+
   .idpwButtonFrame {
     display: flex;
     flex-direction: row;
     margin-top: 5px;
     .idButton {
+      position: relative;
       width: 195px;
       padding: 13px;
-
       font-size: 15px;
       font-weight: 500;
       color: white;
       background-color: #6b6b6b;
-
       border: none;
       border-radius: 20px;
-
-      position: relative;
+      cursor: pointer;
       left: -5px;
-      &:hover {
-        cursor: pointer;
-      }
     }
+
     .pwButton {
+      position: relative;
       width: 195px;
       padding: 13px;
       font-size: 15px;
@@ -91,11 +90,8 @@
       background-color: #6b6b6b;
       border: none;
       border-radius: 20px;
-      position: relative;
+      cursor: pointer;
       right: -5px;
-      &:hover {
-        cursor: pointer;
-      }
     }
   }
   .signupButtonFrame {
@@ -112,9 +108,7 @@
       font-weight: 700;
       font-size: 15px;
       color: #5e97ff;
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
     }
   }
 }
