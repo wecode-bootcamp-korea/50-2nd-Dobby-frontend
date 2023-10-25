@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Star.scss';
 
 const Star = ({ max = 5, color = '#fcc419' }) => {
-  const [rate, setRate] = useState(2);
-
-  console.log(rate);
+  const [rate, setRate] = useState(3);
   return (
     <div className="icon">
       <span className="star_icon">
         {Array.from({ length: max }, (_, i) => (
-          <Test key={i} color={color} filled={rate >= i + 1} />
+          <StarIcon key={i} color={color} filled={rate >= i + 1} />
         ))}
       </span>
       <p>{rate}점</p>
@@ -19,12 +17,11 @@ const Star = ({ max = 5, color = '#fcc419' }) => {
 
 export default Star;
 
-const Test = ({ color, filled }) => {
+const StarIcon = ({ color, filled }) => {
   return (
     <span>
       {filled ? (
         <svg
-          className="help"
           xmlns="http://www.w3.org/2000/svg"
           width="40"
           height="39"
@@ -39,7 +36,6 @@ const Test = ({ color, filled }) => {
         </svg>
       ) : (
         <svg
-          className="help"
           xmlns="http://www.w3.org/2000/svg"
           width="40"
           height="39"
