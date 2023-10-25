@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Delivery from './pages/Delivery/Delivery';
 import Login from './pages/Login/Login';
+import PayComplete from './pages/PayComplete/PayComplete';
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
         <Routes>
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/" element={<Login />} />
+          <Route path="/payComplete" element={<PayComplete />} />
         </Routes>
         <Footer />
       </Layout>
