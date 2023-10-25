@@ -1,0 +1,331 @@
+.cart {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding-top: 40px;
+  background-color: rgb(247, 247, 247);
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  .blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+  }
+
+  .cartArea {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1.4fr 1fr;
+    width: 1024px;
+    padding: 0 70px;
+
+    .formArea {
+      width: 100%;
+
+      .formInput {
+        display: flex;
+        align-items: center;
+
+        .formLabel {
+          display: flex;
+          align-items: center;
+          margin-left: 8px;
+          font-size: 13px;
+        }
+
+        .formCheck {
+          width: 20px;
+          height: 20px;
+          margin: 0;
+          border: 1px solid #e0e0e0;
+          border-radius: 6px;
+          background-color: #fff;
+        }
+      }
+
+      .cartHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        .formInput {
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+        }
+
+        .btnArea {
+          .btnText {
+            font-size: 12px;
+            color: rgb(0, 150, 243);
+          }
+        }
+      }
+
+      .cartBody {
+        padding-top: 10px;
+
+        .listArea {
+          .listItem {
+            padding: 20px;
+            border: 1px solid rgb(224, 224, 224);
+            border-radius: 10px;
+            background-color: #fff;
+
+            ~ .listItem {
+              margin-top: 15px;
+            }
+
+            .listTitle {
+              font-weight: 700;
+              font-size: 15px;
+              color: rgb(62, 62, 62);
+            }
+
+            .listDetail {
+              margin-top: 15px;
+              padding-top: 20px;
+              border-top: 1px solid rgb(178, 178, 178);
+
+              .detailArea {
+                display: flex;
+                align-items: flex-start;
+
+                .detailInfo {
+                  display: flex;
+                  width: 100%;
+                  margin-left: 12px;
+
+                  .detailImage {
+                    width: 53px;
+                    height: 68px;
+                    border-radius: 10px;
+                    border: 1px solid gray;
+
+                    img {
+                      width: 100%;
+                    }
+                  }
+
+                  .detailGroup {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                    margin-left: 15px;
+
+                    .detailTop {
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+
+                      .detailTitle {
+                        font-weight: 700;
+                        font-size: 15px;
+                        color: rgb(62, 62, 62);
+                      }
+
+                      .btnClose {
+                        width: 16px;
+                        height: 16px;
+                        background: url('../../../public/images/icon_close.png')
+                          center / 16px no-repeat;
+                      }
+                    }
+
+                    .detailBottom {
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      margin-top: 10px;
+
+                      .detailControl {
+                        display: flex;
+                        align-items: center;
+
+                        .btn {
+                          width: 25px;
+                          height: 25px;
+                          font-size: 20px;
+                          border: 1px solid rgb(224, 224, 224);
+
+                          &.decrease {
+                            border-radius: 5px 0 0 5px;
+                            background: url('../../../public/images/icon_minus.png')
+                              center / 20px no-repeat;
+                          }
+
+                          &.increase {
+                            border-radius: 0 5px 5px 0;
+                            background: url('../../../public/images/icon_plus.png')
+                              center / 20px no-repeat;
+                          }
+                        }
+
+                        .controlText {
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          width: 45px;
+                          height: 27px;
+                          border-top: 1px solid rgb(224, 224, 224);
+                          border-bottom: 1px solid rgb(224, 224, 224);
+                        }
+                      }
+
+                      .detailPrice {
+                        display: block;
+                        font-weight: 700;
+                        font-size: 15px;
+                        color: rgb(62, 62, 62);
+                      }
+                    }
+                  }
+                }
+              }
+
+              .amountArea {
+                margin-top: 15px;
+                padding-top: 20px;
+                border-top: 1px solid rgb(244, 244, 244);
+
+                .amountList {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+
+                  ~ .amountList {
+                    margin-top: 8px;
+                  }
+
+                  &.total {
+                    margin-top: 12px;
+
+                    dt {
+                      font-weight: 700;
+                      color: rgb(62, 62, 62);
+                    }
+
+                    dd {
+                      font-weight: 700;
+                      font-size: 16px;
+                      color: rgb(0, 150, 243);
+                    }
+                  }
+
+                  dt {
+                    font-size: 12px;
+                    color: rgb(112, 112, 112);
+                  }
+
+                  dd {
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: rgba(0, 0, 0, 0.6);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .billArea {
+      margin: 30px 0 0 45px;
+
+      .billGroup {
+        padding: 20px;
+        border: 1px solid rgb(224, 224, 224);
+        border-radius: 10px;
+        background-color: rgb(255, 255, 255);
+
+        .billTitle {
+          display: block;
+          font-weight: 700;
+          font-size: 13px;
+          color: rgb(62, 62, 62);
+        }
+
+        .billBox {
+          margin-top: 15px;
+          padding-top: 20px;
+          border-top: 1px solid rgb(178, 178, 178);
+
+          .billList {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            ~ .billList {
+              margin-top: 8px;
+            }
+
+            &.total {
+              margin-top: 15px;
+              padding-top: 15px;
+              border-top: 1px solid rgb(178, 178, 178);
+
+              dt {
+                color: rgb(62, 62, 62);
+              }
+
+              dd {
+                font-size: 16px;
+                color: rgb(0, 150, 243);
+              }
+            }
+
+            dt {
+              font-weight: 700;
+              font-size: 12px;
+              color: rgba(0, 0, 0, 0.6);
+            }
+
+            dd {
+              font-weight: 700;
+              font-size: 12px;
+              color: rgb(62, 62, 62);
+            }
+          }
+        }
+      }
+
+      .btnArea {
+        padding-top: 20px;
+
+        .btnPrimary {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 48px;
+          font-weight: 700;
+          font-size: 18px;
+          color: #fff;
+          border-radius: 5px;
+          background-color: rgb(0, 150, 243);
+
+          &:hover {
+            background-color: rgb(45, 123, 195);
+          }
+
+          &:disabled {
+            color: rgba(61, 61, 61, 0.3);
+            background-color: rgb(178, 178, 178);
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}
