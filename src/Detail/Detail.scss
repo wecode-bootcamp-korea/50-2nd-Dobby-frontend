@@ -43,7 +43,7 @@
       h2 {
         color: #707070;
         font-size: 25px;
-        font-weight: 400;
+        font-weight: bold;
         margin-bottom: 0.5em;
       }
       h3 {
@@ -133,4 +133,10 @@
   font-weight: 600;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.starrrr {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

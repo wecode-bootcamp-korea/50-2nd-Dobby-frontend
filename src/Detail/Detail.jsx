@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Detail.scss';
 import deliveryFee from './배송정보.jpg';
+import Star from './Components/Star';
 
 const Detail = () => {
   const [price, setPrice] = useState('');
@@ -12,7 +13,9 @@ const Detail = () => {
     setCount(count - 1);
   };
   //콘솔에 count,setcount 해봤는데 콘솔창에 안뜸 질문하기!
-  console.log({ setCount });
+  //{count}라고 객체 안에 표시했기 때문에 그랬던거임!
+  console.log(count);
+
   return (
     <>
       <div className="Detail">
@@ -23,29 +26,32 @@ const Detail = () => {
                 <img
                   className="proudctImage"
                   src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/detail/jirR-1677568807193-THUMB.jpg"
-                  alt="product"
+                  alt="제품사진"
                 ></img>
               </div>
               <div className="productName">
                 <h1>원피스 퍼즐 1000피스</h1>
                 <h2>너 내 동료가 되라!</h2>
-                <h2>평점 : 4.9점</h2>
+                <div className="starrrr">
+                  <h2>평점</h2>
+                  <Star />
+                </div>
                 <h3>50,000원</h3>
                 <div className="numberBox">
-                  <button onClick={plus} className="quantity">
-                    +
+                  <button
+                    onClick={minus}
+                    disabled={count === 1}
+                    className="quantity"
+                  >
+                    -
                   </button>
                   <input
                     className="quantity number"
                     type="number"
                     value={count}
                   ></input>
-                  <button
-                    disabled={count === 1}
-                    onClick={minus}
-                    className="quantity"
-                  >
-                    -
+                  <button onClick={plus} className="quantity">
+                    +
                   </button>
                 </div>
                 <img className="deliveryFee" src={deliveryFee} alt="배송정보" />{' '}
@@ -62,6 +68,7 @@ const Detail = () => {
               <input type="text" className="reviewPage" value="리뷰"></input>
               <div className="review-Header">
                 <span>최민지</span>
+                <span>평점</span>
                 <span>2023-10-24</span>
               </div>
               <div className="content">
