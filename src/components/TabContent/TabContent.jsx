@@ -1,9 +1,9 @@
 import React from 'react';
-import './SubscribeContent.scss';
+import './TabContent.scss';
 
-const SubscribeContent = ({ title, price, description, handleSubScribe }) => {
+const TabContent = ({ title, price, description, handleSubScribe }) => {
   return (
-    <div className="subscribeContent">
+    <div className="tabContent">
       <div className="container">
         <h2 className="title">{title}</h2>
         <div className="price">₩ {price}/월</div>
@@ -19,4 +19,4 @@ const SubscribeContent = ({ title, price, description, handleSubScribe }) => {
   );
 };
 
-export default SubscribeContent;
+export default TabContent;

@@ -1,7 +1,7 @@
 import React from 'react';
-import './SelectBtn.scss';
+import './TabList.scss';
 
-const SelectBtn = ({ text, color, handleActive, isActive }) => {
+const TabList = ({ text, color, handleActive, isActive }) => {
   const handleClick = () => {
     handleActive(color);
   };
@@ -11,10 +11,9 @@ const SelectBtn = ({ text, color, handleActive, isActive }) => {
       onClick={handleClick}
     >
       <img src="images/sampleIcon.png" alt="icon" />
-
       {text}
     </div>
   );
 };
 
-export default SelectBtn;
+export default TabList;
