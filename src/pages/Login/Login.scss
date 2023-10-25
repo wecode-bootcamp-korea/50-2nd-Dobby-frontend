@@ -1,0 +1,130 @@
+.mainLoginBody {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .helloText {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 13px;
+  }
+  .intoText {
+    font-weight: 600;
+    color: #a8a8a8;
+  }
+  .loginTextFrame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .loginText {
+      font-size: 32px;
+      font-weight: bolder;
+      color: rgb(88, 88, 88);
+      margin-top: 80px;
+      margin-bottom: 35px;
+    }
+  }
+  .inputFrame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .idInput,
+    .pwInput {
+      width: 400px;
+      padding: 15px;
+      margin-top: 8px;
+      border: 1px solid #d2d1d1;
+      border-radius: 5px;
+    }
+    .loginButton {
+      width: 400px;
+      padding: 15px;
+      margin-top: 9px;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      background-color: #9037fc;
+      border: none;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .disabledButton {
+      width: 400px;
+      padding: 15px;
+      margin-top: 9px;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      background-color: #9c9c9c;
+      border: none;
+      border-radius: 5px;
+    }
+    .underline {
+      width: 400px;
+      border-bottom: 1px solid #d2d1d1;
+      margin-top: 12px;
+    }
+  }
+  .idpwButtonFrame {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    .idButton {
+      width: 195px;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: 500;
+      color: white;
+      background-color: #60bdff;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      position: relative;
+      left: -5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .pwButton {
+      width: 195px;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: 500;
+      color: white;
+      background-color: #ff9b9b;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      position: relative;
+      right: -5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .signupButtonFrame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .signupButton {
+      width: 400px;
+      padding: 13px;
+      margin-top: 15px;
+      border: 2px solid #5e97ff;
+      border-radius: 20px;
+      background-color: white;
+      font-weight: 700;
+      font-size: 15px;
+      color: #5e97ff;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
