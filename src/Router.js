@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Cart from './pages/Cart/Cart';
 import Delivery from './pages/Delivery/Delivery';
 import Login from './pages/Login/Login';
+import Payment from './pages/Payment/Payment';
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/" element={<Login />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </Layout>
