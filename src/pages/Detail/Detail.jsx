@@ -79,17 +79,7 @@ const Detail = () => {
           </div>
           <div className="detailBox" />
           <div className="division" />
-          {product.reviews.map(review => (
-            <div className="review" key={review.commentId}>
-              <input type="text" className="reviewPage" value="리뷰" />
-              <div className="reviewHeader">
-                <span>{review.nickname}</span>
-                <span>{review.score}</span>
-                <span>{review.createdAt}</span>
-              </div>
-              <div className="content">{review.comment}</div>
-            </div>
-          ))}
+          <Review />
         </div>
       </div>
     </div>
