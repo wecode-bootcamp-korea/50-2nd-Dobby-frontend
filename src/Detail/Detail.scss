@@ -1,11 +1,10 @@
 .Detail {
-  /*  background-color: coral;*/
   height: 100%;
   box-sizing: border-box;
+
   .content-Wrapper {
     display: flex;
     flex-direction: column;
-    /*  background-color: beige;*/
     width: 100%;
     max-width: 1184px;
     min-height: 1000px;
@@ -14,24 +13,27 @@
     align-self: stretch;
     margin: auto;
   }
+
   .container {
     display: flex;
     flex-direction: column;
+
     .productBox {
       display: flex;
       gap: 24px;
     }
+
     .proudctImage {
       width: 500px;
       height: 500px;
       display: block;
     }
+
     .productName {
       padding: 10px;
       flex-direction: column;
       width: 450px;
       display: flex;
-      /* background-color: pink;*/
       text-align: left;
 
       h1 {
@@ -53,10 +55,12 @@
         margin-bottom: 0.5em;
       }
     }
+
     .numberBox {
       display: flex;
       justify-content: space-between;
       height: 35px;
+
       .quantity {
         border: 1px solid lightgray;
         text-align: center;
@@ -81,21 +85,23 @@
       background-color: rgb(0, 150, 243);
       margin-bottom: 0.5em;
     }
+
+    .deliveryFee {
+      width: 150px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .total {
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-size: 25px;
+      font-weight: bold;
+      height: 48px;
+      margin-bottom: 10px;
+    }
   }
-}
-.deliveryFee {
-  width: 150px;
-  height: 60px;
-  margin-bottom: 10px;
-}
-.total {
-  width: 100%;
-  border: none;
-  border-radius: 6px;
-  font-size: 25px;
-  font-weight: bold;
-  height: 48px;
-  margin-bottom: 10px;
 }
 
 .division {
