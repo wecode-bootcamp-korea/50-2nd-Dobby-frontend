@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Star.scss';
 
 const Star = ({ max = 5, color = '#fcc419' }) => {
-  const [rate, setRate] = useState(3);
+  const [rate, setRate] = useState(4);
   return (
     <div className="icon">
       <span className="star_icon">

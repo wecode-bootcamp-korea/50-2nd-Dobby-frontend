@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Star from './Components/Star';
 import Review from './Components/Review';
 import deliveryFee from './배송정보.jpg';
 import './Detail.scss';
 
 const Detail = () => {
+  //  const params = useParams();
+  //  const productId = params.id;
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
 
@@ -15,18 +18,14 @@ const Detail = () => {
   const minus = () => {
     setCount(count - 1);
   };
-  /*상품금액 * 상품수량 = 총상품금액 기능 구현하기(어렵당..)
-  const totalPrice = () => {
-    setPrice(price * count);
-  };*/
 
   useEffect(() => {
     fetch('/data/MockData.json')
       .then(res => res.json())
       .then(data => setProduct(data));
   }, []);
-
-  console.log(product);
+  const totalPrice = product.price * count;
+  const test = product.score + 1;
 
   if (Object.keys(product).length === 0) return null;
 
@@ -38,12 +37,12 @@ const Detail = () => {
             <div>
               <img
                 className="proudctImage"
-                src={product.image_url}
+                src={product.image}
                 alt="제품사진"
               />
             </div>
             <div className="productName">
-              <h1>원피스 퍼즐 1000피스</h1>
+              <h1>{product.name}</h1>
               <h2>{product.content}</h2>
               <div className="starIcon">
                 <h2>평점</h2>
@@ -68,11 +67,11 @@ const Detail = () => {
                 </button>
               </div>
               <img className="deliveryFee" src={deliveryFee} alt="배송정보" />
-              <div>배송비 30,000원 이상 무료배송</div>
+              <div>배송비 50,000원 이상 무료배송</div>
               <br />
               <input className="total" value="총 상품금액" />
               <div className="total">
-                {product.price.toLocaleString('ko-KR')}원
+                {totalPrice.toLocaleString('ko-KR')}원
               </div>
               <button className="cart">장바구니</button>
             </div>

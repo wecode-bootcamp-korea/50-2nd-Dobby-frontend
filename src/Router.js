@@ -28,3 +28,4 @@ const Router = () => {
 };
 
 export default Router;
+//<Route path="/detail/:id" element={<Detail />} />

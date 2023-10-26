@@ -9,8 +9,6 @@ const Review = () => {
       .then(data => setProduct(data));
   }, []);
 
-  console.log(product);
-
   if (Object.keys(product).length === 0) return null;
   return (
     <div>
@@ -18,8 +16,10 @@ const Review = () => {
         <div className="review" key={review.commentId}>
           <input type="text" className="reviewPage" value="리뷰" />
           <div className="reviewHeader">
-            <span>{review.nickname}</span>
-            <span>{review.score}</span>
+            <div className="nicknameScore">
+              <span>{review.nickname}</span>
+              <span>평점 {review.score}점</span>
+            </div>
             <span>{review.createdAt}</span>
           </div>
           <div className="content">{review.comment}</div>
