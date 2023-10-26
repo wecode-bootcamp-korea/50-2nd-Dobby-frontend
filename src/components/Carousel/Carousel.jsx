@@ -1,22 +1,22 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, A11y } from 'swiper/modules';
+import { Autoplay, A11y } from 'swiper/modules';
 import ProductCard from '../ProductCard/ProductCard';
 import { ProductList } from '../../pages/Main/ProductList';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import './Carousel.scss';
+import NextBtn from './NextBtn';
+import PrevBtn from './PrevBtn';
 
 const Carousel = () => {
   return (
-    <div>
+    <div className="carousel">
       <Swiper
-        modules={[Autoplay, Navigation, A11y]}
-        spaceBetween={50}
+        modules={[Autoplay, A11y]}
+        spaceBetween={10}
         slidesPerView={4}
-        navigation
         loop={true}
         autoplay={{
           delay: 2500,
@@ -34,6 +34,10 @@ const Carousel = () => {
             />
           </SwiperSlide>
         ))}
+        <div className="btnWrapper">
+          <PrevBtn />
+          <NextBtn />
+        </div>
       </Swiper>
     </div>
   );

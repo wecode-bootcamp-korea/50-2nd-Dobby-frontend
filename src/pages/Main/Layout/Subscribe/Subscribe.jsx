@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import TabContent from './TabContent/TabContent';
-import TabList from './TabList/TabList';
-import TitleText from './TitleText/TitleText';
+import TabContent from '../TabContent/TabContent';
+import TabList from '../TabList/TabList';
+import TitleText from '../TitleText/TitleText';
 import './Subscribe.scss';
-import { subscription } from './subscription';
+import { Subscription } from '../Subscription';
 
 const Subscribe = () => {
-  const [activeColor, setActiveColor] = useState(subscription[0].color);
+  const [activeColor, setActiveColor] = useState(Subscription[0].color);
 
   const handleActive = color => {
     setActiveColor(color);
   };
 
-  const activeSub = subscription.find(type => type.color === activeColor);
+  const activeSub = Subscription.find(type => type.color === activeColor);
 
   return (
     <div className="subscribe">
@@ -28,7 +28,7 @@ const Subscribe = () => {
             <div className="subscribeBox">
               <div className="subscribeContainer">
                 <div className="selectContainer">
-                  {subscription.map(type => (
+                  {Subscription.map(type => (
                     <TabList
                       key={type.color}
                       text={type.title}

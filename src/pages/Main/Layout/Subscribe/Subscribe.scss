@@ -1,0 +1,35 @@
+.subscribe {
+  width: 100%;
+
+  .backgroundImage {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+  }
+
+  .subContainer {
+    padding: 30px;
+    height: 100%;
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding-top: 60px;
+
+      .subscribeBox {
+        .subscribeContainer {
+          height: auto;
+
+          .selectContainer {
+            display: flex;
+            width: 90%;
+            position: relative;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

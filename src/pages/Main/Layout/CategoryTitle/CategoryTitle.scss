@@ -1,0 +1,26 @@
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  img {
+    position: relative;
+    top: -10px;
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+  }
+  .titleWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    .slideTitle {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .slideSubTitle {
+      font-size: 18px;
+      font-weight: 500;
+      color: #ffb43b;
+    }
+  }
+}
