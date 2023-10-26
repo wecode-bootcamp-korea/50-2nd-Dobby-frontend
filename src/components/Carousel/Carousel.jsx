@@ -1,75 +1,41 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Autoplay, Navigation, A11y } from 'swiper/modules';
 import ProductCard from '../ProductCard/ProductCard';
-import 'swiper/swiper.min.css';
-import 'swiper/components/navigation/navigation.min.css';
+import { ProductList } from '../../pages/Main/ProductList';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Carousel = () => {
   return (
-    <Swiper
-      modules={[Navigation]}
-      navigation={true}
-      slidesPerView={4}
-      spaceBetween={50}
-      loop={true}
-      className="carousel"
-    >
-      <SwiperSlide>
-        <ProductCard
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/thumbnail/0tUF-1650544574118-1.jpg"
-          title="111111111 와인"
-          price="20,000"
-          rating="4.8"
-          reviewCount="120"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/thumbnail/0tUF-1650544574118-1.jpg"
-          title="222222222와인"
-          price="20,000"
-          rating="4.8"
-          reviewCount="120"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/thumbnail/0tUF-1650544574118-1.jpg"
-          title="3333333와인"
-          price="20,000"
-          rating="4.8"
-          reviewCount="120"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/thumbnail/0tUF-1650544574118-1.jpg"
-          title="4444444와인"
-          price="20,000"
-          rating="4.8"
-          reviewCount="120"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/thumbnail/0tUF-1650544574118-1.jpg"
-          title="마지막 와인"
-          price="20,000"
-          rating="4.8"
-          reviewCount="120"
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <ProductCard
-          src="https://d38cxpfv0ljg7q.cloudfront.net/admin_contents/thumbnail/0tUF-1650544574118-1.jpg"
-          title="마지막 와인"
-          price="20,000"
-          rating="4.8"
-          reviewCount="120"
-        />
-      </SwiperSlide>
-    </Swiper>
+    <div>
+      <Swiper
+        modules={[Autoplay, Navigation, A11y]}
+        spaceBetween={50}
+        slidesPerView={4}
+        navigation
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+      >
+        {ProductList.map((list, index) => (
+          <SwiperSlide key={index}>
+            <ProductCard
+              src={list.src}
+              title={list.title}
+              price={list.price}
+              rating={list.rating}
+              reviewCount={list.reviewCount}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

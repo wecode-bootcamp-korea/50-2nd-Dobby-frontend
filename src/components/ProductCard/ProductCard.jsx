@@ -1,6 +1,5 @@
 import React from 'react';
 import './ProductCard.scss';
-import { Link } from 'react-router-dom';
 
 const ProductCard = ({ src, title, price, rating, reviewCount }) => {
   return (
