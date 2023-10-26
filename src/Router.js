@@ -13,6 +13,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Layout>
+        <Nav />
         <Header />
         <Routes>
           <Route path="/cart" element={<Cart />} />
