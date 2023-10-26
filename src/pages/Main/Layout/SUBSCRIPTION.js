@@ -1,4 +1,4 @@
-export const SUBSCRIPTION = [
+export const subscription = [
   {
     color: 'blue',
     title: '종합',

@@ -6,21 +6,24 @@
   border-radius: 10px 10px 0 0;
   padding: 13px;
   color: #fff;
-  &.blue.active {
-    box-shadow: #329be7 0 4px inset;
+
+  &.active {
     background-color: #fff;
     color: #000;
+
+    &.blue {
+      box-shadow: #329be7 0 4px inset;
+    }
+
+    &.green {
+      box-shadow: #a3e743 0 4px inset;
+    }
+
+    &.red {
+      box-shadow: #ff7d3a 0 4px inset;
+    }
   }
-  &.green.active {
-    box-shadow: #a3e743 0 4px inset;
-    background-color: #fff;
-    color: #000;
-  }
-  &.red.active {
-    box-shadow: #ff7d3a 0 4px inset;
-    background-color: #fff;
-    color: #000;
-  }
+
   & img {
     margin-right: 5px;
     width: 18px;
