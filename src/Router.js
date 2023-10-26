@@ -7,6 +7,7 @@ import Cart from './pages/Cart/Cart';
 import Delivery from './pages/Delivery/Delivery';
 import Login from './pages/Login/Login';
 import Payment from './pages/Payment/Payment';
+import Nav from './components/Nav/Nav';
 
 const Router = () => {
   return (
