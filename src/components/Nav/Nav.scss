@@ -1,40 +1,54 @@
 .navHeader {
+  background-color: white;
   display: flex;
   padding: 8px 12px;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
-  background-color: pink;
+  height: 60px;
 
-  h1 {
+  .header {
     display: flex;
     align-items: center;
-    font-size: 40px;
-    font-weight: bolder;
-    font-family: 'Times New Roman', Times, serif;
-    padding: 30px;
-  }
 
-  .navbarMenu {
-    display: flex;
-    align-items: center;
-    width: 100px;
-    height: 45px;
-    font-size: large;
-    font-weight: 800;
-    cursor: pointer;
+    h1 {
+      display: flex;
+      align-items: center;
+      font-size: 40px;
+      font-weight: bolder;
+      font-family: 'Times New Roman', Times, serif;
+      padding: 30px;
+    }
+
+    .navbarMenu {
+      display: flex;
+      align-items: center;
+      width: 100px;
+      height: 45px;
+      font-size: 25px;
+      font-weight: 800;
+      cursor: pointer;
+    }
   }
 }
 
-label {
-  cursor: pointer;
-  font-weight: 800;
-}
-
-.cart {
+.login {
   display: flex;
   justify-content: center;
-  padding-right: 30px;
-  width: 100%;
-  height: 28px;
+  align-items: center;
+  gap: 20px;
+
+  label {
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 25px;
+  }
+
+  .cart {
+    display: flex;
+    padding-top: 10px;
+    padding-right: 30px;
+    top: 15px;
+    width: 100%;
+    height: 60px;
+  }
 }
