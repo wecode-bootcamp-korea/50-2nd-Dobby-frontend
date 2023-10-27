@@ -7,7 +7,6 @@ import './Nav.scss';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [token, setToken] = useState();
   return (
     <div className="navHeader">
       <div className="header">
