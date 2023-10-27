@@ -20,9 +20,9 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    fetch('/data/MockData.json')
+    fetch('http://10.58.52.77:8000/products/2')
       .then(res => res.json())
-      .then(data => setProduct(data));
+      .then(result => setProduct(result.data));
   }, []);
   const totalPrice = product.price * count;
 

@@ -2,15 +2,28 @@ import React, { useState, useEffect } from 'react';
 import './Star.scss';
 
 const Star = ({ max = 5, color = '#fcc419' }) => {
-  const [rate, setRate] = useState(4);
+  const [rate, setRate] = useState({});
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    fetch('http://10.58.52.77:8000/products/2')
+      .then(res => res.json())
+      .then(result => setProduct(result.data));
+  }, []);
+
+  if (Object.keys(product).length === 0) return null;
   return (
     <div className="icon">
       <span className="star_icon">
         {Array.from({ length: max }, (_, i) => (
-          <StarIcon key={i} color={color} filled={rate >= i + 1} />
+          <StarIcon
+            key={i}
+            color={color}
+            filled={product.average_score >= i + 1}
+          />
         ))}
       </span>
-      <p>{rate}점</p>
+      <p>{product.average_score}점</p>
     </div>
   );
 };
