@@ -11,6 +11,7 @@
     align-items: center;
 
     h1 {
+      cursor: pointer;
       display: flex;
       align-items: center;
       font-size: 40px;
@@ -42,6 +43,7 @@
     }
 
     .cart {
+      cursor: pointer;
       display: flex;
       padding-top: 10px;
       padding-right: 30px;
