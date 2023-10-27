@@ -35,8 +35,8 @@ const Carousel = () => {
           </SwiperSlide>
         ))}
         <div className="btnWrapper">
-          <PrevBtn />
           <NextBtn />
+          <PrevBtn />
         </div>
       </Swiper>
     </div>

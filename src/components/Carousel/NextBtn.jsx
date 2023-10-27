@@ -6,7 +6,7 @@ const NextBtn = () => {
   const swiper = useSwiper();
   return (
     <button className="next" onClick={() => swiper.slideNext()}>
-      &gt;
+      &lt;
     </button>
   );
 };

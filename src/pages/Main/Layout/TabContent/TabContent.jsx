@@ -10,10 +10,8 @@ const TabContent = ({ title, price, description, handleSubScribe }) => {
         <p className="description">{description}</p>
       </div>
 
-      <div className="btn">
-        <button className="subscribeBtn" onClick={handleSubScribe}>
-          구독하기
-        </button>
+      <div className="btn" onClick={handleSubScribe}>
+        <button className="subscribeBtn">구독하기</button>
       </div>
     </div>
   );

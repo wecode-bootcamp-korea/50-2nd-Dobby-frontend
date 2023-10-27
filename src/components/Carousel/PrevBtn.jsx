@@ -6,7 +6,7 @@ const PrevBtn = () => {
   const swiper = useSwiper();
   return (
     <button className="prev" onClick={() => swiper.slidePrev()}>
-      &lt;
+      &gt;
     </button>
   );
 };

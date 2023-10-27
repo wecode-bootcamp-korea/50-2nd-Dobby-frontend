@@ -5,36 +5,42 @@ import TitleText from '../TitleText/TitleText';
 import './Subscribe.scss';
 import { Subscription } from '../Subscription';
 
-const Subscribe = () => {
-  const [activeColor, setActiveColor] = useState(Subscription[0].color);
+const Subscribe = ({ handleSubScribe, setSubTypeParams }) => {
+  const [activeSubType, setActiveSubType] = useState(Subscription[0].subType);
 
-  const handleActive = color => {
-    setActiveColor(color);
+  const handleActive = option => {
+    setActiveSubType(option);
   };
 
-  const activeSub = Subscription.find(type => type.color === activeColor);
+  const activeOption = Subscription.find(
+    type => type.subType === activeSubType,
+  );
 
   return (
     <div className="subscribe">
       <div
         className="backgroundImage"
         style={{
-          backgroundImage: `url('${activeSub.imgUrl}')`,
+          backgroundImage: `url('${activeOption.imgUrl}')`,
         }}
       >
         <div className="subContainer">
           <div className="content">
-            <TitleText title={activeSub.title} subTitle={activeSub.subTitle} />
+            <TitleText
+              title={activeOption.title}
+              subTitle={activeOption.subTitle}
+            />
             <div className="subscribeBox">
               <div className="subscribeContainer">
                 <div className="selectContainer">
                   {Subscription.map(type => (
                     <TabList
-                      key={type.color}
-                      text={type.title}
-                      color={type.color}
+                      key={`select${type.subType}`}
+                      name={type.name}
+                      subType={type.subType}
                       handleActive={handleActive}
-                      isActive={activeColor === type.color}
+                      isActive={activeOption.subType === type.subType}
+                      setSubTypeParams={setSubTypeParams}
                     />
                   ))}
                 </div>
@@ -42,9 +48,10 @@ const Subscribe = () => {
 
               <div>
                 <TabContent
-                  title={activeSub.title}
-                  price={activeSub.price}
-                  description={activeSub.description}
+                  title={activeOption.title}
+                  price={activeOption.price}
+                  description={activeOption.description}
+                  handleSubScribe={handleSubScribe}
                 />
               </div>
             </div>
