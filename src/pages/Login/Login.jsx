@@ -15,12 +15,36 @@ const Login = () => {
     setPW(event.target.value);
   };
   // 로그인 버튼
-  const isInvalid = id.includes('@', '.') && pw.length >= 10;
+  const isInvalid = id.includes('@', '.') && pw.length >= 4;
   // 회원가입 버튼(회원가입 페이지로 이동)
   const navigate = useNavigate();
   const goToSignup = () => {
     navigate('/signup');
   };
+
+  const goToMain = () => {
+    fetch('http://10.58.52.106:8000/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: id,
+        password: pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'LOG_IN_SUCCESS') {
+          alert('로그인 되었습니다.');
+          localStorage.setItem('token', data.token);
+        } else if (data.message === 'INVALID EMAIL OR PASSWORD') {
+          alert('가입되지 않은 정보입니다.');
+        }
+        console.log(data);
+      });
+  };
+
   return (
     <div className="mainLoginBody">
       <h1 className="helloText">안녕하세요!😊</h1>
@@ -44,6 +68,7 @@ const Login = () => {
         <button
           className={isInvalid ? 'loginButton' : 'disabledButton'}
           disabled={isInvalid ? false : true}
+          onClick={goToMain}
         >
           로그인
         </button>

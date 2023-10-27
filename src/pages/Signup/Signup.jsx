@@ -124,15 +124,6 @@ const Signup = () => {
         />
         <p className="checkText">(필수) 개인정보 수집 및 이용 동의</p>
       </span>
-      {/* <span className="checkboxFrame04">
-        <input
-          className="marketingCheck"
-          type="checkbox"
-          checked={marketingCheck}
-          onChange={marketBtnevent}
-        />
-        <p className="checkText">(선택) 광고성 및 마케팅 정보 동의</p>
-      </span> */}
       <button className="signupButton">회원가입 하기</button>
     </div>
   );
