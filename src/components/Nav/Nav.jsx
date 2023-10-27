@@ -11,17 +11,21 @@ const Nav = () => {
   //저장된 토큰값 불러오기
   const dobbyToken = localStorage.getItem('TOKEN');
   //로그인 유무 분기처리를 위해 state 생성,
-  const [login, setLogin] = useState(true);
-  //처음엔 login=false 그 뜻은 즉 로그인버튼이 떠야함
+  const [login, setLogin] = useState(false);
+  //처음엔 login=false => 로그인버튼이 떠야함
+
   useEffect(() => {
     dobbyToken && setLogin(true);
   }, [dobbyToken, login]);
 
   const logout = () => {
     localStorage.removeItem('TOKEN');
-    alert('로그아웃 되셨습니다!');
+    alert('로그아웃 되었습니다.');
     setLogin(false);
+    navigate('/main');
   };
+  //로그인시 환영문구를 위한 localstorage에 저장된 닉네임 불러오기
+  const user = localStorage.getItem('nickname');
 
   return (
     <div className="navHeader">
@@ -46,7 +50,7 @@ const Nav = () => {
       <div className="login">
         {login ? (
           <>
-            <label>헝그리민지님 어서오세요!</label>
+            <label>😊{user}님 어서오세요!😊</label>
             <label onClick={logout}> 로그아웃 </label>
           </>
         ) : (
