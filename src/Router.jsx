@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
 import Footer from './components/Footer/Footer';
+import Layout from './components/Layout/Layout';
+import Nav from './components/Nav/Nav';
 import Cart from './pages/Cart/Cart';
 import Delivery from './pages/Delivery/Delivery';
 import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
+import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
-import Nav from './components/Nav/Nav';
 
 const Router = () => {
   return (
@@ -18,8 +19,9 @@ const Router = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/" element={<Login />} />
-          <Route path="/payment" element={<Payment />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/pay-complete" element={<PayComplete />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </Layout>
