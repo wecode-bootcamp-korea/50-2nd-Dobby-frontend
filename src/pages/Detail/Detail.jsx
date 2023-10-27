@@ -25,7 +25,6 @@ const Detail = () => {
       .then(data => setProduct(data));
   }, []);
   const totalPrice = product.price * count;
-  const test = product.score + 1;
 
   if (Object.keys(product).length === 0) return null;
 

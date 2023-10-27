@@ -12,9 +12,9 @@ const Review = () => {
   if (Object.keys(product).length === 0) return null;
   return (
     <div>
+      <input type="text" className="reviewPage" value="리뷰" />
       {product.reviews.map(review => (
         <div className="review" key={review.commentId}>
-          <input type="text" className="reviewPage" value="리뷰" />
           <div className="reviewHeader">
             <div className="nicknameScore">
               <span>{review.nickname}</span>
