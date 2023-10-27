@@ -14,7 +14,6 @@ const Router = () => {
     <BrowserRouter>
       <Layout>
         <Nav />
-        <Header />
         <Routes>
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
