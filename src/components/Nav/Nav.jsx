@@ -8,9 +8,11 @@ import './Nav.scss';
 // 로그인시 localStorage.getItem('nickname')님 어서오세요 :) ,메시지 남기기
 const Nav = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState(false);
+  //저장된 토큰값 불러오기
   const dobbyToken = localStorage.getItem('TOKEN');
-
+  //로그인 유무 분기처리를 위해 state 생성,
+  const [login, setLogin] = useState(true);
+  //처음엔 login=false 그 뜻은 즉 로그인버튼이 떠야함
   useEffect(() => {
     dobbyToken && setLogin(true);
   }, [dobbyToken, login]);
@@ -26,7 +28,7 @@ const Nav = () => {
       <div className="header">
         <h1
           onClick={() => {
-            navigate('/');
+            navigate('/main');
           }}
         >
           DOBBY
@@ -34,7 +36,7 @@ const Nav = () => {
         <div
           className="navbarMenu"
           onClick={() => {
-            navigate('/payment');
+            navigate('/main');
           }}
         >
           스토어
@@ -43,14 +45,17 @@ const Nav = () => {
 
       <div className="login">
         {login ? (
-          <label onClick={logout}> 로그아웃 </label>
+          <>
+            <label>헝그리민지님 어서오세요!</label>
+            <label onClick={logout}> 로그아웃 </label>
+          </>
         ) : (
           <label
             onClick={() => {
               navigate('/');
             }}
           >
-            로그인
+            로그인/회원가입
           </label>
         )}
 
@@ -70,20 +75,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-/* <div className="login">
-<label
-  onClick={() => {
-    navigate('/payment');
-  }}
->
-  로그인
-</label>
-|
-<label
-  onClick={() => {
-    navigate('/cart');
-  }}
->
-  로그아웃
-</label> */
