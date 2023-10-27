@@ -7,6 +7,7 @@ import Cart from './pages/Cart/Cart';
 import Delivery from './pages/Delivery/Delivery';
 import Login from './pages/Login/Login';
 import Detail from './pages/Detail/Detail';
+import Main from './pages/Main/Main';
 import Payment from './pages/Payment/Payment';
 
 const Router = () => {
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/detail" element={<Detail />} />
+          <Route path="/main" element={<Main />} />
         </Routes>
         <Footer />
       </Layout>
@@ -28,4 +30,3 @@ const Router = () => {
 };
 
 export default Router;
-//<Route path="/detail/:id" element={<Detail />} />
