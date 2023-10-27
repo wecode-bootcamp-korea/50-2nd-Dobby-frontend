@@ -6,19 +6,24 @@ const Signup = () => {
   const [allCheck, setAllcheck] = useState(false);
   const [useCheck, setUsecheck] = useState(false);
   const [infoCheck, setInfocheck] = useState(false);
-  const [marketingCheck, setMarketingcheck] = useState(false);
+  // 회원가입 유효성 검사
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+    passwordConfir: '',
+    name: '',
+    nickname: '',
+  });
   // 모두 동의 버튼
   const allBtnevent = () => {
     if (allCheck === false) {
       setAllcheck(true);
       setUsecheck(true);
       setInfocheck(true);
-      setMarketingcheck(true);
     } else {
       setAllcheck(false);
       setUsecheck(false);
       setInfocheck(false);
-      setMarketingcheck(false);
     }
   };
   // 이용약관 동의 버튼
@@ -37,23 +42,14 @@ const Signup = () => {
       setInfocheck(false);
     }
   };
-  // 마케팅 정보동의 버튼
-  const marketBtnevent = () => {
-    if (marketingCheck === false) {
-      setMarketingcheck(true);
-    } else {
-      setMarketingcheck(false);
-    }
-  };
-  // 3개 버튼 모두체크시 전체동의 자동체크
+  // 2개 버튼 모두체크시 전체동의 자동체크
   useEffect(() => {
-    if (useCheck === true && infoCheck === true && marketingCheck === true) {
+    if (useCheck === true && infoCheck === true) {
       setAllcheck(true);
     } else {
       setAllcheck(false);
     }
-  }, [useCheck, infoCheck, marketingCheck]);
-  // 회원가입 버튼
+  }, [useCheck, infoCheck]);
 
   return (
     <div className="signupBody">
@@ -66,22 +62,38 @@ const Signup = () => {
           className="email"
           type="text"
           placeholder="이메일을 입력해주세요"
+          value={form.email}
+          onChange={event => setForm({ ...form, email: event.target.value })}
         />
         <input
           className="password"
-          type="text"
+          type="password"
           placeholder="비밀번호를 입력해주세요"
+          value={form.password}
+          onChange={event => setForm({ ...form, password: event.target.value })}
         />
         <input
           className="passwordConfir"
-          type="text"
+          type="password"
           placeholder="비밀번호를 다시한번 입력해주세요"
+          value={form.passwordConfir}
+          onChange={event =>
+            setForm({ ...form, passwordConfir: event.target.value })
+          }
         />
-        <input className="name" type="text" placeholder="이름을 입력해주세요" />
+        <input
+          className="name"
+          type="text"
+          placeholder="이름을 입력해주세요"
+          value={form.name}
+          onChange={event => setForm({ ...form, name: event.target.value })}
+        />
         <input
           className="nickname"
           type="text"
           placeholder="닉네임을 입력해주세요"
+          value={form.nickname}
+          onChange={event => setForm({ ...form, nickname: event.target.value })}
         />
       </form>
       <p className="coditionsText">Dobby 서비스 이용약관에 동의해주세요.</p>
@@ -112,7 +124,7 @@ const Signup = () => {
         />
         <p className="checkText">(필수) 개인정보 수집 및 이용 동의</p>
       </span>
-      <span className="checkboxFrame04">
+      {/* <span className="checkboxFrame04">
         <input
           className="marketingCheck"
           type="checkbox"
@@ -120,7 +132,7 @@ const Signup = () => {
           onChange={marketBtnevent}
         />
         <p className="checkText">(선택) 광고성 및 마케팅 정보 동의</p>
-      </span>
+      </span> */}
       <button className="signupButton">회원가입 하기</button>
     </div>
   );
