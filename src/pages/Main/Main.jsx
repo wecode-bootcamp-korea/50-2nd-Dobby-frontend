@@ -3,37 +3,31 @@ import Subscribe from './Layout/Subscribe/Subscribe';
 import CategorizedSlide from './Layout/CategorizedSlide/CategorizedSlide';
 import CategoryList from './Layout/CategoryList/CategoryList';
 import './Main.scss';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import { ProductList } from './ProductList';
 import { GET_SUBSCRIPTION_API } from '../../config';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Main = () => {
-  // const [subscribe, setSubscribe] = useState([]);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [slideList, setSlideList] = useState([]);
+
   const setSubTypeParams = subtype => {
     searchParams.set('dobbyBox', subtype);
     setSearchParams(searchParams);
   };
 
-  // useEffect(() => {
-  //   fetch('/data/basic.json', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       const updateData = data.data[0];
-  //       setSubscribe(updateData);
-  //     });
-  // }, []);
-
-  // ?dobbyBox=basic
-  // ?dobbyBox=creative
-  // ?dobbyBox=collection
+  useEffect(() => {
+    fetch('/data/slideList.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setSlideList(data);
+      });
+  }, []);
 
   const handleSubScribe = () => {
     const newParams = searchParams.toString();
@@ -55,10 +49,7 @@ const Main = () => {
       .then(data => {
         navigate(data.redirectUrl);
       })
-      .catch(error => {
-        alert('오류가 발생했습니다. 다시 시도해주세요.');
-        console.log(error);
-      });
+      .catch(alert('오류가 발생했습니다. 다시 시도해주세요.'));
   };
 
   return (
@@ -68,20 +59,24 @@ const Main = () => {
         setSubTypeParams={setSubTypeParams}
       />
       <CategoryList />
-      <CategorizedSlide />
-      {/* 
-      <div className="textList">
-        {ProductList.map((list, index) => (
-          <ProductCard
-            key={index}
-            src={list.src}
-            title={list.title}
-            price={list.price}
-            rating={list.rating}
-            reviewCount={list.reviewCount}
-          />
-        ))}
-      </div> */}
+      <CategorizedSlide
+        slideList={slideList.mdRecommendation}
+        title="취향저격! - MD가 선택한 다양한 아이템"
+        subTitle="MD의 특별한 추천 아이템을 만나보세요."
+        subType="collection"
+      />
+      <CategorizedSlide
+        slideList={slideList.bestProducts}
+        title="인기 상품 - 베스트셀러 아이템 모음"
+        subTitle="고객들이 가장 많이 선택한 베스트셀러 아이템을 만나보세요."
+        subType="creative"
+      />
+      <CategorizedSlide
+        slideList={slideList.newProducts}
+        title="신상품 소식 - 최근 출시된 아이템"
+        subTitle="최근에 입고된 상품을 소개합니다. 새로운 취미를 발견해보세요."
+        subType="basic"
+      />
     </div>
   );
 };

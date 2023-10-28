@@ -4,11 +4,11 @@ import './CategorizedSlide.scss';
 import Carousel from '../../../../components/Carousel/Carousel';
 import CategoryTitle from '../CategoryTitle/CategoryTitle';
 
-const CategorizedSlide = () => {
+const CategorizedSlide = ({ slideList, title, subTitle, subType }) => {
   return (
     <div className="categorizedSlide">
-      <CategoryTitle />
-      <Carousel />
+      <CategoryTitle title={title} subTitle={subTitle} subType={subType} />
+      <Carousel slideList={slideList} />
     </div>
   );
 };

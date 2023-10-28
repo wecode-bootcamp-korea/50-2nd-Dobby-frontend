@@ -8,10 +8,24 @@
     cursor: pointer;
   }
 
-  img {
+  .menu {
     width: 44px;
     height: 44px;
     margin: 5px;
+    &.basic {
+      filter: invert(46%) sepia(71%) saturate(514%) hue-rotate(162deg)
+        brightness(102%) contrast(95%);
+    }
+
+    &.creative {
+      filter: invert(92%) sepia(13%) saturate(2202%) hue-rotate(27deg)
+        brightness(95%) contrast(91%);
+    }
+
+    &.collection {
+      filter: invert(71%) sepia(45%) saturate(2261%) hue-rotate(304deg)
+        brightness(103%) contrast(108%);
+    }
   }
   p {
     margin-top: 2px;

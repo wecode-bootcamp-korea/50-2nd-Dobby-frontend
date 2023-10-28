@@ -1,20 +1,27 @@
 import React from 'react';
 import './ProductCard.scss';
+import { Link } from 'react-router-dom';
 
-const ProductCard = ({ src, title, price, rating, reviewCount }) => {
+const ProductCard = ({ src, title, price, rating, reviewCount, content }) => {
+  const priceName = price.toLocaleString('ko-KR');
   return (
     <div className="productCard">
       <div className="productContainer">
-        <img src={src} alt="제품이미지" className="productImg" />
-        <div className="detailContainer">
-          <h1 className="productTitle">{title}</h1>
-          <p className="productPrice">{price}원</p>
-          <div className="wrapper">
-            <img src="images/icon_favorite.png" alt="icon" />
-            <p className="productRating">{rating}</p>
-            <p className="reviewCount">리뷰 {reviewCount}</p>
+        <Link to="/" className="productLink">
+          <img src={src} alt="제품이미지" className="productImg" />
+          <div className="detailContainer">
+            <p className="productTitle">{title}</p>
+            <p className="productPrice">{priceName}원</p>
+            <div className="wrapper">
+              <img src="images/icon_star.svg" alt="icon" className="scoreImg" />
+              <p className="score">{rating}</p>
+              <p className="commentCount">리뷰 {reviewCount}</p>
+            </div>
+            <div className="contentWrapper">
+              <p className="content">{content}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

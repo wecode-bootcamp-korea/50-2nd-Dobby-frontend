@@ -12,13 +12,18 @@ const TabList = ({
     handleActive(subType);
     setSubTypeParams(subType);
   };
+
   return (
     <div
       className={`selectBtn ${subType} ${isActive ? 'active' : ''}`}
       onClick={handleClick}
     >
-      <img src="images/sampleIcon.png" alt="icon" />
-      {name}
+      <img
+        src={`images/icon_${subType}.svg`}
+        alt="icon"
+        className={`iconImg ${subType} ${isActive ? 'active' : ''}`}
+      />
+      <p className="iconName">{name}</p>
     </div>
   );
 };

@@ -5,23 +5,23 @@ import './CategoryList.scss';
 const CategoryList = () => {
   const categoryList = [
     {
-      src: 'https://www.sooldamhwa.com/images/modules/damhwaMarket/category/icon_gift.png',
       text: '종합',
+      subType: 'basic',
     },
     {
-      src: 'https://www.sooldamhwa.com/symbols/objects/icon/style2/flat/clock.wall.svg',
       text: '창작적',
+      subType: 'creative',
     },
     {
-      src: 'https://www.sooldamhwa.com/images/modules/damhwaMarket/category/icon_only_sooldamhwa.png',
       text: '수집성',
+      subType: 'collection',
     },
   ];
 
   return (
     <div className="categoryList">
       {categoryList.map((list, index) => (
-        <Category key={index} src={list.src} text={list.text} />
+        <Category key={index} text={list.text} subType={list.subType} />
       ))}
     </div>
   );

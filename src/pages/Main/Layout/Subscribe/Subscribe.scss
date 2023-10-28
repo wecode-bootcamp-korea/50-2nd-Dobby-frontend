@@ -5,8 +5,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
+    position: relative;
+    z-index: 1;
   }
-
+  .backgroundDark {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 500px;
+    width: 100%;
+    z-index: -1;
+  }
   .subContainer {
     padding: 30px;
     height: 100%;
