@@ -72,7 +72,6 @@ const Login = () => {
         >
           로그인
         </button>
-        <hr className="underline" />
       </div>
       <div className="idpwButtonFrame">
         <button className="idButton">아이디 찾기</button>
