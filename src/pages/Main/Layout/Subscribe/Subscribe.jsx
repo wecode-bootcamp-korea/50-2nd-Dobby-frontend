@@ -3,7 +3,7 @@ import TabContent from '../TabContent/TabContent';
 import TabList from '../TabList/TabList';
 import TitleText from '../TitleText/TitleText';
 import './Subscribe.scss';
-import { Subscription } from '../Subscription';
+import { Subscription } from '../subscription';
 
 const Subscribe = ({ handleSubScribe, setSubTypeParams }) => {
   const [activeSubType, setActiveSubType] = useState(Subscription[0].subType);
