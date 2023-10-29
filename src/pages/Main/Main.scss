@@ -1,8 +1,19 @@
-.main {
-  width: 100vw;
-  
-  .textList {
-    display: flex;
-    justify-content: center;
+body::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url(https://images.unsplash.com/photo-1638560928314-878d82b51cd4?auto=format&fit=crop&q=80&w=2940&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    url(https://images.unsplash.com/photo-1464699908537-0954e50791ee?auto=format&fit=crop&q=80&w=2942&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+    url(https://images.unsplash.com/photo-1500995617113-cf789362a3e1?auto=format&fit=crop&q=80&w=2592&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+
+  .main {
+    width: 100vw;
+
+    .textList {
+      display: flex;
+      justify-content: center;
+    }
   }
 }

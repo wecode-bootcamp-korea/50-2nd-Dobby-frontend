@@ -23,8 +23,8 @@ const Carousel = ({ slideList }) => {
         }}
       >
         {slideList &&
-          slideList.map((list, index) => (
-            <SwiperSlide key={index}>
+          slideList.map(list => (
+            <SwiperSlide key={`slideLIst${list.id}`}>
               <ProductCard
                 src={list.image}
                 title={list.name}

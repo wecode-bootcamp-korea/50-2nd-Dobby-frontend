@@ -35,7 +35,7 @@ const Subscribe = ({ handleSubScribe, setSubTypeParams }) => {
                 <div className="selectContainer">
                   {subscription.map(type => (
                     <TabList
-                      key={`select${type.subType}`}
+                      key={`${type.id}subscription`}
                       name={type.name}
                       subType={type.subType}
                       handleActive={handleActive}
