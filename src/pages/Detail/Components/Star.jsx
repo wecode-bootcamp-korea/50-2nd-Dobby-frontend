@@ -3,7 +3,6 @@ import StarIcon from './StarIcon';
 import './Star.scss';
 
 const Star = ({ max = 5, color = '#fcc419' }) => {
-  const [rate, setRate] = useState({});
   const [product, setProduct] = useState({});
 
   useEffect(() => {

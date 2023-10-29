@@ -4,10 +4,12 @@ import Star from './Components/Star';
 import Review from './Components/Review';
 import deliveryFee from './배송정보.jpg';
 import './Detail.scss';
-
+//product.id 등 객체구조할당으로 다 바꾸기
+//params 활용하기
 const Detail = () => {
-  const params = useParams();
-  const productId = params.id;
+  const { id } = useParams();
+  // const params = useParams();
+  // const productId = params.id;
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
 
@@ -20,10 +22,10 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.52.77:8000/products/${productId}')
+    fetch('http://10.58.52.77:8000/products/${id}')
       .then(res => res.json())
       .then(result => setProduct(result.data));
-  }, [{ productId }]);
+  }, [id]);
 
   const totalPrice = product.price * count;
 

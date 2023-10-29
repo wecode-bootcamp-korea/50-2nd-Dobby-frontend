@@ -1,5 +1,4 @@
 import React from 'react';
-import Star from './Star';
 
 const StarIcon = ({ color, filled }) => {
   return (
