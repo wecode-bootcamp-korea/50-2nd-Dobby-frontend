@@ -39,5 +39,9 @@
     color: #fff;
     font-size: 16px;
     font-weight: 700;
+    
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

@@ -1,17 +1,29 @@
 import React from 'react';
 import './TabList.scss';
 
-const TabList = ({ text, color, handleActive, isActive }) => {
+const TabList = ({
+  name,
+  subType,
+  handleActive,
+  isActive,
+  setSubTypeParams,
+}) => {
   const handleClick = () => {
-    handleActive(color);
+    handleActive(subType);
+    setSubTypeParams(subType);
   };
+
   return (
     <div
-      className={`selectBtn ${color} ${isActive ? 'active' : ''}`}
+      className={`selectBtn ${subType} ${isActive ? 'active' : ''}`}
       onClick={handleClick}
     >
-      <img src="images/sampleIcon.png" alt="icon" />
-      {text}
+      <img
+        src={`images/icon_${subType}.svg`}
+        alt="icon"
+        className={`iconImg ${subType} ${isActive ? 'active' : ''}`}
+      />
+      <p className="iconName">{name}</p>
     </div>
   );
 };
