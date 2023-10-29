@@ -64,46 +64,26 @@
     position: relative;
     left: -50px;
   }
-  .checkboxFrame01 {
-    display: flex;
-    justify-content: space-between;
-    margin-left: -210px;
-    margin-bottom: 15px;
-  }
-  .checkboxFrame02 {
-    display: flex;
-    justify-content: space-between;
-    margin-left: -178px;
-    margin-bottom: 15px;
-  }
-  .checkboxFrame03 {
-    display: flex;
-    justify-content: space-between;
-    margin-left: -100px;
-    margin-bottom: 15px;
-  }
-  .checkText {
+  .checkFormBox {
     position: relative;
-    bottom: -3px;
-    font-weight: 400;
-  }
-  .allCheck {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    left: -12px;
-  }
-  .termsCheck {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    left: -12px;
-  }
-  .personalCheck {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    left: -12px;
+    left: -50px;
+    .checkboxFrame {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      margin-bottom: 13px;
+    }
+    .checkText {
+      position: relative;
+      bottom: -3px;
+      font-weight: 400;
+    }
+    .allCheck,
+    .termsCheck,
+    .personalCheck {
+      position: relative;
+      left: -12px;
+    }
   }
   .signupButton {
     margin-top: 20px;

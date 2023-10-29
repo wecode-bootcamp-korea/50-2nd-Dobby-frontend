@@ -216,34 +216,38 @@ const Signup = () => {
         </div>
       </form>
       <p className="coditionsText">Dobby 서비스 이용약관에 동의해주세요.</p>
-      <span className="checkboxFrame01">
-        <input
-          className="allCheck"
-          type="checkbox"
-          checked={allCheck}
-          onChange={allBtnevent}
-        />
-        <p className="checkText">모두 동의합니다</p>
-      </span>
-      <span className="checkboxFrame02">
-        <input
-          className="termsCheck"
-          type="checkbox"
-          checked={useCheck}
-          onChange={useBtnevent}
-        />
-        <p className="checkText">(필수) 이용 약관 동의</p>
-      </span>
-      <span className="checkboxFrame03">
-        <input
-          className="personalCheck"
-          type="checkbox"
-          checked={infoCheck}
-          onChange={infoBtnevent}
-        />
-        <p className="checkText">(필수) 개인정보 수집 및 이용 동의</p>
-      </span>
-      <button className="signupButton">회원가입 하기</button>
+      <div className="checkFormBox">
+        <span className="checkboxFrame">
+          <input
+            className="allCheck"
+            type="checkbox"
+            checked={allCheck}
+            onChange={allBtnevent}
+          />
+          <p className="checkText">모두 동의합니다</p>
+        </span>
+        <span className="checkboxFrame">
+          <input
+            className="termsCheck"
+            type="checkbox"
+            checked={useCheck}
+            onChange={useBtnevent}
+          />
+          <p className="checkText">(필수) 이용 약관 동의</p>
+        </span>
+        <span className="checkboxFrame">
+          <input
+            className="personalCheck"
+            type="checkbox"
+            checked={infoCheck}
+            onChange={infoBtnevent}
+          />
+          <p className="checkText">(필수) 개인정보 수집 및 이용 동의</p>
+        </span>
+      </div>
+      <div>
+        <button className="signupButton">회원가입 하기</button>
+      </div>
     </div>
   );
 };
