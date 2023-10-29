@@ -99,6 +99,7 @@ const Signup = () => {
     }
   }, []);
   // 모두 동의 버튼
+  const inValid = !allCheck;
   const allBtnevent = () => {
     if (allCheck === false) {
       setAllcheck(true);
@@ -246,7 +247,12 @@ const Signup = () => {
         </span>
       </div>
       <div>
-        <button className="signupButton">회원가입 하기</button>
+        <button
+          className={inValid ? 'disableButton' : 'signupButton'}
+          disabled={inValid ? false : true}
+        >
+          회원가입 하기
+        </button>
       </div>
     </div>
   );
