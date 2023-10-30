@@ -2,32 +2,15 @@ import React from 'react';
 import Category from '../../../../components/Category/Category';
 import './CategoryList.scss';
 
-const CategoryList = () => {
-  const categoryList = [
-    {
-      id: 1,
-      text: '종합',
-      subType: 'basic',
-    },
-    {
-      id: 2,
-      text: '창작적',
-      subType: 'creative',
-    },
-    {
-      id: 3,
-      text: '수집성',
-      subType: 'collection',
-    },
-  ];
-
+const CategoryList = ({ menuList }) => {
   return (
     <div className="categoryList">
-      {categoryList.map(list => (
+      {menuList.map(list => (
         <Category
           key={`${list.id}categoryList`}
-          text={list.text}
+          text={list.name}
           subType={list.subType}
+          id={list.id}
         />
       ))}
     </div>

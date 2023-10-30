@@ -3,19 +3,36 @@ import Subscribe from './Layout/Subscribe/Subscribe';
 import CategorizedSlide from './Layout/CategorizedSlide/CategorizedSlide';
 import CategoryList from './Layout/CategoryList/CategoryList';
 import './Main.scss';
-import { GET_SUBSCRIPTION_API } from '../../config';
+import { GET_PRODUCTLIST_API, GET_SUBSCRIPTION_API } from '../../config';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Main = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [slideList, setSlideList] = useState([]);
+  const [menuList, setMenuList] = useState([]);
 
   const setSubTypeParams = subtype => {
-    searchParams.set('dobbyBox', subtype);
-    setSearchParams(searchParams);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('dobbyBox', subtype);
+    setSearchParams(newSearchParams);
   };
 
+  // 백엔드 통신 데이터
+  // useEffect(() => {
+  //   fetch(`${GET_PRODUCTLIST_API}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setSlideList(data);
+  //     });
+  // }, []);
+
+  // mock 데이터
   useEffect(() => {
     fetch('/data/slideList.json', {
       method: 'GET',
@@ -29,6 +46,20 @@ const Main = () => {
       });
   }, []);
 
+  // 카테고리 데이터
+  useEffect(() => {
+    fetch('/data/menu.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setMenuList(data.menu);
+      });
+  }, []);
+
   const handleSubScribe = () => {
     const newParams = searchParams.toString();
 
@@ -36,29 +67,26 @@ const Main = () => {
       alert('구독 옵션을 선택해주세요!');
       return;
     }
-    fetch(`${GET_SUBSCRIPTION_API}?${newParams}`, {
-      method: 'POST',
+
+    fetch(`${GET_SUBSCRIPTION_API}?${searchParams.toString()}`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        query: `?${newParams}`,
-      }),
     })
       .then(res => res.json())
       .then(data => {
-        navigate(data.redirectUrl);
+        window.location.href = data.redirectUrl;
       })
       .catch(alert('오류가 발생했습니다. 다시 시도해주세요.'));
   };
-
   return (
     <div className="main">
       <Subscribe
         handleSubScribe={handleSubScribe}
         setSubTypeParams={setSubTypeParams}
       />
-      <CategoryList />
+      <CategoryList menuList={menuList} />
       <CategorizedSlide
         slideList={slideList.mdRecommendation}
         title="취향저격! - MD가 선택한 다양한 아이템"

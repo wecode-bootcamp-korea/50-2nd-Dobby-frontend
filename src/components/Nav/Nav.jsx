@@ -26,7 +26,7 @@ const Nav = () => {
       <div className="header">
         <h1
           onClick={() => {
-            navigate('/');
+            navigate('/main');
           }}
         >
           DOBBY
@@ -34,7 +34,7 @@ const Nav = () => {
         <div
           className="navbarMenu"
           onClick={() => {
-            navigate('/payment');
+            navigate('/store/1');
           }}
         >
           스토어

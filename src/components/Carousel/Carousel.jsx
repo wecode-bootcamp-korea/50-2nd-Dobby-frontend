@@ -29,8 +29,8 @@ const Carousel = ({ slideList }) => {
                 src={list.image}
                 title={list.name}
                 price={list.price}
-                rating={list.sales}
-                reviewCount={list.sales}
+                score={list.score}
+                commentCount={list.commentCount}
                 content={list.content}
               />
             </SwiperSlide>

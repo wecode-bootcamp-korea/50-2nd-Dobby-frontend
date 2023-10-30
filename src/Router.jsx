@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
+import Store from './pages/Store/Store';
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/" element={<Login />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/store/:subType" element={<Store />} />
           <Route path="/pay-complete" element={<PayComplete />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>
