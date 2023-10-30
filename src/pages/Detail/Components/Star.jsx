@@ -1,31 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import StarIcon from './StarIcon';
 import './Star.scss';
 
-const Star = ({ max = 5, color = '#fcc419' }) => {
-  const { id } = useParams();
-  const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    fetch(`http://10.58.52.93:8000/products/${id}`)
-      .then(res => res.json())
-      .then(result => setProduct(result.product));
-  }, [id]);
-
-  if (Object.keys(product).length === 0) return null;
+const Star = ({ score, max = 5, color = '#fcc419' }) => {
   return (
     <div className="star">
       <span>
         {Array.from({ length: max }, (_, i) => (
-          <StarIcon
-            key={i}
-            color={color}
-            filled={product.average_score >= i + 1}
-          />
+          <StarIcon key={i} color={color} filled={score >= i + 1} />
         ))}
       </span>
-      <p>{product.average_score}점</p>
+      <p>{score}점</p>
     </div>
   );
 };
