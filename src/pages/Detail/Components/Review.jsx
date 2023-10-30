@@ -6,7 +6,7 @@ const Review = ({ reviews }) => {
     <div className="review">
       <p className="reviewPage">리뷰</p>
       {reviews.map(review => {
-        const { id, nickname, score, created_at, content } = review;
+        const { id, nickname, score, created_date, content } = review;
 
         return (
           <div className="reviewId" key={id}>
@@ -15,7 +15,7 @@ const Review = ({ reviews }) => {
                 <span>{nickname}</span>
                 <span>평점 {score}점</span>
               </div>
-              <span>{created_at}</span>
+              <span>{created_date}</span>
             </div>
             <div className="content">{content}</div>
           </div>
