@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './Signup.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   // 이메일, 비밀번호, 비밀번호 확인, 이름, 닉네임 확인
@@ -24,7 +25,14 @@ const Signup = () => {
   const [allCheck, setAllcheck] = useState(false);
   const [useCheck, setUsecheck] = useState(false);
   const [infoCheck, setInfocheck] = useState(false);
-
+  // 약관 페이지 이동
+  const navigate = useNavigate();
+  const goToTerms = () => {
+    navigate('');
+  };
+  const goToInfos = () => {
+    navigate('');
+  };
   // 이메일
   const onChangeEmail = useCallback(event => {
     const emailRagex =
@@ -234,7 +242,9 @@ const Signup = () => {
             checked={useCheck}
             onChange={useBtnevent}
           />
-          <p className="checkText">(필수) 이용 약관 동의</p>
+          <button className="checkTermsButton" onClick={goToTerms}>
+            (필수) 이용 약관 동의
+          </button>
         </span>
         <span className="checkboxFrame">
           <input
@@ -243,7 +253,9 @@ const Signup = () => {
             checked={infoCheck}
             onChange={infoBtnevent}
           />
-          <p className="checkText">(필수) 개인정보 수집 및 이용 동의</p>
+          <button className="checkInfosButton" onClick={goToInfos}>
+            (필수) 개인정보 수집 및 이용 동의
+          </button>
         </span>
       </div>
       <div>

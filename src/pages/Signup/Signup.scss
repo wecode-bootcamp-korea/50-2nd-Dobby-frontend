@@ -37,7 +37,7 @@
         bottom: -15px;
         left: 0;
         &.success {
-          color: #0533ff;
+          color: #5e89ff;
         }
         &.error {
           color: #ff2727;
@@ -66,7 +66,7 @@
   }
   .checkFormBox {
     position: relative;
-    left: -50px;
+    left: -45px;
     .checkboxFrame {
       display: flex;
       flex-direction: row;
@@ -76,7 +76,17 @@
     .checkText {
       position: relative;
       bottom: -3px;
-      font-weight: 400;
+      font-weight: 500;
+    }
+    .checkTermsButton,
+    .checkInfosButton {
+      position: relative;
+      left: -7px;
+      border: none;
+      background: none;
+      color: #3f9cff;
+      font-size: 16px;
+      cursor: pointer;
     }
     .allCheck,
     .termsCheck,
@@ -91,8 +101,8 @@
     padding: 15px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(132, 132, 132);
-    color: white;
+    background-color: rgb(151, 151, 151);
+    color: rgb(76, 76, 76);
     font-weight: 700;
     font-size: 16px;
   }
