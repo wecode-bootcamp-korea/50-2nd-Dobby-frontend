@@ -1,8 +1,31 @@
-import React from 'react';
-import './Payment.scss';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Daum from './components/Daum';
+import { useDaumPostcodePopup } from 'react-daum-postcode';
+import './Payment.scss';
 
 const Payment = () => {
+  const open = useDaumPostcodePopup();
+
+  const handleComplete = data => {
+    let fullAddress = data.address;
+    let extraAddress = '';
+
+    if (data.addressType === 'R') {
+      if (data.bname !== '') {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== '') {
+        extraAddress +=
+          extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+  };
+
+  const handleClick = () => {
+    open({ onComplete: handleComplete });
+  };
   return (
     <div className="payment">
       <div className="paymentArea">
@@ -81,7 +104,11 @@ const Payment = () => {
             </li>
           </ul>
           <div className="addressBtn">
-            <button type="button" className="btn btnSecondary">
+            <button
+              onClick={handleClick}
+              type="button"
+              className="btn btnSecondary"
+            >
               <span>새 배송지 추가하기 +</span>
             </button>
           </div>
