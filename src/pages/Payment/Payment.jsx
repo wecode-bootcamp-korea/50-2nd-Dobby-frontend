@@ -43,8 +43,8 @@ const Payment = () => {
                   <span className="phoneNumber">010-1111-2222</span>
                 </div>
                 <div className="addressInfo">
-                  <span className="address">주소주소주소주소주소주소</span>
-                  <span className="addressDetail">주소주소주소주</span>
+                  <span className="address">서울특별시 강서구 가로공원로</span>
+                  <span className="addressDetail">성우하이츠빌 201호</span>
                 </div>
               </div>
               <div className="addressRight">
