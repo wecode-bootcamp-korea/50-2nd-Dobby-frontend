@@ -43,7 +43,7 @@
         margin-bottom: 0.5em;
       }
       h2 {
-        color: #707070;
+        color: #ffb43b;
         font-size: 25px;
         font-weight: bold;
         margin-bottom: 0.5em;
@@ -75,6 +75,8 @@
     }
 
     .cart {
+      padding: 10px 0px;
+      line-height: 2;
       width: 100%;
       border: none;
       border-radius: 6px;
@@ -87,10 +89,19 @@
       margin-bottom: 0.5em;
     }
 
-    .deliveryFee {
-      width: 150px;
+    .delivery {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      color: rgb(0, 150, 243);
+      font-size: 25px;
+      font-weight: bold;
       height: 60px;
       margin-bottom: 10px;
+      .deliveryFee {
+        width: 70px;
+        height: 45px;
+      }
     }
 
     .total {
@@ -102,16 +113,15 @@
       height: 48px;
       margin-bottom: 10px;
     }
-  }
-}
-
-.division {
-  margin-top: 20px;
-  border-bottom: 1px solid lightgray;
-  width: 100%;
-  .starIcon {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    .division {
+      margin-top: 20px;
+      border-bottom: 1px solid lightgray;
+      width: 100%;
+      .starIcon {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+    }
   }
 }

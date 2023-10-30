@@ -2,17 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Star from './Components/Star';
 import Review from './Components/Review';
-import deliveryFee from './배송정보.jpg';
+import delivery from './택배.svg';
 import './Detail.scss';
-//product.id 등 객체구조할당으로 다 바꾸기
-//params 활용하기
+
 const Detail = () => {
   const { id } = useParams();
-  // const params = useParams();
-  // const productId = params.id;
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
-
+  //const { id, name, image, content, price } = props;
   const plus = () => {
     setCount(count + 1);
   };
@@ -22,15 +19,16 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.52.77:8000/products/${id}')
+    fetch(`http://10.58.52.93:8000/products/${id}`)
       .then(res => res.json())
-      .then(result => setProduct(result.data));
+      .then(result => setProduct(result.product));
   }, [id]);
 
   const totalPrice = product.price * count;
 
+  //백엔드에 상품id,갯수를 보낸 뒤 alert창으로 안내
   const addCart = () =>
-    fetch('http://10.58.52.93:8000/cart', {
+    fetch(`http://10.58.52.69:8000/cart/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -43,7 +41,7 @@ const Detail = () => {
       }),
     })
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(alert('성공적으로 장바구니에 담겼습니다.'));
 
   if (Object.keys(product).length === 0) return null;
 
@@ -84,8 +82,10 @@ const Detail = () => {
                   +
                 </button>
               </div>
-              <img className="deliveryFee" src={deliveryFee} alt="배송정보" />
-              <div>배송비 50,000원 이상 무료배송</div>
+              <div className="delivery">
+                <img className="deliveryFee" src={delivery} alt="배송정보" />
+                <div className="free">배송비 50,000원 이상 무료배송</div>
+              </div>
               <br />
               <br />
               <div className="total">총 상품금액</div>

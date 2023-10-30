@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './Review.scss';
 
 const Review = () => {
+  const { id } = useParams();
   const [product, setProduct] = useState({});
   useEffect(() => {
-    fetch('http://10.58.52.77:8000/products/2')
+    fetch(`http://10.58.52.93:8000/products/${id}`)
       .then(res => res.json())
       .then(result => setProduct(result.review));
-  }, []);
+  }, [id]);
 
   if (Object.keys(product).length === 0) return null;
   return (
-    <div>
+    <div className="review">
       <input type="text" className="reviewPage" value="리뷰" />
       {product.map(review => (
-        <div className="review" key={review.id}>
+        <div className="reviewId" key={review.id}>
           <div className="reviewHeader">
             <div className="nicknameScore">
               <span>{review.nickname}</span>
