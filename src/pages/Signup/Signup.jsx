@@ -8,31 +8,26 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [passwordConfir, setPasswordConfir] = useState('');
   const [name, setName] = useState('');
+  const [phonenumber, setPhoneNumber] = useState('');
   const [nickname, setNickName] = useState('');
   // (이메일, 비밀번호, 비밀번호 확인, 이름, 닉네임) 오류 메세지 상태 저장
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirMessage, setPasswordConfirMessage] = useState('');
   const [nameMessage, setNameMessage] = useState('');
+  const [phonenumberMessage, setPhonenumberMessage] = useState('');
   const [nicknameMessage, setNickNameMessage] = useState('');
   // (이메일, 비밀번호, 비밀번호 확인, 이름, 닉네임) 입력창 유효성 검사
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfir, setIsPasswordConfir] = useState(false);
   const [isName, setIsName] = useState(false);
+  const [isPhonenumber, setIsPhonenumber] = useState(false);
   const [isNickName, setIsNickName] = useState(false);
   // 체크박스(state)
   const [allCheck, setAllcheck] = useState(false);
   const [useCheck, setUsecheck] = useState(false);
   const [infoCheck, setInfocheck] = useState(false);
-  // 약관 페이지 이동
-  const navigate = useNavigate();
-  const goToTerms = () => {
-    navigate('');
-  };
-  const goToInfos = () => {
-    navigate('');
-  };
   // 이메일
   const onChangeEmail = useCallback(event => {
     const emailRagex =
@@ -91,6 +86,19 @@ const Signup = () => {
     } else {
       setNameMessage('올바른 이름 형식입니다.');
       setIsName(true);
+    }
+  }, []);
+  // 전화번호
+  const onChangePhoneNumber = useCallback(event => {
+    const phoneNumberRagex = /^(01[016789]{1})[0-9]{3,4}[0-9]{4}$/;
+    const phoneNumberCurrent = event.target.value;
+    setPhoneNumber(phoneNumberCurrent);
+    if (!phoneNumberRagex.test(phoneNumberCurrent)) {
+      setPhonenumberMessage('전화번호를 올바르게 입력해주세요');
+      setIsPhonenumber(false);
+    } else {
+      setPhonenumberMessage('정확한 전화번호 입니다.');
+      setIsPhonenumber(true);
     }
   }, []);
   // 닉네임
@@ -212,6 +220,20 @@ const Signup = () => {
         <div className="formbox">
           <input
             className="userInput"
+            type="phonenumber"
+            onChange={onChangePhoneNumber}
+            placeholder="전화번호를 입력해주세요"
+            maxLength={13}
+          />
+          {phonenumber.length > 0 && (
+            <span className={`message ${isPhonenumber ? 'success' : 'error'}`}>
+              {phonenumberMessage}
+            </span>
+          )}
+        </div>
+        <div className="formbox">
+          <input
+            className="userInput"
             type="text"
             typeName="nickname"
             onChange={onChangeNickName}
@@ -242,9 +264,7 @@ const Signup = () => {
             checked={useCheck}
             onChange={useBtnevent}
           />
-          <button className="checkButton" onClick={goToTerms}>
-            (필수) 이용 약관 동의
-          </button>
+          <p className="checkText">(필수) 이용 약관 동의</p>
         </span>
         <span className="checkboxFrame">
           <input
@@ -253,9 +273,7 @@ const Signup = () => {
             checked={infoCheck}
             onChange={infoBtnevent}
           />
-          <button className="checkButton" onClick={goToInfos}>
-            (필수) 개인정보 수집 및 이용 동의
-          </button>
+          <p className="checkText">(필수) 개인정보 수집 및 이용 동의</p>
         </span>
       </div>
       <div>

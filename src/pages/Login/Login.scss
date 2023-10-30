@@ -42,8 +42,9 @@
       border-bottom: 1px solid #b0b0b0;
     }
     .loginButton {
-      width: 400px;
+      width: 370px;
       padding: 15px;
+      text-align: center;
       margin-top: 9px;
       color: white;
       font-weight: 700;
@@ -54,8 +55,9 @@
       cursor: pointer;
     }
     .disabledButton {
-      width: 400px;
+      width: 370px;
       padding: 15px;
+      text-align: center;
       margin-top: 9px;
       color: white;
       font-weight: 700;
@@ -70,8 +72,9 @@
     flex-direction: row;
     margin-top: 15px;
     .idButton {
-      width: 195px;
+      width: 170px;
       padding: 13px;
+      text-align: center;
       font-size: 15px;
       font-weight: 500;
       color: white;
@@ -84,8 +87,9 @@
       cursor: pointer;
     }
     .pwButton {
-      width: 195px;
+      width: 170px;
       padding: 13px;
+      text-align: center;
       font-size: 15px;
       font-weight: 500;
       color: white;
@@ -103,8 +107,9 @@
     justify-content: center;
     align-items: center;
     .signupButton {
-      width: 400px;
+      width: 370px;
       padding: 13px;
+      text-align: center;
       margin-top: 35px;
       border: 2px solid #5e97ff;
       border-radius: 20px;
