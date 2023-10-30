@@ -38,13 +38,12 @@ const Detail = () => {
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
       },
       body: JSON.stringify({
-        productId: id,
         quantity: count,
       }),
     })
       .then(response => response.json())
       .then(result => {
-        if (result.messsage === 'SUCCESS') {
+        if (result.messsage === 'add success') {
           alert('성공적으로 장바구니에 담겼습니다.');
         }
       });
