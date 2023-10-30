@@ -4,7 +4,7 @@ import './Review.scss';
 const Review = ({ reviews }) => {
   return (
     <div className="review">
-      <input type="text" className="reviewPage" value="리뷰" />
+      <p className="reviewPage">리뷰</p>
       {reviews.map(review => {
         const { id, nickname, score, created_at, content } = review;
 
@@ -26,9 +26,3 @@ const Review = ({ reviews }) => {
 };
 
 export default Review;
-
-() => {
-  return <></>;
-};
-
-() => <></>;
