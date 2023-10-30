@@ -44,11 +44,8 @@
         }
       }
     }
-    .email,
-    .password,
-    .passwordConfir,
-    .name,
-    .nickname {
+
+    .userInput {
       width: 350px;
       padding: 13px;
       margin-top: 14px;
@@ -78,8 +75,7 @@
       bottom: -3px;
       font-weight: 500;
     }
-    .checkTermsButton,
-    .checkInfosButton {
+    .checkButton {
       position: relative;
       left: -7px;
       border: none;

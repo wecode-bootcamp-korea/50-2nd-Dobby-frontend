@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import './Signup.scss';
 import { useNavigate } from 'react-router-dom';
+import './Signup.scss';
 
 const Signup = () => {
   // 이메일, 비밀번호, 비밀번호 확인, 이름, 닉네임 확인
@@ -153,7 +153,7 @@ const Signup = () => {
       <form className="inputFrame">
         <div className="formbox">
           <input
-            className="email"
+            className="userInput"
             type="text"
             typeName="email"
             onChange={onChangeEmail}
@@ -167,7 +167,7 @@ const Signup = () => {
         </div>
         <div className="formbox">
           <input
-            className="password"
+            className="userInput"
             type="password"
             onChange={onChangePassword}
             placeholder="비밀번호를 입력해주세요"
@@ -181,7 +181,7 @@ const Signup = () => {
         </div>
         <div className="formbox">
           <input
-            className="passwordConfir"
+            className="userInput"
             type="password"
             onChange={onChangePasswordConfir}
             placeholder="비밀번호를 다시한번 입력해주세요"
@@ -197,7 +197,7 @@ const Signup = () => {
         </div>
         <div className="formbox">
           <input
-            className="name"
+            className="userInput"
             type="text"
             typeName="name"
             onChange={onChangeName}
@@ -211,7 +211,7 @@ const Signup = () => {
         </div>
         <div className="formbox">
           <input
-            className="nickname"
+            className="userInput"
             type="text"
             typeName="nickname"
             onChange={onChangeNickName}
@@ -242,7 +242,7 @@ const Signup = () => {
             checked={useCheck}
             onChange={useBtnevent}
           />
-          <button className="checkTermsButton" onClick={goToTerms}>
+          <button className="checkButton" onClick={goToTerms}>
             (필수) 이용 약관 동의
           </button>
         </span>
@@ -253,7 +253,7 @@ const Signup = () => {
             checked={infoCheck}
             onChange={infoBtnevent}
           />
-          <button className="checkInfosButton" onClick={goToInfos}>
+          <button className="checkButton" onClick={goToInfos}>
             (필수) 개인정보 수집 및 이용 동의
           </button>
         </span>
