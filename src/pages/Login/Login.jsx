@@ -14,7 +14,7 @@ const Login = () => {
     setPW(event.target.value);
   };
   // 로그인 버튼
-  const isInvalid = id.includes('@', '.') && pw.length >= 4;
+  const isInvalid = id.includes('@', '.') && pw.length >= 10;
   // 회원가입 버튼(회원가입 페이지로 이동)
   const navigate = useNavigate();
   const goToSignup = () => {
@@ -22,7 +22,7 @@ const Login = () => {
   };
 
   const goToMain = () => {
-    fetch('http://10.58.52.106:8000/users/login', {
+    fetch('http://10.58.52.105:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

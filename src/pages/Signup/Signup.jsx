@@ -114,7 +114,7 @@ const Signup = () => {
       setIsNickName(true);
     }
   }, []);
-  // 모두 동의 버튼
+  // 모두 동의 버튼(전체 체크박스를 클릭했을때)
   const inValid = !allCheck;
   const allBtnevent = () => {
     if (allCheck === false) {
@@ -151,19 +151,49 @@ const Signup = () => {
       setAllcheck(false);
     }
   }, [useCheck, infoCheck]);
-
+  // 로그인 페이지 이동
+  const navigate = useNavigate();
+  const goToLogin = () => {
+    navigate('/Login');
+  };
+  // 회원가입 정보 입력후 회원가입 하기 버튼
+  const goToSignup = () => {
+    fetch('http://10.58.52.105:8000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        name: name,
+        phonenumber: phonenumber,
+        nickname: nickname,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'SIGN_UP_SUCCESS') {
+          alert('회원가입이 완료 되었습니다.');
+          goToLogin('/');
+        } else {
+          alert('이미 가입된 사용자 입니다.');
+        }
+        console.log(data);
+      });
+  };
   return (
     <div className="signupBody">
       <header className="headerFrame">
         <h1 className="headerText">환영합니다!</h1>
-        <p className="subText">지금 회원가입하면 최대 4,000P를 드려요</p>
+        <p className="subText">지금 회원가입하면 최대 100 POINT를 드려요</p>
       </header>
       <form className="inputFrame">
         <div className="formbox">
           <input
             className="userInput"
             type="text"
-            typeName="email"
+            value={email}
             onChange={onChangeEmail}
             placeholder="이메일을 입력해주세요"
           />
@@ -177,6 +207,7 @@ const Signup = () => {
           <input
             className="userInput"
             type="password"
+            value={password}
             onChange={onChangePassword}
             placeholder="비밀번호를 입력해주세요"
             maxLength={10}
@@ -207,7 +238,7 @@ const Signup = () => {
           <input
             className="userInput"
             type="text"
-            typeName="name"
+            value={name}
             onChange={onChangeName}
             placeholder="이름을 입력해주세요"
           />
@@ -221,6 +252,7 @@ const Signup = () => {
           <input
             className="userInput"
             type="phonenumber"
+            value={phonenumber}
             onChange={onChangePhoneNumber}
             placeholder="전화번호를 입력해주세요"
             maxLength={13}
@@ -235,7 +267,7 @@ const Signup = () => {
           <input
             className="userInput"
             type="text"
-            typeName="nickname"
+            value={nickname}
             onChange={onChangeNickName}
             placeholder="닉네임을 입력해주세요"
           />
@@ -279,7 +311,7 @@ const Signup = () => {
       <div>
         <button
           className={inValid ? 'disableButton' : 'signupButton'}
-          disabled={inValid ? false : true}
+          onClick={goToSignup}
         >
           회원가입 하기
         </button>
