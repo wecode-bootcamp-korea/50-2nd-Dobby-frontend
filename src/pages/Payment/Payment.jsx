@@ -163,7 +163,7 @@ const Payment = () => {
                 <span>포인트</span>
               </label>
               <input
-                type="text"
+                type="number"
                 id="pointPayment"
                 className="formControl"
                 placeholder="사용 할 포인트를 입력해 주세요"
@@ -171,7 +171,7 @@ const Payment = () => {
             </div>
             <div className="pointHold">
               <strong className="holdText">
-                사용 가능한 포인트: <span>2,000P</span>
+                사용 가능한 포인트: <span>10,000P</span>
               </strong>
             </div>
           </div>
