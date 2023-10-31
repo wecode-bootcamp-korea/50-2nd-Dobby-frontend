@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API } from '../../config';
 import './Cart.scss';
 
 const Cart = () => {
@@ -8,8 +9,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const getCartList = () => {
-    fetch('/data/data.json', {
-      // fetch('http://10.58.52.239:8000/cart', {
+    fetch(`${API.MOCK}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -29,7 +29,7 @@ const Cart = () => {
   }, []);
 
   const deleteItem = id => {
-    fetch(`http://10.58.52.239:8000/cart/${id}`, {
+    fetch(`${API.CART}${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -52,22 +52,17 @@ const Cart = () => {
     )
       return;
 
-    fetch(
-      `http://10.58.52.239:8000/cart/${
-        isPlus ? 'increase' : 'decrease'
-      }/${productId}`,
-      {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          Authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
-        },
-        body: JSON.stringify({
-          quantityDifference: isPlus ? '+' : '-',
-        }),
+    fetch(`${API.CART}${isPlus ? 'increase' : 'decrease'}/${productId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
       },
-    ).then(res => {
+      body: JSON.stringify({
+        quantityDifference: isPlus ? '+' : '-',
+      }),
+    }).then(res => {
       if (res.ok) {
         getCartList();
       } else {
@@ -77,7 +72,7 @@ const Cart = () => {
   };
 
   const sendClick = () => {
-    fetch('http://10.58.52.67:8000/cart/payment', {
+    fetch(`${API.CART_PAYMENT}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
