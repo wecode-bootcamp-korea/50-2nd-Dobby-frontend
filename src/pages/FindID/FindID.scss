@@ -17,14 +17,14 @@
     align-items: center;
 
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
     .message {
       font-weight: 500;
       font-size: 17px;
       line-height: 24px;
       letter-spacing: -1px;
       position: absolute;
-      bottom: -5px;
+      bottom: -1px;
       left: 0;
       &.success {
         color: #0c71fd;
