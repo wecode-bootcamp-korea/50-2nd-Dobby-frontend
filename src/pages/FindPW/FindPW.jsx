@@ -9,7 +9,7 @@ const FindPW = () => {
   // 이메일 오류 메세지
   const [isEmail, setIsEmail] = useState(false);
   // 이메일 예외처리
-  const isInvalid = email.includes('@') && email.includes('.');
+  const isvalid = email.includes('@') && email.includes('.');
   // 이메일 조건식
   const onChangeEmail = event => {
     const emailRagex =
@@ -45,8 +45,8 @@ const FindPW = () => {
       </form>
       <div className="confirButtonFrame">
         <button
-          className={isInvalid ? 'confirButton' : 'disabledButton'}
-          disabled={isInvalid ? false : true}
+          className={isvalid ? 'confirButton' : 'disabledButton'}
+          disabled={isvalid ? false : true}
         >
           본인 인증하기
         </button>
