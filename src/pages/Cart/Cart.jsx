@@ -114,16 +114,18 @@ const Cart = () => {
     }
   };
 
-  // 총 합산.. 어떻게 하나요...
-  const sumPrice = () => {
-    const priceList = cartList.map(list => list.total_price);
-    console.log(priceList);
-    let sum = 0;
-    for (let i = 0; i < priceList.length; i++) {
-      sum += priceList[i];
-      return sum;
-    }
-  };
+  const sumPrice = cartList
+    .map(list => list.total_price)
+    .reduce((a, b) => a + b, 0);
+
+  // 배송비 구하기 어렵습니다...
+  // const deliveryCharge = cartList.map(list => {
+  //   return list.total_price < 50000 ? 3000 : 0;
+  // });
+
+  const sumDeliveryCharge = cartList
+    .map(list => list.total_price)
+    .reduce((a, b) => a + b, 0);
 
   return (
     <div className="cart">
@@ -254,19 +256,11 @@ const Cart = () => {
             <div className="billBox">
               <dl className="billList">
                 <dt>총 상품금액</dt>
-                <dd>{sumPrice()}원</dd>
+                <dd>{sumPrice}원</dd>
               </dl>
               <dl className="billList">
                 <dt>총 배송비</dt>
-                <dd>
-                  {cartList.map(list => {
-                    let sumDeliveryCharge = 0;
-                    for (let i = 0; i < cartList.length; i++) {
-                      return (sumDeliveryCharge += list.deliveryCharge);
-                    }
-                  })}
-                  원
-                </dd>
+                <dd>{sumDeliveryCharge}원</dd>
               </dl>
               <dl className="billList total">
                 <dt>총 결제 예상 금액</dt>
