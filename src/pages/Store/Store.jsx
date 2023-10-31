@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductList from './Layout/ProductList';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import './Store.scss';
 import { GET_PRODUCT_API } from '../../config';
 
@@ -8,6 +8,8 @@ const Store = () => {
   const { subType } = useParams();
   const [productData, setProductData] = useState([]);
   const [menuList, setMenuList] = useState([]);
+  const location = useLocation();
+  const queryString = location.search;
 
   // 카테고리 데이터
   useEffect(() => {
@@ -28,7 +30,7 @@ const Store = () => {
 
   // 백엔드 데이터
   useEffect(() => {
-    fetch(`{${GET_PRODUCT_API}/category?categoryId=${menuList.id}}`, {
+    fetch(`${GET_PRODUCT_API}${queryString}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -36,23 +38,23 @@ const Store = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setProductData(data.newProducts);
+        setProductData(data.message);
       });
-  }, []);
+  }, [queryString]);
 
   // mock 데이터
-  useEffect(() => {
-    fetch('/data/slideList.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProductData(data.newProducts);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/data/slideList.json', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProductData(data.newProducts);
+  //     });
+  // }, []);
 
   return (
     <div className="store">

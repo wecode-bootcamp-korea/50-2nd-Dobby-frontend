@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const Category = ({ subType, text, id }) => {
   const navigate = useNavigate();
   const handleMenu = () => {
-    return navigate(`store?categoryid=${id}`);
+    const url = id === 3 ? '/store' : `/store?categoryid=${id}`;
+
+    return navigate(url);
   };
 
   return (

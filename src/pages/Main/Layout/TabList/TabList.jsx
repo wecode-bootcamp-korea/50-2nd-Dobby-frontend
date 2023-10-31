@@ -1,22 +1,11 @@
 import React from 'react';
 import './TabList.scss';
 
-const TabList = ({
-  name,
-  subType,
-  handleActive,
-  isActive,
-  setSubTypeParams,
-}) => {
-  const handleClick = () => {
-    handleActive(subType);
-    setSubTypeParams(subType);
-  };
-
+const TabList = ({ name, subType, isActive, setSubTypeParams }) => {
   return (
     <div
       className={`selectBtn ${subType} ${isActive ? 'active' : ''}`}
-      onClick={handleClick}
+      onClick={setSubTypeParams}
     >
       <img
         src={`images/icon_${subType}.svg`}

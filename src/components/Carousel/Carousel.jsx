@@ -22,19 +22,18 @@ const Carousel = ({ slideList }) => {
           disableOnInteraction: false,
         }}
       >
-        {slideList &&
-          slideList.map(list => (
-            <SwiperSlide key={`slideLIst${list.id}`}>
-              <ProductCard
-                src={list.image}
-                title={list.name}
-                price={list.price}
-                score={list.score}
-                commentCount={list.commentCount}
-                content={list.content}
-              />
-            </SwiperSlide>
-          ))}
+        {slideList?.map(list => (
+          <SwiperSlide key={`slideLIst${list.id}`}>
+            <ProductCard
+              src={list.image}
+              title={list.name}
+              price={list.price}
+              score={list.score}
+              commentCount={list.commentCount}
+              content={list.content}
+            />
+          </SwiperSlide>
+        ))}
         <div className="btnWrapper">
           <PrevBtn />
           <NextBtn />

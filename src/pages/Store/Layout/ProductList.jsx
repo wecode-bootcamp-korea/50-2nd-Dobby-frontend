@@ -11,7 +11,9 @@ const ProductList = ({ productData, menuList }) => {
           <ul className="menuList">
             {menuList.map(menu => (
               <div key={`${menu.id}menu`}>
-                <Link to={`/store/${menu.id}`}>
+                <Link
+                  to={menu.id === 3 ? '/store' : `/store?categoryid=${menu.id}`}
+                >
                   <li>{menu.name}</li>
                 </Link>
               </div>
@@ -24,7 +26,7 @@ const ProductList = ({ productData, menuList }) => {
           <ProductCard
             key={data.id}
             src={data.image}
-            title={data.title}
+            title={data.name}
             price={data.price}
             score={data.score}
             commentCount={data.commentCount}
