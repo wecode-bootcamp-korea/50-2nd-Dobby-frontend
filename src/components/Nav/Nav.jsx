@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CartLogo from './Cart-icon.png';
 import CartIcon from './cartIcon.png';
 import './Nav.scss';
 
