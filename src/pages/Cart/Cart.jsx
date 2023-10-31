@@ -114,18 +114,15 @@ const Cart = () => {
     }
   };
 
-  const sumPrice = cartList
+  const sumPrice = checkedItems
     .map(list => list.total_price)
-    .reduce((a, b) => a + b, 0);
+    .reduce((acc, cur) => acc + cur, 0);
 
-  // 배송비 구하기 어렵습니다...
-  // const deliveryCharge = cartList.map(list => {
-  //   return list.total_price < 50000 ? 3000 : 0;
-  // });
-
-  const sumDeliveryCharge = cartList
-    .map(list => list.total_price)
-    .reduce((a, b) => a + b, 0);
+  const totalDeliveryCharge = checkedItems.reduce((acc, cur) => {
+    if (cur.total_price < 50000) {
+      return acc + 3000;
+    } else return acc;
+  }, 0);
 
   return (
     <div className="cart">
@@ -260,11 +257,11 @@ const Cart = () => {
               </dl>
               <dl className="billList">
                 <dt>총 배송비</dt>
-                <dd>{sumDeliveryCharge}원</dd>
+                <dd>{totalDeliveryCharge}원</dd>
               </dl>
               <dl className="billList total">
                 <dt>총 결제 예상 금액</dt>
-                <dd>0원</dd>
+                <dd>{sumPrice + totalDeliveryCharge}원</dd>
               </dl>
             </div>
           </div>
