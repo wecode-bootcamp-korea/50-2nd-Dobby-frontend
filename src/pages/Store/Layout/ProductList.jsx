@@ -11,9 +11,7 @@ const ProductList = ({ productData, menuList }) => {
           <ul className="menuList">
             {menuList.map(menu => (
               <div key={`${menu.id}menu`}>
-                <Link
-                  to={menu.id === 3 ? '/store' : `/store?categoryid=${menu.id}`}
-                >
+                <Link to={menu.id === 3 ? '/store' : `/store/${menu.id}`}>
                   <li>{menu.name}</li>
                 </Link>
               </div>
