@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import Subscribe from './Layout/Subscribe/Subscribe';
 import CategorizedSlide from './Layout/CategorizedSlide/CategorizedSlide';
 import CategoryList from './Layout/CategoryList/CategoryList';
@@ -7,7 +7,6 @@ import { GET_PRODUCTLIST_API, GET_SUBSCRIPTION_API } from '../../config';
 import './Main.scss';
 
 const Main = () => {
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [productsData, setProductsData] = useState({});
   const [menuList, setMenuList] = useState([]);
