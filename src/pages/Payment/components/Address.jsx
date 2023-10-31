@@ -1,47 +1,52 @@
 import React from 'react';
-import './Daum.scss';
+import './Address.scss';
 
-const Daum = () => {
+const Address = ({ onChange, name, phoneNumber, address, extraAddress }) => {
   return (
-    <div className="daum">
-      <form className="formArea">
+    <div className="address">
+      <form className="formArea" onChange={onChange}>
         <div className="formInput">
-          <label htmlFor="deliveryName" className="formLabel">
+          <label className="formLabel">
             <span>수령인</span>
           </label>
           <input
             type="text"
-            id="deliveryName"
+            name="name"
             className="formControl"
             placeholder="성함을 입력해 주세요"
+            value={name}
           />
         </div>
         <div className="formInput">
-          <label htmlFor="deliveryPhone" className="formLabel">
+          <label className="formLabel">
             <span>연락처</span>
           </label>
           <input
             type="text"
-            id="deliveryPhone"
+            name="phoneNumber"
             className="formControl"
             placeholder="'-'을 제외한 숫자만 입력해 주세요"
+            value={phoneNumber}
           />
         </div>
         <div className="formInput">
-          <label htmlFor="deliveryAddress" className="formLabel">
+          <label className="formLabel">
             <span>배송지</span>
           </label>
           <input
             type="text"
-            id="deliveryAddress"
+            name="address"
             className="formControl"
             placeholder="주소를 입력해 주세요"
+            value={address}
+            readOnly
           />
           <input
             type="text"
-            id="deliveryAddress"
+            name="extraAddress"
             className="formControl"
             placeholder="상세주소를 입력해 주세요"
+            value={extraAddress}
           />
         </div>
         <div className="deliveryBottom">
@@ -54,4 +59,4 @@ const Daum = () => {
   );
 };
 
-export default Daum;
+export default Address;

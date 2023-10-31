@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Daum from './components/Daum';
+import Address from './components/Address';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import './Payment.scss';
 
 const Payment = () => {
-  const [add, setAdd] = useState('');
-  const [daum, setDaum] = useState(false);
+  //map함수 활용하기 위한 useState 생성
+  const [fullAddress, setFullAddress] = useState([]);
 
-  const handleDaum = () => {
-    setDaum(!daum);
-  };
+  //Address컴포넌트 활용하기 위한 useState 생성
+  const [newAddressInfo, setNewAddressInfo] = useState({
+    name: '',
+    phoneNumber: '',
+    address: '',
+    extraAddress: '',
+  });
 
   useEffect(() => {
-    fetch('http://localhost:3001/data/Mockdata.json')
+    fetch('/data/Mockdata.json')
       .then(res => res.json())
-      .then(data => setAdd(data));
+      .then(data => setFullAddress(data));
   }, []);
 
-  const open = useDaumPostcodePopup();
+  //onchange이벤트 함수가 발생했을시 변경될 변수 설정
+  const handleNewAddressInput = e => {
+    const { name, value } = e.target;
+    setNewAddressInfo({ ...newAddressInfo, [name]: value });
+  };
 
+  //다음API팝업 함수
   const handleComplete = data => {
     let fullAddress = data.address;
     let extraAddress = '';
@@ -34,15 +43,16 @@ const Payment = () => {
       }
       fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
     }
+
+    setNewAddressInfo({ ...newAddressInfo, address: fullAddress });
   };
+
+  console.log(newAddressInfo);
+
+  const open = useDaumPostcodePopup();
 
   const handleClick = () => {
     open({ onComplete: handleComplete });
-  };
-
-  const toggleDaumAndHandleClick = () => {
-    handleClick();
-    handleDaum();
   };
 
   return (
@@ -52,8 +62,8 @@ const Payment = () => {
         <div className="addressArea">
           <strong className="addressTitle">배송지 선택</strong>
           <ul className="addressList">
-            {add &&
-              add.map(test => (
+            {fullAddress &&
+              fullAddress.map(test => (
                 <li className="addressItem">
                   <div className="addressLeft">
                     <div className="addressInfo">
@@ -65,7 +75,7 @@ const Payment = () => {
                     </div>
                     <div className="addressInfo">
                       <span className="address">{test.fulladdress}</span>
-                      <span className="addressDetail">주소주소주소주</span>
+                      <span className="addressDetail">상세주소키값필요</span>
                     </div>
                   </div>
                   <div className="addressRight">
@@ -79,17 +89,18 @@ const Payment = () => {
                 </li>
               ))}
           </ul>
-
           <div className="addressBtn">
             <button
-              onClick={toggleDaumAndHandleClick}
+              onClick={handleClick}
               type="button"
               className="btn btnSecondary"
             >
               새 배송지 추가하기 +
             </button>
           </div>
-          {daum && <Daum />}
+          {newAddressInfo.address && (
+            <Address onChange={handleNewAddressInput} {...newAddressInfo} />
+          )}
         </div>
         <div className="productArea">
           <strong className="productTitle">주문 예정 상품</strong>
