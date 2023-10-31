@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Daum from './components/Daum';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import './Payment.scss';
 
 const Payment = () => {
+  const [add, setAdd] = useState('');
+  const [daum, setDaum] = useState(false);
+
+  const handleDaum = () => {
+    setDaum(!daum);
+  };
+
+  useEffect(() => {
+    fetch('http://localhost:3001/data/Mockdata.json')
+      .then(res => res.json())
+      .then(data => setAdd(data));
+  }, []);
+
   const open = useDaumPostcodePopup();
 
   const handleComplete = data => {
@@ -26,6 +39,12 @@ const Payment = () => {
   const handleClick = () => {
     open({ onComplete: handleComplete });
   };
+
+  const toggleDaumAndHandleClick = () => {
+    handleClick();
+    handleDaum();
+  };
+
   return (
     <div className="payment">
       <div className="paymentArea">
@@ -33,85 +52,44 @@ const Payment = () => {
         <div className="addressArea">
           <strong className="addressTitle">배송지 선택</strong>
           <ul className="addressList">
-            <li className="addressItem">
-              <div className="addressLeft">
-                <div className="addressInfo">
-                  <span className="name">홍지영</span>
-                  <span className="badge">기본</span>
-                </div>
-                <div className="addressInfo">
-                  <span className="phoneNumber">010-1111-2222</span>
-                </div>
-                <div className="addressInfo">
-                  <span className="address">주소주소주소주소주소주소</span>
-                  <span className="addressDetail">주소주소주소주</span>
-                </div>
-              </div>
-              <div className="addressRight">
-                <button type="button" className="btn btnLine">
-                  <span>수정</span>
-                </button>
-                <button type="button" className="btn btnPrimary">
-                  <span>선택</span>
-                </button>
-              </div>
-            </li>
-            <li className="addressItem">
-              <div className="addressLeft">
-                <div className="addressInfo">
-                  <span className="name">홍지영</span>
-                  <span className="badge">기본</span>
-                </div>
-                <div className="addressInfo">
-                  <span className="phoneNumber">010-1111-2222</span>
-                </div>
-                <div className="addressInfo">
-                  <span className="address">서울특별시 강서구 가로공원로</span>
-                  <span className="addressDetail">성우하이츠빌 201호</span>
-                </div>
-              </div>
-              <div className="addressRight">
-                <button type="button" className="btn btnLine">
-                  <span>수정</span>
-                </button>
-                <button type="button" className="btn btnPrimary">
-                  <span>선택</span>
-                </button>
-              </div>
-            </li>
-            <li className="addressItem">
-              <div className="addressLeft">
-                <div className="addressInfo">
-                  <span className="name">홍지영</span>
-                  <span className="badge">기본</span>
-                </div>
-                <div className="addressInfo">
-                  <span className="phoneNumber">010-1111-2222</span>
-                </div>
-                <div className="addressInfo">
-                  <span className="address">주소주소주소주소주소주소</span>
-                  <span className="addressDetail">주소주소주소주</span>
-                </div>
-              </div>
-              <div className="addressRight">
-                <button type="button" className="btn btnLine">
-                  <span>수정</span>
-                </button>
-                <button type="button" className="btn btnPrimary">
-                  <span>선택</span>
-                </button>
-              </div>
-            </li>
+            {add &&
+              add.map(test => (
+                <li className="addressItem">
+                  <div className="addressLeft">
+                    <div className="addressInfo">
+                      <span className="name">{test.name}</span>
+                      <span className="badge">기본</span>
+                    </div>
+                    <div className="addressInfo">
+                      <span className="phoneNumber">{test.phonenumber}</span>
+                    </div>
+                    <div className="addressInfo">
+                      <span className="address">{test.fulladdress}</span>
+                      <span className="addressDetail">주소주소주소주</span>
+                    </div>
+                  </div>
+                  <div className="addressRight">
+                    <button type="button" className="btn btnLine">
+                      <span>수정</span>
+                    </button>
+                    <button type="button" className="btn btnPrimary">
+                      <span>선택</span>
+                    </button>
+                  </div>
+                </li>
+              ))}
           </ul>
+
           <div className="addressBtn">
             <button
-              onClick={handleClick}
+              onClick={toggleDaumAndHandleClick}
               type="button"
               className="btn btnSecondary"
             >
-              <span>새 배송지 추가하기 +</span>
+              새 배송지 추가하기 +
             </button>
           </div>
+          {daum && <Daum />}
         </div>
         <div className="productArea">
           <strong className="productTitle">주문 예정 상품</strong>
@@ -213,6 +191,9 @@ const Payment = () => {
           </div>
         </form>
         <div className="btnArea">
+          <button type="button" className="btn btnPrimary">
+            <span>주문취소</span>
+          </button>
           <button type="button" className="btn btnPrimary">
             <span>0원 결제하기</span>
           </button>

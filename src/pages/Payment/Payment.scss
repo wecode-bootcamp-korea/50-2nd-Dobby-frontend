@@ -407,8 +407,11 @@
     }
 
     .btnArea {
+      display: flex;
+      justify-content: space-between;
       width: 1000px;
       margin-top: 10px;
+      gap: 10px;
       .btnPrimary {
         display: flex;
         justify-content: center;
