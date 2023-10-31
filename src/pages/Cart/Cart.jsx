@@ -7,7 +7,7 @@ const Cart = () => {
 
   const getCartList = () => {
     // fetch('/data/data.json', {
-    fetch('http://10.58.52.69:8000/cart', {
+    fetch('http://10.58.52.239:8000/cart', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -27,7 +27,7 @@ const Cart = () => {
   }, []);
 
   const deleteItem = id => {
-    fetch(`http://10.58.52.69:8000/cart/${id}`, {
+    fetch(`http://10.58.52.239:8000/cart/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -51,7 +51,7 @@ const Cart = () => {
       return;
 
     fetch(
-      `http://10.58.52.69:8000/cart/${
+      `http://10.58.52.239:8000/cart/${
         isPlus ? 'increase' : 'decrease'
       }/${productId}`,
       {
@@ -132,51 +132,58 @@ const Cart = () => {
                 id="checkAll"
                 className="formCheck"
                 onChange={handleAllCheck}
-                checked={checkedItems.length === cartList.length}
+                checked={
+                  checkedItems.length === cartList.length &&
+                  cartList.length !== 0
+                }
               />
             </div>
           </div>
           <div className="cartBody">
             <ul className="listArea">
               {cartList.map(list => {
+                const {
+                  id,
+                  title,
+                  image,
+                  name,
+                  product_id,
+                  quantity,
+                  total_price,
+                } = list;
                 const deliveryCharge = list.total_price < 50000 ? 3000 : 0;
 
                 return (
-                  <li className="listItem" key={list.id}>
-                    <strong className="listTitle">{list.title}</strong>
+                  <li className="listItem" key={id}>
+                    <strong className="listTitle">{title}</strong>
                     <div className="listDetail">
                       <div className="detailArea">
                         <div className="formInput">
                           <label
-                            htmlFor={`checkList${list.id}`}
+                            htmlFor={`checkList${id}`}
                             className="formLabel blind"
                           >
                             <span>선택</span>
                           </label>
                           <input
                             type="checkbox"
-                            id={`checkList${list.id}`}
+                            id={`checkList${id}`}
                             className="formCheck"
                             onChange={() => handleChange(list)}
-                            checked={checkedItems.find(
-                              item => item.id === list.id,
-                            )}
-                            // list.cart_status_id === 1 : list.cart_status_id === 2
+                            checked={checkedItems.find(item => item.id === id)}
                           />
                         </div>
                         <div className="detailInfo">
                           <div className="detailImage">
-                            <img src={list.image} alt="만강에 비친 달 X 2병" />
+                            <img src={image} alt="만강에 비친 달 X 2병" />
                           </div>
                           <div className="detailGroup">
                             <div className="detailTop">
-                              <strong className="detailTitle">
-                                {list.name}
-                              </strong>
+                              <strong className="detailTitle">{name}</strong>
                               <button
                                 type="button"
                                 className="btn btnClose"
-                                onClick={() => deleteItem(list.id)}
+                                onClick={() => deleteItem(id)}
                               >
                                 <span className="blind">닫기</span>
                               </button>
@@ -187,26 +194,24 @@ const Cart = () => {
                                   type="button"
                                   className="btn decrease"
                                   onClick={() =>
-                                    handleQuantity(false, list.product_id)
+                                    handleQuantity(false, product_id)
                                   }
                                 >
                                   <span className="blind">-</span>
                                 </button>
-                                <span className="controlText">
-                                  {list.quantity}
-                                </span>
+                                <span className="controlText">{quantity}</span>
                                 <button
                                   type="button"
                                   className="btn increase"
                                   onClick={() =>
-                                    handleQuantity(true, list.product_id)
+                                    handleQuantity(true, product_id)
                                   }
                                 >
                                   <span className="blind">+</span>
                                 </button>
                               </div>
                               <span className="detailPrice">
-                                {list.total_price}원
+                                {total_price}원
                               </span>
                             </div>
                           </div>
@@ -215,7 +220,7 @@ const Cart = () => {
                       <div className="amountArea">
                         <dl className="amountList">
                           <dt>상품금액</dt>
-                          <dd>{list.total_price}원</dd>
+                          <dd>{total_price}원</dd>
                         </dl>
                         <dl className="amountList">
                           <dt>배송비</dt>
@@ -223,7 +228,7 @@ const Cart = () => {
                         </dl>
                         <dl className="amountList total">
                           <dt>총 금액</dt>
-                          <dd>{list.total_price + deliveryCharge}원</dd>
+                          <dd>{total_price + deliveryCharge}원</dd>
                         </dl>
                       </div>
                     </div>
