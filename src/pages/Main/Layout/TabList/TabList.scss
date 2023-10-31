@@ -33,8 +33,10 @@
     width: 18px;
     height: 18px;
     position: relative;
+
     filter: invert(98%) sepia(11%) saturate(157%) hue-rotate(200deg)
       brightness(117%) contrast(100%);
+
     &.basic.active {
       filter: invert(46%) sepia(71%) saturate(514%) hue-rotate(162deg)
         brightness(102%) contrast(95%);
@@ -50,6 +52,7 @@
         brightness(103%) contrast(108%);
     }
   }
+  
   .iconName {
     position: absolute;
     margin-left: 28px;

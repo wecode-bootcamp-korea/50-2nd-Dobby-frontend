@@ -1,6 +1,5 @@
 .carousel {
   width: 90%;
-
   animation: fadein 2.2s;
   -moz-animation: fadein 2.2s;
   -webkit-animation: fadein 2.2s;
@@ -14,10 +13,12 @@
       opacity: 1;
     }
   }
+
   .swiper {
     margin: 0 10px;
     position: relative;
   }
+
   .btnWrapper {
     display: flex;
     justify-content: space-between;

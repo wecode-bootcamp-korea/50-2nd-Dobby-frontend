@@ -6,7 +6,7 @@ const CategoryTitle = ({ title, subTitle, subType }) => {
     <div className="categoryTitle">
       <img
         src={`images/icon_${subType}.svg`}
-        alt="titleImg"
+        alt={subType}
         className={`titleImg ${subType}`}
       />
       <div className="titleWrapper">

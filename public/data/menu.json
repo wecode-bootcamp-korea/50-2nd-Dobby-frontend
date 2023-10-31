@@ -1,7 +1,7 @@
 {
   "menu": [
-    { "id": 1, "name": "종합적", "subType": "basic" },
-    { "id": 2, "name": "창작적", "subType": "creative" },
-    { "id": 3, "name": "수집성", "subType": "collection" }
+    { "id": 1, "name": "창작적", "subType": "creative" },
+    { "id": 2, "name": "수집성", "subType": "collection" },
+    { "id": 3, "name": "종합적", "subType": "basic" }
   ]
 }
