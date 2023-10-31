@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
+import FindPW from './pages/FindPW/FindPW';
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/findpw" element={<FindPW />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/main" element={<Main />} />
