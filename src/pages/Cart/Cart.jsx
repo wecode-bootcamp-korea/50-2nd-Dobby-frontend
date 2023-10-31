@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Cart.scss';
 
 const Cart = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [cartList, setCartList] = useState([]);
+  const navigate = useNavigate();
 
   const getCartList = () => {
-    // fetch('/data/data.json', {
-    fetch('http://10.58.52.239:8000/cart', {
+    fetch('/data/data.json', {
+      // fetch('http://10.58.52.239:8000/cart', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -17,8 +19,8 @@ const Cart = () => {
     })
       .then(res => res.json())
       .then(data => {
-        setCartList(data.data);
-        // data
+        // setCartList(data.data);
+        setCartList(data);
       });
   };
 
@@ -74,6 +76,25 @@ const Cart = () => {
     });
   };
 
+  const sendClick = () => {
+    fetch('http://10.58.52.67:8000/cart/payment', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        product_id: cartList.id,
+        quantity: cartList.quantity,
+      }),
+    }).then(res => {
+      if (res.ok) {
+        navigate('/payment');
+      } else {
+        alert('에러가 발생했습니다.');
+      }
+    });
+  };
+
   const handleChange = list => {
     const isChecked = checkedItems.some(item => item.id === list.id);
     const handelUnCheckItems = checkedItems.filter(item => item.id !== list.id);
@@ -93,27 +114,16 @@ const Cart = () => {
     }
   };
 
-  // post 넘기고 함수로 fetch get 하기
-  // const sendClick = () => {
-  //   fetch('http://10.58.52.67:8000/cart/payment', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //       // Authorization:
-  //       //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
-  //     },
-  //     body: JSON.stringify({
-  //       product_id: cartList.id,
-  //       quantity: cartList.quantity,
-  //     }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setCartList(data.data);
-  //       navigate('/payment');
-  //       console.log('성공');
-  //     });
-  // };
+  // 총 합산.. 어떻게 하나요...
+  const sumPrice = () => {
+    const priceList = cartList.map(list => list.total_price);
+    console.log(priceList);
+    let sum = 0;
+    for (let i = 0; i < priceList.length; i++) {
+      sum += priceList[i];
+      return sum;
+    }
+  };
 
   return (
     <div className="cart">
@@ -151,7 +161,7 @@ const Cart = () => {
                   quantity,
                   total_price,
                 } = list;
-                const deliveryCharge = list.total_price < 50000 ? 3000 : 0;
+                const deliveryCharge = total_price < 50000 ? 3000 : 0;
 
                 return (
                   <li className="listItem" key={id}>
@@ -244,11 +254,19 @@ const Cart = () => {
             <div className="billBox">
               <dl className="billList">
                 <dt>총 상품금액</dt>
-                <dd>{cartList.length}원</dd>
+                <dd>{sumPrice()}원</dd>
               </dl>
               <dl className="billList">
                 <dt>총 배송비</dt>
-                <dd>0원</dd>
+                <dd>
+                  {cartList.map(list => {
+                    let sumDeliveryCharge = 0;
+                    for (let i = 0; i < cartList.length; i++) {
+                      return (sumDeliveryCharge += list.deliveryCharge);
+                    }
+                  })}
+                  원
+                </dd>
               </dl>
               <dl className="billList total">
                 <dt>총 결제 예상 금액</dt>
@@ -257,7 +275,11 @@ const Cart = () => {
             </div>
           </div>
           <div className="btnArea">
-            <button type="button" className="btn btnPrimary">
+            <button
+              type="button"
+              className="btn btnPrimary"
+              onClick={sendClick}
+            >
               <span>구매하기</span>
             </button>
           </div>
