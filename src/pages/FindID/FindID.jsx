@@ -37,7 +37,8 @@ const FindID = () => {
       setIsPhoneNumber(true);
     }
   };
-
+  // 조건식
+  const inValid = phoneNumber >= 11;
   return (
     <div className="idFindFrame">
       <h1 className="idText">아이디 찾기</h1>
@@ -69,7 +70,12 @@ const FindID = () => {
         )}
       </form>
       <div className="IDButtonFrame">
-        <button className="findIDButton">아이디 찾기</button>
+        <button
+          className={!inValid ? 'disabledButton' : 'findIDButton'}
+          disabled={!inValid}
+        >
+          아이디 찾기
+        </button>
       </div>
     </div>
   );
