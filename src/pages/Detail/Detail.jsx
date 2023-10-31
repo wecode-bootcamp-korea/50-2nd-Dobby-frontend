@@ -20,7 +20,7 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.52.93:8000/products/${productId}`)
+    fetch(`http://10.58.52.180:8000/products/${productId}`)
       .then(res => res.json())
       .then(result => {
         setProduct(result.product);
@@ -30,12 +30,12 @@ const Detail = () => {
 
   //백엔드에 상품id,갯수를 보낸 뒤 alert창으로 안내
   const addCart = () =>
-    fetch(`http://10.58.52.69:8000/cart/${productId}`, {
+    fetch(`http://10.58.52.239:8000/cart/${productId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
       body: JSON.stringify({
         quantity: count,
@@ -43,9 +43,8 @@ const Detail = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.messsage === 'add success') {
+        if (result.message === 'add success')
           alert('성공적으로 장바구니에 담겼습니다.');
-        }
       });
 
   if (Object.keys(product).length === 0) return null;
@@ -65,7 +64,7 @@ const Detail = () => {
               <h1>{name}</h1>
               <h2>{content}</h2>
               <div className="starIcon">
-                <h2>평점</h2>
+                <h3>평점</h3>
                 <Star score={average_score} />
               </div>
               <h3>{price.toLocaleString('ko-KR')}원</h3>
