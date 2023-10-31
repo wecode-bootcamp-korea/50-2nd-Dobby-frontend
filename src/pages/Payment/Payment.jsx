@@ -47,8 +47,6 @@ const Payment = () => {
     setNewAddressInfo({ ...newAddressInfo, address: fullAddress });
   };
 
-  console.log(newAddressInfo);
-
   const open = useDaumPostcodePopup();
 
   const handleClick = () => {
