@@ -48,7 +48,7 @@ const FindID = () => {
           type="text"
           placeholder="이름을 입력해주세요"
           onChange={onChangeName}
-        ></input>
+        />
         {name.length > 0 && (
           <span className={`message ${isName ? 'success' : 'error'}`}>
             {nameMessage}
@@ -62,7 +62,7 @@ const FindID = () => {
           maxLength={11}
           onChange={onChangePhoneNumber}
           placeholder="휴대폰 번호를 입력해주세요 (- 제외)"
-        ></input>
+        />
         {phoneNumber.length > 0 && (
           <span className={`message ${isPhoneNumber ? 'success' : 'error'}`}>
             {phoneNumberMessage}
