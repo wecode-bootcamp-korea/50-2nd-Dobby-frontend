@@ -29,17 +29,19 @@ const FindPW = () => {
     <div className="findPWFrame">
       <h1 className="findpwText">비밀번호 찾기</h1>
       <form className="formPWFrame">
-        <input
-          className="emailInput"
-          type="text"
-          onChange={onChangeEmail}
-          placeholder="이메일을 입력해주세요"
-        ></input>
-        {email.length > 0 && (
-          <span className={`message ${isEmail ? 'success' : 'error'}`}>
-            {emailMessage}
-          </span>
-        )}
+        <div>
+          <input
+            className="emailInput"
+            type="text"
+            onChange={onChangeEmail}
+            placeholder="이메일을 입력해주세요"
+          ></input>
+          {email.length > 0 && (
+            <span className={`message ${isEmail ? 'success' : 'error'}`}>
+              {emailMessage}
+            </span>
+          )}
+        </div>
       </form>
       <div className="confirButtonFrame">
         <button
