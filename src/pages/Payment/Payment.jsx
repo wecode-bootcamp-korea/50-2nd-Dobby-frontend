@@ -15,60 +15,45 @@ const Payment = () => {
     address: '',
     extraAddress: '',
   });
-  //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET)
-  // useEffect(() => {
-  //   fetch('/data/Mockdata.json')
-  //     .then(res => res.json())
-  //     .then(data => setFullAddress(data));
-  // }, []);
 
-  useEffect(() => {
-    fetch('http://10.58.52.67:8000/cart/payment', {
+  //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET 함수 선언 및 실행)
+  const newGet = () => {
+    fetch('http://10.58.52.67:8000/cart/payment/address', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
+        authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
     })
       .then(res => res.json())
-      .then(data => setFullAddress(data.address));
+      .then(data => setFullAddress(data.data[0].address));
+  };
+
+  useEffect(() => {
+    newGet();
   }, []);
 
-  //새 배송지 추가 후 새롭게 불러낼 GET
-  // const newGet = () => {
-  //   fetch('http://10.58.52.67:8000/cart/payment/address', {
-  //     method: 'GET',
-  //     headers: {
-  //  'Content-Type': 'application/json;charset=utf-8',
-  //       Authorization:
-  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
-  //
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => setFullAddress(data.address));
-  // };
   //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
   const postData = () =>
     fetch('http://10.58.52.67:8000/cart/payment/address/done', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
+        authorization:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
       body: JSON.stringify({
         name: newAddressInfo.name,
-        phoneNumber: newAddressInfo.phoneNumber,
+        phonenumber: newAddressInfo.phoneNumber,
         content: newAddressInfo.address + newAddressInfo.extraAddress,
       }),
     })
       .then(res => res.json())
       .then(result => {
-        if (result.messsage === 'POST - ADDRESS ADDED SUCCESS') {
+        if (result.message === 'POST - ADDRESS ADDED SUCCESS') {
           alert('새로운 배송지가 추가되었습니다.');
-          // newGet();
+          newGet();
         }
       });
 
@@ -102,7 +87,6 @@ const Payment = () => {
   const handleClick = () => {
     open({ onComplete: handleComplete });
   };
-  const { name, phonenumber, content } = fullAddress;
 
   //지영님 코드(주문예정상품 불러오기)
   const [productList, setProductList] = useState([]);
@@ -141,18 +125,18 @@ const Payment = () => {
           <strong className="addressTitle">배송지 선택</strong>
           <ul className="addressList">
             {fullAddress &&
-              fullAddress.map(() => (
+              fullAddress.map(test => (
                 <li className="addressItem">
                   <div className="addressLeft">
                     <div className="addressInfo">
-                      <span className="name">{name}</span>
+                      <span className="name">{test.name}</span>
                       <span className="badge">기본</span>
                     </div>
                     <div className="addressInfo">
-                      <span className="phoneNumber">{phonenumber}</span>
+                      <span className="phoneNumber">{test.phonenumber}</span>
                     </div>
                     <div className="addressInfo">
-                      <span className="address">{content}</span>
+                      <span className="address">{test.content}</span>
                       {/* <span className="addressDetail">상세주소키값필요</span> */}
                     </div>
                   </div>
