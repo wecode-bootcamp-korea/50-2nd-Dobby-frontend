@@ -26,28 +26,26 @@ const Store = () => {
   }, []);
 
   // 백엔드 데이터
-
-  // useEffect(() => {
-  //   const fetchData = id => {
-  //     const url = id
-  //       ? `${GET_PRODUCT_API}/categories/${id}${queryString}`
-  //       : `${GET_PRODUCT_API}/products${queryString}`;
-  //     fetch(url, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json;charset=utf-8',
-  //       },
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         setProductData(data.message);
-  //       });
-  //   };
-  //   fetchData(id);
-  // }, [id, queryString]);
+  useEffect(() => {
+    const fetchData = id => {
+      const url = id
+        ? `${GET_PRODUCT_API}/categories/${id}${queryString}`
+        : `${GET_PRODUCT_API}/products${queryString}`;
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          setProductData(data.message);
+        });
+    };
+    fetchData(id);
+  }, [id, queryString]);
 
   // mock 데이터
-
   useEffect(() => {
     fetch('/data/slideList.json', {
       method: 'GET',

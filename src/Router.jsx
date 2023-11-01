@@ -11,7 +11,7 @@ import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
 import Store from './pages/Store/Store';
-import FindID from './pages/FindPW/FindID';
+import FindID from './pages/FindID/FindID';
 
 const Router = () => {
   return (

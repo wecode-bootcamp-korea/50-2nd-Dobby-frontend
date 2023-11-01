@@ -21,10 +21,6 @@ const ProductList = ({ productData, menuList, id }) => {
         </div>
       </div>
 
-      {/* priceDesc
-        priceAsc
-        nameAsc
-        newest */}
       <div className="sorting">
         <Sorting id={id} />
       </div>
