@@ -1,0 +1,24 @@
+.sorting {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .container {
+    max-width: 1140px;
+    width:100%;
+
+    ul {
+      display: flex;
+
+      a {
+        text-decoration: none;
+        color: #000;
+
+        li {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
