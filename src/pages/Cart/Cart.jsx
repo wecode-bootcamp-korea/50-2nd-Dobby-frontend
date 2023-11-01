@@ -20,7 +20,6 @@ const Cart = () => {
       .then(res => res.json())
       .then(data => {
         setCartList(data.data);
-        // setCartList(data);
       });
   };
 

@@ -8,6 +8,5 @@ export const GET_PRODUCTLIST_API = `${BASE_URL}/productlist`;
 
 export const GET_PRODUCT_API = `${PRODUCT_URL}`;
 
-export const GET_MOCK_API = '/data/data.json';
 export const GET_CART_API = `${BASE_URL2}/cart`;
 export const GET_CART_PAYMENT_API = `${BASE_URL2}/cart/payment`;
