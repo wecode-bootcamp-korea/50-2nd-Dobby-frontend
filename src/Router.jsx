@@ -13,6 +13,7 @@ import Signup from './pages/Signup/Signup';
 import Store from './pages/Store/Store';
 import FindPW from './pages/FindPW/FindPW';
 import FindID from './pages/FindID/FindID';
+import FindPW from './pages/FindPW/FindPW';
 import Signup from './pages/Signup/Signup';
 
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/findpw" element={<FindPW />} />
           <Route path="/findid" element={<FindID />} />
+          <Route path="/findpw" element={<FindPW />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/detail/:productId" element={<Detail />} />
