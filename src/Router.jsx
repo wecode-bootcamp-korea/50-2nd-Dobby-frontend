@@ -13,7 +13,6 @@ import Signup from './pages/Signup/Signup';
 import Store from './pages/Store/Store';
 import FindPW from './pages/FindPW/FindPW';
 import FindID from './pages/FindID/FindID';
-import Signup from './pages/Signup/Signup';
 
 const Router = () => {
   return (
