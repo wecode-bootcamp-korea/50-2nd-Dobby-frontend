@@ -1,0 +1,23 @@
+{
+  "message": "RECEIVING REQUEST SUCCESS",
+  "data": [
+    {
+      "id": 10,
+      "products_id": 7,
+      "quantity": 2,
+      "products_name": "DIY 나무 메이커 키트",
+      "products_price": 9970,
+      "products_image": "https://m.eduino.kr/web/product/big/202211/99ceba04516d8fd48f6d153d9fd6e50e.jpg",
+      "total_price": 19940
+    },
+    {
+      "id": 11,
+      "products_id": 8,
+      "quantity": 1,
+      "products_name": "DIY 금속 메이커 키트",
+      "products_price": 7800,
+      "products_image": "https://unsplash.com/ko/%EC%82%AC%EC%A7%84/%ED%9D%91%EB%B0%B1-%EC%A0%84%EC%9E%90-%EC%9E%A5%EC%B9%98-etw8edKg0KE",
+      "total_price": 7800
+    }
+  ]
+}
