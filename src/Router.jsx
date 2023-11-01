@@ -9,6 +9,7 @@ import Detail from './pages/Detail/Detail';
 import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
+import Store from './pages/Store/Store';
 import FindPW from './pages/FindPW/FindPW';
 import FindID from './pages/FindID/FindID';
 import Signup from './pages/Signup/Signup';
@@ -27,6 +28,8 @@ const Router = () => {
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/detail/:productId" element={<Detail />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/store/:id" element={<Store />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/pay-complete" element={<PayComplete />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>

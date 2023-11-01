@@ -10,9 +10,12 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 45
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
+      
       "id": 26,
       "name": "패브릭 아트 DIY",
       "price": 24000,
@@ -22,7 +25,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 45
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 25,
@@ -34,7 +39,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 45
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 24,
@@ -58,7 +65,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 45
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 21,
@@ -70,7 +79,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 45
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     }
   ],
   "mdRecommendation": [
@@ -84,7 +95,9 @@
       "bottom_category_id": 4,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:53.000Z",
-      "sales": 23
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 13,
@@ -96,7 +109,9 @@
       "bottom_category_id": 5,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:53.000Z",
-      "sales": 34
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 14,
@@ -108,7 +123,9 @@
       "bottom_category_id": 4,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:57.000Z",
-      "sales": 12
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 15,
@@ -120,7 +137,9 @@
       "bottom_category_id": 5,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:57.000Z",
-      "sales": 23
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 17,
@@ -132,7 +151,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 45
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 18,
@@ -144,7 +165,9 @@
       "bottom_category_id": 3,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 56
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 19,
@@ -156,7 +179,9 @@
       "bottom_category_id": 4,
       "delete_status": 0,
       "created_at": "2023-10-26T08:50:00.000Z",
-      "sales": 67
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     }
   ],
   "bestProducts": [
@@ -170,7 +195,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 78
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 10,
@@ -182,7 +209,9 @@
       "bottom_category_id": 1,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 67
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 11,
@@ -194,7 +223,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 78
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 9,
@@ -206,7 +237,9 @@
       "bottom_category_id": 1,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 67
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 20,
@@ -218,7 +251,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 78
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 7,
@@ -230,7 +265,9 @@
       "bottom_category_id": 1,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 67
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 8,
@@ -242,7 +279,9 @@
       "bottom_category_id": 2,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 78
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     },
     {
       "id": 6,
@@ -254,7 +293,9 @@
       "bottom_category_id": 1,
       "delete_status": 0,
       "created_at": "2023-10-26T08:49:48.000Z",
-      "sales": 67
+      "sales": 45,
+      "score": "4.3333",
+      "commentCount": "3"
     }
   ]
 }
