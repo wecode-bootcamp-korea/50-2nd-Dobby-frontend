@@ -57,7 +57,7 @@ const Address = ({
           />
         </div>
         <div className="deliveryBottom">
-          <button type="button" className="btn btnPrimary">
+          <button onClick={onClick} type="button" className="btn btnPrimary">
             <span>저장</span>
           </button>
         </div>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Address from './components/Address';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import './Payment.scss';
-import './Payment.scss';
 
 const Payment = () => {
   //map함수 활용하기 위한 useState 생성
@@ -17,33 +16,61 @@ const Payment = () => {
     extraAddress: '',
   });
   //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET)
-  useEffect(() => {
-    fetch('/data/Mockdata.json')
-      .then(res => res.json())
-      .then(data => setFullAddress(data));
-  }, []);
   // useEffect(() => {
-  //   fetch('/cart/payment/address/done')
+  //   fetch('/data/Mockdata.json')
   //     .then(res => res.json())
   //     .then(data => setFullAddress(data));
   // }, []);
 
-  //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
-  // const postData = () =>
-  // fetch('http://10.58.52.0:8000/cart/payment/address/done',{
-  //   method : 'POST',
-  //   headers : {
-  //     'Content-Type': 'application/json;charset=utf-8',
-  //   },
-  //   body : JSON.stringify({
-  //  name,
-  //  phoneNumber,
-  //  content : address + extraAddress
+  useEffect(() => {
+    fetch('http://10.58.52.67:8000/cart/payment', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+      },
+    })
+      .then(res => res.json())
+      .then(data => setFullAddress(data.address));
+  }, []);
 
-  //   }),
-  // })
-  // .then((res)=>res.json())
-  // .then()
+  //새 배송지 추가 후 새롭게 불러낼 GET
+  // const newGet = () => {
+  //   fetch('http://10.58.52.67:8000/cart/payment/address', {
+  //     method: 'GET',
+  //     headers: {
+  //  'Content-Type': 'application/json;charset=utf-8',
+  //       Authorization:
+  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+  //
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setFullAddress(data.address));
+  // };
+  //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
+  const postData = () =>
+    fetch('http://10.58.52.67:8000/cart/payment/address/done', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+      },
+      body: JSON.stringify({
+        name: newAddressInfo.name,
+        phoneNumber: newAddressInfo.phoneNumber,
+        content: newAddressInfo.address + newAddressInfo.extraAddress,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.messsage === 'POST - ADDRESS ADDED SUCCESS') {
+          alert('새로운 배송지가 추가되었습니다.');
+          // newGet();
+        }
+      });
 
   //onchange이벤트 함수가 발생했을시 변경될 변수 설정
   const handleNewAddressInput = e => {
@@ -75,7 +102,9 @@ const Payment = () => {
   const handleClick = () => {
     open({ onComplete: handleComplete });
   };
+  const { name, phonenumber, content } = fullAddress;
 
+  //지영님 코드(주문예정상품 불러오기)
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
@@ -112,18 +141,18 @@ const Payment = () => {
           <strong className="addressTitle">배송지 선택</strong>
           <ul className="addressList">
             {fullAddress &&
-              fullAddress.map(test => (
+              fullAddress.map(() => (
                 <li className="addressItem">
                   <div className="addressLeft">
                     <div className="addressInfo">
-                      <span className="name">{test.name}</span>
+                      <span className="name">{name}</span>
                       <span className="badge">기본</span>
                     </div>
                     <div className="addressInfo">
-                      <span className="phoneNumber">{test.phonenumber}</span>
+                      <span className="phoneNumber">{phonenumber}</span>
                     </div>
                     <div className="addressInfo">
-                      <span className="address">{test.fulladdress}</span>
+                      <span className="address">{content}</span>
                       {/* <span className="addressDetail">상세주소키값필요</span> */}
                     </div>
                   </div>
@@ -149,7 +178,7 @@ const Payment = () => {
           </div>
           {newAddressInfo.address && (
             <Address
-              // onClick={postData}
+              onClick={postData}
               onChange={handleNewAddressInput}
               {...newAddressInfo}
             />
