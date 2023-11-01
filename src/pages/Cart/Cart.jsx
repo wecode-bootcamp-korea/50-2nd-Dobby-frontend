@@ -9,18 +9,18 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const getCartList = () => {
-    fetch(`${API.MOCK}`, {
+    fetch(`${API.CART}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
     })
       .then(res => res.json())
       .then(data => {
-        // setCartList(data.data);
-        setCartList(data);
+        setCartList(data.data);
+        // setCartList(data);
       });
   };
 
@@ -29,12 +29,12 @@ const Cart = () => {
   }, []);
 
   const deleteItem = id => {
-    fetch(`${API.CART}${id}`, {
+    fetch(`${API.CART}/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
     }).then(res => {
       if (res.ok) {
@@ -45,19 +45,20 @@ const Cart = () => {
     });
   };
 
-  const handleQuantity = (isPlus, productId) => {
+  const handleQuantity = (isPlus, productsId) => {
     if (
       !isPlus &&
-      cartList.find(({ product_id }) => product_id === productId).quantity <= 1
+      cartList.find(({ products_id }) => products_id === productsId).quantity <=
+        1
     )
       return;
 
-    fetch(`${API.CART}${isPlus ? 'increase' : 'decrease'}/${productId}`, {
+    fetch(`${API.CART}/${isPlus ? 'increase' : 'decrease'}/${productsId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
         Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxpa2VMaW9uODI4MkB3ZWNvZGUuY29tIiwidXNlcklkIjoxLCJpYXQiOjE2OTgxNjg3NTV9.8tjgbmwn2u7LeYuTKTjr3ZhTA1p5l0Nja5kUEs3yki4',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
       body: JSON.stringify({
         quantityDifference: isPlus ? '+' : '-',
@@ -151,7 +152,7 @@ const Cart = () => {
                   title,
                   image,
                   name,
-                  product_id,
+                  products_id,
                   quantity,
                   total_price,
                 } = list;
@@ -198,7 +199,7 @@ const Cart = () => {
                                   type="button"
                                   className="btn decrease"
                                   onClick={() =>
-                                    handleQuantity(false, product_id)
+                                    handleQuantity(false, products_id)
                                   }
                                 >
                                   <span className="blind">-</span>
@@ -208,7 +209,7 @@ const Cart = () => {
                                   type="button"
                                   className="btn increase"
                                   onClick={() =>
-                                    handleQuantity(true, product_id)
+                                    handleQuantity(true, products_id)
                                   }
                                 >
                                   <span className="blind">+</span>

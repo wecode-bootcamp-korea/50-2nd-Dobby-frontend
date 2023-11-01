@@ -1,5 +1,5 @@
 // src/config.js
-const BASE_URL = 'http://10.58.5.151:8000';
+const BASE_URL = 'http://10.58.52.239:8000';
 export const API = {
   MOCK: '/data/data.json',
   CART: `${BASE_URL}/cart`,
