@@ -1,7 +1,14 @@
 import React from 'react';
 import './Address.scss';
 
-const Address = ({ onChange, name, phoneNumber, address, extraAddress }) => {
+const Address = ({
+  onClick,
+  onChange,
+  name,
+  phoneNumber,
+  address,
+  extraAddress,
+}) => {
   return (
     <div className="address">
       <form className="formArea" onChange={onChange}>

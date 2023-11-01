@@ -15,12 +15,34 @@ const Payment = () => {
     address: '',
     extraAddress: '',
   });
-
+  //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET)
   useEffect(() => {
     fetch('/data/Mockdata.json')
       .then(res => res.json())
       .then(data => setFullAddress(data));
   }, []);
+  // useEffect(() => {
+  //   fetch('/cart/payment/address/done')
+  //     .then(res => res.json())
+  //     .then(data => setFullAddress(data));
+  // }, []);
+
+  //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
+  // const postData = () =>
+  // fetch('http://10.58.52.0:8000/cart/payment/address/done',{
+  //   method : 'POST',
+  //   headers : {
+  //     'Content-Type': 'application/json;charset=utf-8',
+  //   },
+  //   body : JSON.stringify({
+  //  name,
+  //  phoneNumber,
+  //  content : address + extraAddress
+
+  //   }),
+  // })
+  // .then((res)=>res.json())
+  // .then()
 
   //onchange이벤트 함수가 발생했을시 변경될 변수 설정
   const handleNewAddressInput = e => {
@@ -73,7 +95,7 @@ const Payment = () => {
                     </div>
                     <div className="addressInfo">
                       <span className="address">{test.fulladdress}</span>
-                      <span className="addressDetail">상세주소키값필요</span>
+                      {/* <span className="addressDetail">상세주소키값필요</span> */}
                     </div>
                   </div>
                   <div className="addressRight">
@@ -97,7 +119,11 @@ const Payment = () => {
             </button>
           </div>
           {newAddressInfo.address && (
-            <Address onChange={handleNewAddressInput} {...newAddressInfo} />
+            <Address
+              // onClick={postData}
+              onChange={handleNewAddressInput}
+              {...newAddressInfo}
+            />
           )}
         </div>
         <div className="productArea">
