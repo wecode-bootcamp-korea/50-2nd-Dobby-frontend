@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Address from './components/Address';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
+import './Payment.scss';
 import './Payment.scss';
 
 const Payment = () => {
@@ -75,6 +76,34 @@ const Payment = () => {
     open({ onComplete: handleComplete });
   };
 
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/data.json', {
+      // fetch('http://10.58.52.239:8000/cart', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductList(data.data);
+      });
+  }, []);
+
+  const sumPrice = productList
+    .map(list => list.total_price)
+    .reduce((acc, cur) => acc + cur, 0);
+
+  const sumDeliveryCharge = productList.reduce((acc, cur) => {
+    if (cur.total_price < 50000) {
+      return acc + 3000;
+    } else return acc;
+  }, 0);
+
+  const totalPrice = sumPrice + sumDeliveryCharge;
+
   return (
     <div className="payment">
       <div className="paymentArea">
@@ -129,69 +158,50 @@ const Payment = () => {
         <div className="productArea">
           <strong className="productTitle">주문 예정 상품</strong>
           <ul className="productList">
-            <li className="productItem">
-              <div className="productTop">
-                <div className="productImage">
-                  <img
-                    src="/images/cart_sample.jpg"
-                    alt="만강에 비친 달 X 2병"
-                  />
-                </div>
-                <div className="productInfo">
-                  <strong className="infoTitle">예술주조</strong>
-                  <span className="infoSubTitle">만강에 비친 달 X 2병</span>
-                  <span className="infoNumber">수량 1개</span>
-                </div>
-              </div>
-              <div className="productBottom">
-                <dl className="billList">
-                  <dt>상품금액</dt>
-                  <dd>0원</dd>
-                </dl>
-                <dl className="billList">
-                  <dt>배송비</dt>
-                  <dd>0원</dd>
-                </dl>
-                <dl className="billList total">
-                  <dt>총 금액</dt>
-                  <dd>0원</dd>
-                </dl>
-              </div>
-            </li>
-            <li className="productItem">
-              <div className="productTop">
-                <div className="productImage">
-                  <img
-                    src="/images/cart_sample.jpg"
-                    alt="만강에 비친 달 X 2병"
-                  />
-                </div>
-                <div className="productInfo">
-                  <strong className="infoTitle">예술주조</strong>
-                  <span className="infoSubTitle">만강에 비친 달 X 2병</span>
-                  <span className="infoNumber">수량 1개</span>
-                </div>
-              </div>
-              <div className="productBottom">
-                <dl className="billList">
-                  <dt>상품금액</dt>
-                  <dd>0원</dd>
-                </dl>
-                <dl className="billList">
-                  <dt>배송비</dt>
-                  <dd>0원</dd>
-                </dl>
-                <dl className="billList total">
-                  <dt>총 금액</dt>
-                  <dd>0원</dd>
-                </dl>
-              </div>
-            </li>
+            {productList.map(product => {
+              const {
+                id,
+                products_image,
+                quantity,
+                products_name,
+                total_price,
+              } = product;
+              const deliveryCharge = total_price < 50000 ? 3000 : 0;
+
+              return (
+                <li className="productItem" key={id}>
+                  <div className="productTop">
+                    <div className="productImage">
+                      <img src={products_image} alt="만강에 비친 달 X 2병" />
+                    </div>
+                    <div className="productInfo">
+                      <strong className="infoTitle">예술주조</strong>
+                      <span className="infoSubTitle">{products_name}</span>
+                      <span className="infoNumber">수량 {quantity}개</span>
+                    </div>
+                  </div>
+                  <div className="productBottom">
+                    <dl className="billList">
+                      <dt>상품금액</dt>
+                      <dd>{total_price}원</dd>
+                    </dl>
+                    <dl className="billList">
+                      <dt>배송비</dt>
+                      <dd>{deliveryCharge}원</dd>
+                    </dl>
+                    <dl className="billList total">
+                      <dt>총 금액</dt>
+                      <dd>{total_price + deliveryCharge}원</dd>
+                    </dl>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
           <div className="productMoney">
             <dl className="moneyList">
               <dt>총 결제 금액</dt>
-              <dd>0원</dd>
+              <dd>{totalPrice}원</dd>
             </dl>
           </div>
         </div>
@@ -207,6 +217,8 @@ const Payment = () => {
                 id="pointPayment"
                 className="formControl"
                 placeholder="사용 할 포인트를 입력해 주세요"
+                value={totalPrice}
+                readOnly
               />
             </div>
             <div className="pointHold">
@@ -230,7 +242,7 @@ const Payment = () => {
             <span>주문취소</span>
           </button>
           <button type="button" className="btn btnPrimary">
-            <span>0원 결제하기</span>
+            <span>{totalPrice}원 결제하기</span>
           </button>
         </div>
       </div>
