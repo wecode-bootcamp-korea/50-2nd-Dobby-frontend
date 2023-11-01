@@ -20,6 +20,12 @@ const Login = () => {
   const goToSignup = () => {
     navigate('/signup');
   };
+  const goToFindID = () => {
+    navigate('/findid');
+  };
+  const goToFindPW = () => {
+    navigate('/findpw');
+  };
 
   const goToMain = () => {
     fetch('http://10.58.52.105:8000/users/login', {
@@ -73,8 +79,12 @@ const Login = () => {
         </button>
       </div>
       <div className="idpwButtonFrame">
-        <button className="idButton">아이디 찾기</button>
-        <button className="pwButton">비밀번호 찾기</button>
+        <button className="idButton" onClick={goToFindID}>
+          아이디 찾기
+        </button>
+        <button className="pwButton" onClick={goToFindPW}>
+          비밀번호 찾기
+        </button>
       </div>
       <div className="signupButtonFrame">
         <button className="signupButton" onClick={goToSignup}>
