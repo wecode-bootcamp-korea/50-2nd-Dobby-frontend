@@ -38,6 +38,7 @@ const ProductList = ({ productData, menuList, id }) => {
             score={data.score}
             commentCount={data.commentCount}
             content={data.content}
+            id={data.id}
           />
         ))}
       </div>
