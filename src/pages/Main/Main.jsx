@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import Subscribe from './Layout/Subscribe/Subscribe';
 import CategorizedSlide from './Layout/CategorizedSlide/CategorizedSlide';
 import CategoryList from './Layout/CategoryList/CategoryList';
