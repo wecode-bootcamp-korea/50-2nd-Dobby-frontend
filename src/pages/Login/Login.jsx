@@ -10,8 +10,8 @@ const Login = () => {
         <h2 className="loginText">LOGIN</h2>
       </div>
       <div className="inputFrame">
-        <input className="idInput" type="text" placeholder="이메일" />
-        <input className="pwInput" type="text" placeholder="비밀번호" />
+        <input className="userInput" type="text" placeholder="이메일" />
+        <input className="userInput" type="text" placeholder="비밀번호" />
         <button className="loginButton">로그인</button>
         <hr className="underline" />
       </div>
