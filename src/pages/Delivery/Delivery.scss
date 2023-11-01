@@ -1,0 +1,143 @@
+.delivery {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding-top: 36px;
+
+  .deliveryArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1024px;
+
+    .deliveryTitle {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      font-weight: 700;
+      font-size: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(61, 61, 61, 0.18);
+    }
+
+    .deliveryGroup {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 375px;
+      margin-top: 60px;
+      padding: 40px 20px;
+      border: 1px solid rgba(61, 61, 61, 0.18);
+      border-radius: 5px;
+
+      .deliverySubTitle {
+        display: block;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .formArea {
+        margin-top: 16px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(61, 61, 61, 0.3);
+
+        .formInput {
+          display: flex;
+          flex-direction: column;
+
+          ~ .formInput {
+            padding-top: 20px;
+          }
+
+          &.check {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            align-items: center;
+
+            .formLabel {
+              margin-left: 10px;
+            }
+          }
+
+          .formLabel {
+            font-size: 15px;
+          }
+
+          .formControl {
+            height: 50px;
+            margin-top: 8px;
+            padding: 14px;
+            border: 1px solid rgba(61, 61, 61, 0.18);
+            border-radius: 5px;
+            outline: none;
+
+            &:hover {
+              border: 1px solid rgb(255, 187, 0);
+            }
+
+            &:focus {
+              border: 1px solid rgb(255, 187, 0);
+            }
+
+            &::placeholder {
+              color: rgba(61, 61, 61, 0.3);
+            }
+          }
+
+          .formCheck {
+            width: 23px;
+            height: 23px;
+            margin: 0;
+            border: 1px solid rgb(224, 224, 224);
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .deliveryBottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .btnPrimary {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 44px;
+          margin-top: 20px;
+          font-weight: 700;
+          font-size: 16px;
+          color: #fff;
+          border-radius: 5px;
+          background-color: rgb(0, 150, 243);
+
+          &:hover {
+            background-color: rgb(45, 123, 195);
+          }
+
+          &:disabled {
+            color: rgba(61, 61, 61, 0.3);
+            background-color: rgb(178, 178, 178);
+          }
+        }
+
+        .btnLine {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 44px;
+          margin-top: 10px;
+          font-weight: 700;
+          font-size: 16px;
+          color: rgba(61, 61, 61, 0.5);
+          border: 1px solid rgba(61, 61, 61, 0.18);
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
