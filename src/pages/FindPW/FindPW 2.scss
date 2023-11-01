@@ -17,27 +17,6 @@
     justify-content: center;
     align-items: center;
 
-    position: relative;
-    margin-bottom: 20px;
-
-    .message {
-      font-weight: 500;
-      font-size: 17px;
-      line-height: 24px;
-      letter-spacing: -1px;
-      position: absolute;
-      bottom: -28px;
-      left: 0;
-
-      &.success {
-        color: #0c71fd;
-      }
-
-      &.error {
-        color: #ff2727;
-      }
-    }
-
     .emailInput {
       width: 350px;
       padding: 15px;
@@ -50,18 +29,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .disabledButton {
-      width: 320px;
-      padding: 15px;
-      border: none;
-      border-radius: 5px;
-      color: rgb(204, 204, 204);
-      font-weight: 600;
-      text-align: center;
-      background-color: rgb(129, 129, 129);
-      margin-top: 60px;
-    }
 
     .confirButton {
       width: 320px;
