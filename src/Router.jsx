@@ -11,6 +11,7 @@ import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
 import FindPW from './pages/FindPW/FindPW';
 import FindID from './pages/FindID/FindID';
+import Signup from './pages/Signup/Signup';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/findpw" element={<FindPW />} />
           <Route path="/findid" element={<FindID />} />
           <Route path="/cart" element={<Cart />} />
