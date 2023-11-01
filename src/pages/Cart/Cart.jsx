@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { API } from '../../config';
+import { GET_CART_API, GET_CART_PAYMENT_API } from '../../config';
 import './Cart.scss';
 
 const Cart = () => {
@@ -9,7 +9,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const getCartList = () => {
-    fetch(`${API.CART}`, {
+    fetch(`${GET_CART_API}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -29,7 +29,7 @@ const Cart = () => {
   }, []);
 
   const deleteItem = id => {
-    fetch(`${API.CART}/${id}`, {
+    fetch(`${GET_CART_API}/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -53,7 +53,7 @@ const Cart = () => {
     )
       return;
 
-    fetch(`${API.CART}/${isPlus ? 'increase' : 'decrease'}/${productsId}`, {
+    fetch(`${GET_CART_API}/${isPlus ? 'increase' : 'decrease'}/${productsId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -73,7 +73,7 @@ const Cart = () => {
   };
 
   const sendClick = () => {
-    fetch(`${API.CART_PAYMENT}`, {
+    fetch(`${GET_CART_PAYMENT_API}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
