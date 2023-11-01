@@ -46,10 +46,8 @@ const Login = () => {
         } else if (data.message === 'INVALID EMAIL OR PASSWORD') {
           alert('가입되지 않은 정보입니다.');
         }
-        console.log(data);
       });
   };
-
   return (
     <div className="mainLoginBody">
       <h1 className="helloText">안녕하세요!😊</h1>

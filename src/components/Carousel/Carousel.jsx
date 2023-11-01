@@ -30,6 +30,7 @@ const Carousel = ({ slideList, spaceBetween, slidesPerView, loop }) => {
               score={list.score}
               commentCount={list.commentCount}
               content={list.content}
+              id={list.id}
             />
           </SwiperSlide>
         ))}

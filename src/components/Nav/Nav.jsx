@@ -40,7 +40,7 @@ const Nav = () => {
         <div
           className="navbarMenu"
           onClick={() => {
-            navigate('/main');
+            navigate('/store');
           }}
         >
           스토어
