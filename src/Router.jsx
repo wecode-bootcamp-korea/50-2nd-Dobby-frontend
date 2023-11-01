@@ -9,6 +9,7 @@ import Detail from './pages/Detail/Detail';
 import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
+import Signup from './pages/Signup/Signup';
 import Store from './pages/Store/Store';
 import FindPW from './pages/FindPW/FindPW';
 import FindID from './pages/FindID/FindID';
