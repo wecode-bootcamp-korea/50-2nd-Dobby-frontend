@@ -10,6 +10,7 @@ import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
 import FindID from './pages/FindID/FindID';
+import Signup from './pages/Signup/Signup';
 
 const Router = () => {
   return (
