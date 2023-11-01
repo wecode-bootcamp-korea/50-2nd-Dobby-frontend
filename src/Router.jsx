@@ -10,6 +10,7 @@ import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
 import FindID from './pages/FindID/FindID';
+import FindPW from './pages/FindPW/FindPW';
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/findid" element={<FindID />} />
+          <Route path="/findpw" element={<FindPW />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/detail/:productId" element={<Detail />} />
