@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Footer from './components/Footer/Footer';
 import Layout from './components/Layout/Layout';
 import Nav from './components/Nav/Nav';
 import Cart from './pages/Cart/Cart';
@@ -27,7 +26,6 @@ const Router = () => {
           <Route path="/pay-complete" element={<PayComplete />} />
           <Route path="/payment" element={<Payment />} />
         </Routes>
-        <Footer />
       </Layout>
     </BrowserRouter>
   );
