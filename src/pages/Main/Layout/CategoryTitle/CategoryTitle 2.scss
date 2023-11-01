@@ -1,0 +1,60 @@
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  padding: 0 69px;
+  width: 100%;
+
+  animation: fadein 2.5s;
+  -moz-animation: fadein 2.5s;
+  -webkit-animation: fadein 2.5s;
+  -o-animation: fadein 2.5s;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .titleImg {
+    position: relative;
+    top: -10px;
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+
+    &.basic {
+      filter: invert(95%) sepia(85%) saturate(3043%) hue-rotate(291deg)
+        brightness(119%) contrast(94%);
+    }
+
+    &.creative {
+      filter: invert(89%) sepia(76%) saturate(5338%) hue-rotate(313deg)
+        brightness(103%) contrast(100%);
+    }
+
+    &.collection {
+      filter: invert(80%) sepia(24%) saturate(447%) hue-rotate(119deg)
+        brightness(104%) contrast(92%);
+    }
+  }
+
+  .titleWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+
+    .slideTitle {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .slideSubTitle {
+      font-size: 18px;
+      font-weight: 500;
+      color: #ffb43b;
+    }
+  }
+}
