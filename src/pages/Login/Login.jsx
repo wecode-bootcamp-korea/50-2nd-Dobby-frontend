@@ -1,7 +1,6 @@
-import React from 'react';
-import './Login.scss';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.scss';
 
 const Login = () => {
   // ID(이메일)
@@ -15,9 +14,21 @@ const Login = () => {
     setPW(event.target.value);
   };
   // 로그인 버튼
-  const isInvalid = id.includes('@', '.') && pw.length >= 4;
+  const isInvalid = id.includes('@', '.') && pw.length >= 10;
+  // 회원가입 버튼(회원가입 페이지로 이동)
+  const navigate = useNavigate();
+  const goToSignup = () => {
+    navigate('/signup');
+  };
+  const goToFindID = () => {
+    navigate('/findid');
+  };
+  const goToFindPW = () => {
+    navigate('/findpw');
+  };
+
   const goToMain = () => {
-    fetch('http://10.58.52.106:8000/users/login', {
+    fetch('http://10.58.52.105:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -31,17 +42,12 @@ const Login = () => {
       .then(data => {
         if (data.message === 'LOG_IN_SUCCESS') {
           alert('로그인 되었습니다.');
-          localStorage.setItem('token', data.message);
+          localStorage.setItem('token', data.token);
         } else if (data.message === 'INVALID EMAIL OR PASSWORD') {
           alert('가입되지 않은 정보입니다.');
         }
         console.log(data);
       });
-  };
-  // 회원가입 버튼(회원가입 페이지로 이동)
-  const navigate = useNavigate();
-  const goToSignup = () => {
-    navigate('/signup');
   };
   return (
     <div className="mainLoginBody">
@@ -72,8 +78,12 @@ const Login = () => {
         </button>
       </div>
       <div className="idpwButtonFrame">
-        <button className="idButton">아이디 찾기</button>
-        <button className="pwButton">비밀번호 찾기</button>
+        <button className="idButton" onClick={goToFindID}>
+          아이디 찾기
+        </button>
+        <button className="pwButton" onClick={goToFindPW}>
+          비밀번호 찾기
+        </button>
       </div>
       <div className="signupButtonFrame">
         <button className="signupButton" onClick={goToSignup}>
