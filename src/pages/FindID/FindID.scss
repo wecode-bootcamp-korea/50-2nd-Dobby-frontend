@@ -7,17 +7,39 @@
 
   .idText {
     font-size: 25px;
+    color: rgb(133, 133, 133);
+    margin-bottom: 40px;
     font-weight: 600;
-    color: rgb(166, 166, 166);
   }
 
-  .findInputFrame {
+  .findIDFrame {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
 
-    .nameInput,
-    .phoneInput {
+    position: relative;
+    margin-bottom: 17px;
+
+    .message {
+      font-weight: 500;
+      font-size: 17px;
+      line-height: 24px;
+      letter-spacing: -1px;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+
+      &.success {
+        color: #0c71fd;
+      }
+
+      &.error {
+        color: #ff2727;
+      }
+    }
+
+    .userInput {
       width: 370px;
       padding: 15px;
       border: none;
@@ -25,12 +47,23 @@
       margin-bottom: 35px;
     }
   }
-
   .IDButtonFrame {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+
+    .disabledButton {
+      width: 340px;
+      padding: 15px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(184, 184, 184);
+      font-weight: 700;
+      color: rgb(105, 105, 105);
+      font-size: 18px;
+    }
 
     .findIDButton {
       width: 340px;
