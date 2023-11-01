@@ -2,8 +2,9 @@ import React from 'react';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import './ProductList.scss';
 import { Link } from 'react-router-dom';
+import Sorting from './Sorting';
 
-const ProductList = ({ productData, menuList }) => {
+const ProductList = ({ productData, menuList, id }) => {
   return (
     <div className="productList">
       <div className="menuWrapper">
@@ -18,6 +19,14 @@ const ProductList = ({ productData, menuList }) => {
             ))}
           </ul>
         </div>
+      </div>
+
+      {/* priceDesc
+        priceAsc
+        nameAsc
+        newest */}
+      <div className="sorting">
+        <Sorting id={id} />
       </div>
       <div className="listData">
         {productData.map(data => (
