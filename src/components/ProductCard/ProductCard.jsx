@@ -9,7 +9,7 @@ const ProductCard = ({ src, title, price, score, commentCount, content }) => {
     <div className="productCard">
       <Link to="/" className="productLink">
         <div className="basic" />
-        <img src={src} alt="제품이미지" className="productImg" />
+        <img src={src} alt={title} className="productImg" />
         <div className="detailContainer">
           <p className="productTitle">{title}</p>
           <p className="productPrice">{priceName}원</p>

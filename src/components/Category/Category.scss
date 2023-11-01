@@ -3,10 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 10px;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   .menu {
     width: 44px;
@@ -27,6 +24,7 @@
         brightness(103%) contrast(108%);
     }
   }
+  
   p {
     margin-top: 2px;
     font-weight: 500;

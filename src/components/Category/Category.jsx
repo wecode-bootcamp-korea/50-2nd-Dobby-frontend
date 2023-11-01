@@ -6,7 +6,6 @@ const Category = ({ subType, text, id }) => {
   const navigate = useNavigate();
   const handleMenu = () => {
     const url = id === 3 ? '/store' : `/store/${id}`;
-
     return navigate(url);
   };
 
