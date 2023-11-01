@@ -12,7 +12,6 @@ import Payment from './pages/Payment/Payment';
 import Store from './pages/Store/Store';
 import FindPW from './pages/FindPW/FindPW';
 import FindID from './pages/FindID/FindID';
-import FindPW from './pages/FindPW/FindPW';
 import Signup from './pages/Signup/Signup';
 
 const Router = () => {
