@@ -6,6 +6,7 @@ import Nav from './components/Nav/Nav';
 import Cart from './pages/Cart/Cart';
 import Delivery from './pages/Delivery/Delivery';
 import Login from './pages/Login/Login';
+import Detail from './pages/Detail/Detail';
 import Main from './pages/Main/Main';
 import PayComplete from './pages/PayComplete/PayComplete';
 import Payment from './pages/Payment/Payment';
@@ -21,6 +22,7 @@ const Router = () => {
           <Route path="/findid" element={<FindID />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/delivery" element={<Delivery />} />
+          <Route path="/detail/:productId" element={<Detail />} />
           <Route path="/main" element={<Main />} />
           <Route path="/pay-complete" element={<PayComplete />} />
           <Route path="/payment" element={<Payment />} />
