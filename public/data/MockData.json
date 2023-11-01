@@ -1,23 +1,14 @@
-{
-  "id": 3,
-  "image": "https://img-cf.kurly.com/shop/data/goods/1648203571907l0.jpg",
-  "name": "[콜린스그린] 더 오렌지 1000mL",
-  "content": "물 한방울 넣지 않고 순수한 오렌지 과육을 짜낸 100% 착즙 오렌지 주스",
-  "price": 17600,
-  "reviews": [
-    {
-      "commentId": 2,
-      "nickname": "leejung",
-      "comment": "좋은 말씀이십니다.",
-      "score": 5,
-      "createdAt": "2023-08-16T~~~~"
-    },
-    {
-      "commentId": 1,
-      "nickname": "lee",
-      "comment": "좋은 말씀이십니다.",
-      "score": 3,
-      "createdAt": "2023-08-16T~~~~"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "최민지",
+    "fulladdress": "위코시 위코구 위코동",
+    "phonenumber": "010-5704-8484"
+  },
+  {
+    "id": 2,
+    "name": "위코드",
+    "fulladdress": "서울시 서울구 서울동",
+    "phonenumber": "010-5704-8484"
+  }
+]
