@@ -50,14 +50,11 @@ const FindPW = () => {
   };
   // 새 비밀번호 조건식
   const onChangeNewPassword = event => {
-    const newPasswordRagex =
-      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-11]).{8,25}$/;
+    const newPasswordRagex = /^(?=.*[a-zA-Z])(?=.*\d).{9,}$/;
     const passwordCurrent = event.target.value;
     setNewPassword(passwordCurrent);
     if (!newPasswordRagex.test(passwordCurrent)) {
-      setNewPasswordMessage(
-        '숫자+대문자+소문자 조합으로 10자리 이상 입력해주세요.',
-      );
+      setNewPasswordMessage('영문+숫자 조합으로 10자리 이상 입력해주세요.');
       setIsNewPassword(false);
     } else {
       setNewPasswordMessage('안전한 비밀번호 입니다.');
