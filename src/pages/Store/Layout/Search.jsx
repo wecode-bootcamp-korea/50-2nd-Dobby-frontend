@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './Search.scss';
-import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const Search = () => {
   const [search, setSearch] = useState('');
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSearch = () => {
-    navigate(`.?search=${search}`);
+    searchParams.set('search', search);
+    setSearchParams(searchParams);
   };
 
   return (

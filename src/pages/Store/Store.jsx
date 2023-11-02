@@ -45,8 +45,6 @@ const Store = () => {
     fetchData(id);
   }, [id, queryString]);
 
-  // mock 데이터
-
   return (
     <div className="store">
       <ProductList productData={productData} menuList={menuList} id={id} />
