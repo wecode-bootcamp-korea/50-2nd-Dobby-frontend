@@ -14,7 +14,6 @@ const Nav = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
     alert('로그아웃 되었습니다.');
-    dobbyToken(false);
     navigate('/main');
   };
 
