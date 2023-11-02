@@ -18,7 +18,7 @@ const Payment = () => {
 
   //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET 함수 선언 및 실행)
   const newGet = () => {
-    fetch('http://10.58.52.67:8000/cart/payment/address', {
+    fetch('http://10.58.52.196:8000/cart/payment/address', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -36,7 +36,7 @@ const Payment = () => {
 
   //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
   const postData = () =>
-    fetch('http://10.58.52.67:8000/cart/payment/address/done', {
+    fetch('http://10.58.52.196:8000/cart/payment/address/done', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -126,7 +126,7 @@ const Payment = () => {
           <ul className="addressList">
             {fullAddress &&
               fullAddress.map(test => (
-                <li className="addressItem">
+                <li className="addressItem" key={test.id}>
                   <div className="addressLeft">
                     <div className="addressInfo">
                       <span className="name">{test.name}</span>
