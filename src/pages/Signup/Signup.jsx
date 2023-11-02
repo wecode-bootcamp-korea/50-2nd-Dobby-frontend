@@ -154,7 +154,7 @@ const Signup = () => {
   // 로그인 페이지 이동
   const navigate = useNavigate();
   const goToLogin = () => {
-    navigate('/Login');
+    navigate('/');
   };
   // 회원가입 정보 입력후 회원가입 하기 버튼
   const goToSignup = () => {
@@ -175,7 +175,7 @@ const Signup = () => {
       .then(data => {
         if (data.message === 'SIGN_UP_SUCCESS') {
           alert('회원가입이 완료 되었습니다.');
-          goToLogin('/Login');
+          goToLogin('/');
         } else {
           alert('이미 가입된 사용자 입니다.');
         }
