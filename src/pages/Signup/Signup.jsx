@@ -44,14 +44,11 @@ const Signup = () => {
   }, []);
   // 비밀번호
   const onChangePassword = useCallback(event => {
-    const passwordRagex =
-      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-11]).{8,25}$/;
+    const passwordRagex = /^(?=.*[a-zA-Z])(?=.*\d).{9,}$/;
     const passwordCurrent = event.target.value;
     setPassword(passwordCurrent);
     if (!passwordRagex.test(passwordCurrent)) {
-      setPasswordMessage(
-        '숫자+영문자+특수문자 조합으로 10자리 이상 입력해주세요.',
-      );
+      setPasswordMessage('영문과 숫자를 혼합해서 10자리 이상 입력해주세요.');
       setIsPassword(false);
     } else {
       setPasswordMessage('안전한 비밀번호 입니다.');
