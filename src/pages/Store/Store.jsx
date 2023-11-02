@@ -5,7 +5,7 @@ import { GET_PRODUCT_API } from '../../config';
 import './Store.scss';
 
 const Store = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   const [productData, setProductData] = useState([]);
   const [menuList, setMenuList] = useState([]);
   const location = useLocation();
@@ -29,7 +29,7 @@ const Store = () => {
   useEffect(() => {
     const fetchData = id => {
       const url = id
-        ? `${GET_PRODUCT_API}/categories/${id}${queryString}`
+        ? `${GET_PRODUCT_API}/products${queryString}`
         : `${GET_PRODUCT_API}/products${queryString}`;
       fetch(url, {
         method: 'GET',
@@ -42,26 +42,30 @@ const Store = () => {
           setProductData(data.message);
         });
     };
-    fetchData(id);
-  }, [id, queryString]);
+    fetchData(menuList.id);
+  }, [menuList.id, queryString]);
 
   // mock 데이터
-  useEffect(() => {
-    fetch('/data/slideList.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProductData(data.newProducts);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('/data/slideList.json', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProductData(data.newProducts);
+  //     });
+  // }, []);
 
   return (
     <div className="store">
-      <ProductList productData={productData} menuList={menuList} id={id} />
+      <ProductList
+        productData={productData}
+        menuList={menuList}
+        id={menuList.id}
+      />
     </div>
   );
 };
