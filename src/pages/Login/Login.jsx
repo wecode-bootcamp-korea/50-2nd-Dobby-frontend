@@ -42,6 +42,7 @@ const Login = () => {
       .then(data => {
         if (data.message === 'LOG_IN_SUCCESS') {
           alert('로그인 되었습니다.');
+          localStorage.setItem('nickname', data.nickname);
           localStorage.setItem('token', data.token);
         } else if (data.message === 'INVALID EMAIL OR PASSWORD') {
           alert('가입되지 않은 정보입니다.');

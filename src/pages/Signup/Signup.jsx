@@ -44,14 +44,11 @@ const Signup = () => {
   }, []);
   // 비밀번호
   const onChangePassword = useCallback(event => {
-    const passwordRagex =
-      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-11]).{8,25}$/;
+    const passwordRagex = /^(?=.*[a-zA-Z])(?=.*\d).{9,}$/;
     const passwordCurrent = event.target.value;
     setPassword(passwordCurrent);
     if (!passwordRagex.test(passwordCurrent)) {
-      setPasswordMessage(
-        '숫자+영문자+특수문자 조합으로 10자리 이상 입력해주세요.',
-      );
+      setPasswordMessage('영문과 숫자를 혼합해서 10자리 이상 입력해주세요.');
       setIsPassword(false);
     } else {
       setPasswordMessage('안전한 비밀번호 입니다.');
@@ -154,7 +151,7 @@ const Signup = () => {
   // 로그인 페이지 이동
   const navigate = useNavigate();
   const goToLogin = () => {
-    navigate('/Login');
+    navigate('/');
   };
   // 회원가입 정보 입력후 회원가입 하기 버튼
   const goToSignup = () => {
@@ -175,7 +172,7 @@ const Signup = () => {
       .then(data => {
         if (data.message === 'SIGN_UP_SUCCESS') {
           alert('회원가입이 완료 되었습니다.');
-          goToLogin('/Login');
+          goToLogin('/');
         } else {
           alert('이미 가입된 사용자 입니다.');
         }

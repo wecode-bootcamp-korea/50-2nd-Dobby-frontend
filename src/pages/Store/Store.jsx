@@ -41,19 +41,6 @@ const Store = () => {
     fetchData(queryString);
   }, [queryString]);
 
-  // mock 데이터
-  // useEffect(() => {
-  //   fetch('/data/slideList.json', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductData(data.newProducts);
-  //     });
-  // }, []);
   return (
     <div className="store">
       <ProductList
