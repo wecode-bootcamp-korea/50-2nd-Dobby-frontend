@@ -31,20 +31,6 @@ const Main = () => {
       });
   }, []);
 
-  // mock 데이터
-  // useEffect(() => {
-  //   fetch('/data/slideList.json', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductsData(data);
-  //     });
-  // }, []);
-
   // 카테고리 메뉴 데이터
   useEffect(() => {
     fetch('/data/menu.json', {

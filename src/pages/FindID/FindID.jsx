@@ -57,7 +57,7 @@ const FindID = () => {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.success === '인증 메일을 전송했습니다') {
+        if (data.message === 'AUTHENTICATION_NUMBER_SUCCESS') {
           alert('문자로 인증번호를 전송했습니다. 확인해주세요');
         } else {
           alert('아이디를 찾을 수 없습니다.');
