@@ -50,7 +50,7 @@ const Nav = () => {
       <div className="login">
         {login ? (
           <>
-            <label>😊{user}님 어서오세요!😊</label>
+            <label>😊{user}님 어서오세요!😊&nbsp;&nbsp;</label>
             <label onClick={logout}> 로그아웃 </label>
           </>
         ) : (
