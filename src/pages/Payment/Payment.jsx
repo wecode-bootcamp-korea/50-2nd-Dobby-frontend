@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Address from './components/Address';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import {
+  PATCH_PAYMENT_ORDER_API,
   GET_PAYMENT_ADDRESS_API,
   POST_PAYMENT_NEW_ADDRESS_API,
   GET_MOCK_API,
@@ -23,18 +24,14 @@ const Payment = () => {
 
   //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET 함수 선언 및 실행)
   const newGet = () => {
-    fetch(
-      { GET_MOCK_API },
-      {
-        // fetch(`${GET_PAYMENT_ADDRESS_API}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
-        },
+    fetch(`${GET_PAYMENT_ADDRESS_API}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
-    )
+    })
       .then(res => res.json())
       .then(data => setFullAddress(data.data[0].address));
   };
@@ -45,23 +42,19 @@ const Payment = () => {
 
   //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
   const postData = () =>
-    fetch(
-      { GET_MOCK_API },
-      {
-        // fetch(`${POST_PAYMENT_NEW_ADDRESS_API}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          authorization:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
-        },
-        body: JSON.stringify({
-          name: newAddressInfo.name,
-          phonenumber: newAddressInfo.phoneNumber,
-          content: newAddressInfo.address + newAddressInfo.extraAddress,
-        }),
+    fetch(`${POST_PAYMENT_NEW_ADDRESS_API}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
-    )
+      body: JSON.stringify({
+        name: newAddressInfo.name,
+        phonenumber: newAddressInfo.phoneNumber,
+        content: newAddressInfo.address + newAddressInfo.extraAddress,
+      }),
+    })
       .then(res => res.json())
       .then(result => {
         if (result.message === 'POST - ADDRESS ADDED SUCCESS') {
@@ -136,6 +129,21 @@ const Payment = () => {
 
   const PayCompleteClick = () => {
     navigate('/pay-complete');
+  };
+  //주문취소 눌렀을시 token을 보내서 장바구니 정보 재전송
+  const rejectOrder = () => {
+    fetch(`${PATCH_PAYMENT_ORDER_API}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+      },
+    }).then(res => {
+      if (res.ok) {
+        navigate('/cart');
+      }
+    });
   };
 
   return (
@@ -272,7 +280,11 @@ const Payment = () => {
           </div>
         </form>
         <div className="btnArea">
-          <button type="button" className="btn btnSecondary">
+          <button
+            type="button"
+            className="btn btnSecondary"
+            onClick={rejectOrder}
+          >
             <span>주문취소</span>
           </button>
           <button
