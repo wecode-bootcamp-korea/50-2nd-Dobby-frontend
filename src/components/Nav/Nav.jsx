@@ -14,7 +14,7 @@ const Nav = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
     alert('로그아웃 되었습니다.');
-    navigate('/main');
+    navigate('/main?dobbyBox=basic');
   };
 
   return (
@@ -22,7 +22,7 @@ const Nav = () => {
       <div className="header">
         <h1
           onClick={() => {
-            navigate('/main');
+            navigate('/main?dobbyBox=basic');
           }}
         >
           DOBBY

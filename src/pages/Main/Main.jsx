@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Subscribe from './Layout/Subscribe/Subscribe';
 import CategorizedSlide from './Layout/CategorizedSlide/CategorizedSlide';
 import CategoryList from './Layout/CategoryList/CategoryList';
@@ -10,6 +10,7 @@ const Main = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [productsData, setProductsData] = useState({});
   const [menuList, setMenuList] = useState([]);
+  const navigate = useNavigate();
 
   const setSubTypeParams = subtype => {
     const subscriptParams = new URLSearchParams(searchParams);
@@ -55,7 +56,9 @@ const Main = () => {
     })
       .then(res => res.json())
       .then(data => {
-        window.location.href = data.redirectUrl;
+        if (data.message === 'success') {
+          navigate(`/payment${searchParams.toString()}`);
+        }
       });
   };
 

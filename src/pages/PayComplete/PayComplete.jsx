@@ -6,7 +6,7 @@ const PayComplete = () => {
   const navigate = useNavigate();
 
   const mainClick = () => {
-    navigate('/main');
+    navigate('/main?dobbyBox=basic');
   };
 
   return (
