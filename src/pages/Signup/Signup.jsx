@@ -155,7 +155,7 @@ const Signup = () => {
   };
   // 회원가입 정보 입력후 회원가입 하기 버튼
   const goToSignup = () => {
-    fetch('http://10.58.52.105:8000/users/signup', {
+    fetch('http://10.58.52.189:8000/users/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

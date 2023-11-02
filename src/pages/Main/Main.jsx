@@ -19,7 +19,7 @@ const Main = () => {
 
   // 백엔드 통신 데이터
   useEffect(() => {
-    fetch(`${GET_PRODUCTLIST_API}/productList`, {
+    fetch(`${GET_PRODUCTLIST_API}/productlist`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

@@ -14,7 +14,6 @@ const Nav = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('nickname');
     alert('로그아웃 되었습니다.');
-    dobbyToken(false);
     navigate('/main');
   };
 
@@ -41,7 +40,7 @@ const Nav = () => {
       <div className="login">
         {dobbyToken ? (
           <>
-            <label>😊{user}님 어서오세요!😊</label>
+            <label>😊{user}님 어서오세요!😊&nbsp;&nbsp;</label>
             <label onClick={logout}> 로그아웃 </label>
           </>
         ) : (
