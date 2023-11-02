@@ -6,6 +6,7 @@ import {
   GET_PAYMENT_ADDRESS_API,
   POST_PAYMENT_NEW_ADDRESS_API,
   GET_MOCK_API,
+  GET_PATMENT_API,
 } from '../../config';
 import './Payment.scss';
 
@@ -103,22 +104,22 @@ const Payment = () => {
 
   //지영님 코드(주문예정상품 불러오기)
   const [productList, setProductList] = useState([]);
+  const [credit, setCredit] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(
-      { GET_MOCK_API },
-      {
-        // fetch('http://10.58.52.239:8000/cart', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
+    fetch(`${GET_PATMENT_API}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
-    )
+    })
       .then(res => res.json())
       .then(data => {
-        setProductList(data.data);
+        setProductList(data.data[0].paymentInfo);
+        setCredit(data.data[0].credit);
       });
   }, []);
 
@@ -135,7 +136,23 @@ const Payment = () => {
   const totalPrice = sumPrice + sumDeliveryCharge;
 
   const PayCompleteClick = () => {
-    navigate('/pay-complete');
+    fetch(`${GET_PATMENT_API}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+      },
+      body: JSON.stringify({
+        paymentPrice: totalPrice,
+      }),
+    }).then(res => {
+      if (res.ok) {
+        navigate('/pay-complete');
+      } else {
+        alert('에러가 발생했습니다.');
+      }
+    });
   };
 
   return (
@@ -257,7 +274,7 @@ const Payment = () => {
             </div>
             <div className="pointHold">
               <strong className="holdText">
-                사용 가능한 포인트: <span>10,000P</span>
+                사용 가능한 포인트: <span>{credit}P</span>
               </strong>
             </div>
           </div>
