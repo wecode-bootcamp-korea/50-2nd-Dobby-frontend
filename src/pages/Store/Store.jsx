@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ProductList from './Layout/ProductList';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { GET_PRODUCT_API } from '../../config';
 import './Store.scss';
 
 const Store = () => {
-  // const { id } = useParams();
   const [productData, setProductData] = useState([]);
   const [menuList, setMenuList] = useState([]);
   const location = useLocation();
@@ -27,11 +26,8 @@ const Store = () => {
 
   // 백엔드 데이터
   useEffect(() => {
-    const fetchData = id => {
-      const url = id
-        ? `${GET_PRODUCT_API}/products${queryString}`
-        : `${GET_PRODUCT_API}/products${queryString}`;
-      fetch(url, {
+    const fetchData = () => {
+      fetch(`${GET_PRODUCT_API}/products${queryString}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
@@ -42,8 +38,8 @@ const Store = () => {
           setProductData(data.message);
         });
     };
-    fetchData(menuList.id);
-  }, [menuList.id, queryString]);
+    fetchData(queryString);
+  }, [queryString]);
 
   // mock 데이터
   // useEffect(() => {
@@ -58,13 +54,13 @@ const Store = () => {
   //       setProductData(data.newProducts);
   //     });
   // }, []);
-
   return (
     <div className="store">
       <ProductList
         productData={productData}
         menuList={menuList}
         id={menuList.id}
+        queryString={queryString}
       />
     </div>
   );

@@ -6,12 +6,12 @@
 
   .container {
     max-width: 1140px;
-    width:100%;
+    width: 100%;
 
     ul {
       display: flex;
 
-      a {
+      .sortBtn {
         text-decoration: none;
         color: #000;
 
