@@ -4,6 +4,7 @@ import Star from './Components/Star';
 import Review from './Components/Review';
 import delivery from './택배.svg';
 import './Detail.scss';
+import { GET_PRODUCT_DETAIL_API, POST_CART_DETAIL_API } from '../../config';
 
 const Detail = () => {
   const { productId } = useParams();
@@ -20,7 +21,7 @@ const Detail = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.52.180:8000/products/${productId}`)
+    fetch(`${GET_PRODUCT_DETAIL_API}/${productId}`)
       .then(res => res.json())
       .then(result => {
         setProduct(result.product);
@@ -30,7 +31,7 @@ const Detail = () => {
 
   //백엔드에 상품id,갯수를 보낸 뒤 alert창으로 안내
   const addCart = () =>
-    fetch(`http://10.58.52.239:8000/cart/${productId}`, {
+    fetch(`${POST_CART_DETAIL_API}/${productId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
