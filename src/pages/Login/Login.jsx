@@ -44,7 +44,7 @@ const Login = () => {
           alert('로그인 되었습니다.');
           localStorage.setItem('nickname', data.nickname);
           localStorage.setItem('token', data.token);
-          navigate('/main?dobbybox=basic');
+          navigate('/main?dobbyBox=basic');
         } else if (data.message === 'INVALID EMAIL OR PASSWORD') {
           alert('가입되지 않은 정보입니다.');
         }
