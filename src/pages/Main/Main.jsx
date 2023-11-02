@@ -64,6 +64,7 @@ const Main = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
+        Autorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())

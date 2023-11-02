@@ -175,7 +175,7 @@ const Signup = () => {
       .then(data => {
         if (data.message === 'SIGN_UP_SUCCESS') {
           alert('회원가입이 완료 되었습니다.');
-          goToLogin('/');
+          goToLogin('/Login');
         } else {
           alert('이미 가입된 사용자 입니다.');
         }
