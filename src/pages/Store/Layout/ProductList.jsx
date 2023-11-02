@@ -3,6 +3,7 @@ import ProductCard from '../../../components/ProductCard/ProductCard';
 import './ProductList.scss';
 import { Link } from 'react-router-dom';
 import Sorting from './Sorting';
+import Search from './Search';
 
 const ProductList = ({ productData, menuList, id }) => {
   return (
@@ -23,6 +24,9 @@ const ProductList = ({ productData, menuList, id }) => {
 
       <div className="sorting">
         <Sorting id={id} />
+      </div>
+      <div className="search">
+        <Search />
       </div>
       <div className="listData">
         {productData.map(data => (
