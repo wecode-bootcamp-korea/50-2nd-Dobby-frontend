@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Address from './components/Address';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
 import {
@@ -103,6 +103,7 @@ const Payment = () => {
 
   //지영님 코드(주문예정상품 불러오기)
   const [productList, setProductList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
@@ -132,6 +133,10 @@ const Payment = () => {
   }, 0);
 
   const totalPrice = sumPrice + sumDeliveryCharge;
+
+  const PayCompleteClick = () => {
+    navigate('/pay-complete');
+  };
 
   return (
     <div className="payment">
@@ -270,7 +275,11 @@ const Payment = () => {
           <button type="button" className="btn btnSecondary">
             <span>주문취소</span>
           </button>
-          <button type="button" className="btn btnPrimary">
+          <button
+            type="button"
+            className="btn btnPrimary"
+            onClick={PayCompleteClick}
+          >
             <span>{totalPrice}원 결제하기</span>
           </button>
         </div>
