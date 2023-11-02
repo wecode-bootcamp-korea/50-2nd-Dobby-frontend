@@ -18,22 +18,8 @@ const Main = () => {
   };
 
   // 백엔드 통신 데이터
-  // useEffect(() => {
-  //   fetch(`${GET_PRODUCTLIST_API}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductsData(data);
-  //     });
-  // }, []);
-
-  // mock 데이터
   useEffect(() => {
-    fetch('/data/slideList.json', {
+    fetch(`${GET_PRODUCTLIST_API}/productList`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -44,6 +30,20 @@ const Main = () => {
         setProductsData(data);
       });
   }, []);
+
+  // mock 데이터
+  // useEffect(() => {
+  //   fetch('/data/slideList.json', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProductsData(data);
+  //     });
+  // }, []);
 
   // 카테고리 메뉴 데이터
   useEffect(() => {
@@ -64,13 +64,13 @@ const Main = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
+        Autorization: localStorage.getItem('token'),
       },
     })
       .then(res => res.json())
       .then(data => {
         window.location.href = data.redirectUrl;
-      })
-      .catch(alert('오류가 발생했습니다. 다시 시도해주세요.'));
+      });
   };
 
   return (

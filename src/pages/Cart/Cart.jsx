@@ -50,7 +50,7 @@ const Cart = () => {
       cartList.find(({ products_id }) => products_id === productsId).quantity <=
         1
     )
-      return;
+      return alert('최소 수량은 1입니다.');
 
     fetch(`${GET_CART_API}/${isPlus ? 'increase' : 'decrease'}/${productsId}`, {
       method: 'PUT',
@@ -71,15 +71,16 @@ const Cart = () => {
     });
   };
 
-  const sendClick = () => {
+  const productPayBtn = () => {
     fetch(`${GET_CART_PAYMENT_API}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
+        Authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
       },
       body: JSON.stringify({
-        product_id: cartList.id,
-        quantity: cartList.quantity,
+        id: checkedItems.map(item => item.id),
       }),
     }).then(res => {
       if (res.ok) {
@@ -148,7 +149,7 @@ const Cart = () => {
               {cartList.map(list => {
                 const {
                   id,
-                  title,
+                  category_name,
                   image,
                   name,
                   products_id,
@@ -159,7 +160,7 @@ const Cart = () => {
 
                 return (
                   <li className="listItem" key={id}>
-                    <strong className="listTitle">{title}</strong>
+                    <strong className="listTitle">{category_name}</strong>
                     <div className="listDetail">
                       <div className="detailArea">
                         <div className="formInput">
@@ -179,7 +180,7 @@ const Cart = () => {
                         </div>
                         <div className="detailInfo">
                           <div className="detailImage">
-                            <img src={image} alt="만강에 비친 달 X 2병" />
+                            <img src={image} alt={name} />
                           </div>
                           <div className="detailGroup">
                             <div className="detailTop">
@@ -264,7 +265,7 @@ const Cart = () => {
             <button
               type="button"
               className="btn btnPrimary"
-              onClick={sendClick}
+              onClick={productPayBtn}
             >
               <span>구매하기</span>
             </button>

@@ -52,7 +52,6 @@
       background-color: #9037fc;
       border: none;
       border-radius: 5px;
-      cursor: pointer;
     }
     .disabledButton {
       width: 370px;
@@ -117,7 +116,9 @@
       font-weight: 700;
       font-size: 15px;
       color: #5e97ff;
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
