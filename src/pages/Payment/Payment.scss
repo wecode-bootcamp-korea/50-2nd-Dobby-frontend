@@ -180,11 +180,13 @@
       }
 
       .productList {
+        width: 100%;
         margin-top: 16px;
         padding-top: 20px;
         border-top: 1px solid rgba(61, 61, 61, 0.3);
 
         .productItem {
+          width: 100%;
           background-color: #fff;
 
           ~ .productItem {
