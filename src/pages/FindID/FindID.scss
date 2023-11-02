@@ -47,8 +47,42 @@
       margin-bottom: 35px;
     }
   }
-  .IDButtonFrame {
+  .phoneButtonFrame {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    .disabledButton {
+      width: 340px;
+      padding: 15px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(184, 184, 184);
+      font-weight: 700;
+      color: rgb(105, 105, 105);
+      font-size: 18px;
+      // margin-bottom: 10px;
+    }
+
+    .findIDButton {
+      width: 340px;
+      padding: 15px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      background-color: rgb(47, 130, 255);
+      font-weight: 700;
+      color: white;
+      font-size: 18px;
+    }
+  }
+
+  .verifinButtonFrame {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
