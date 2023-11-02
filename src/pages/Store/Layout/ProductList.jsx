@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Sorting from './Sorting';
 import Search from './Search';
 
-const ProductList = ({ productData, menuList, id }) => {
+const ProductList = ({ productData, menuList }) => {
   return (
     <div className="productList">
       <div className="menuWrapper">
@@ -13,7 +13,9 @@ const ProductList = ({ productData, menuList, id }) => {
           <ul className="menuList">
             {menuList.map(menu => (
               <div key={`${menu.id}menu`}>
-                <Link to={menu.id === 3 ? '/store' : `/store/${menu.id}`}>
+                <Link
+                  to={menu.id === 3 ? '/store' : `/store?category=${menu.id}`}
+                >
                   <li>{menu.name}</li>
                 </Link>
               </div>
@@ -23,7 +25,7 @@ const ProductList = ({ productData, menuList, id }) => {
       </div>
 
       <div className="sorting">
-        <Sorting id={id} />
+        <Sorting />
       </div>
       <div className="search">
         <Search />
