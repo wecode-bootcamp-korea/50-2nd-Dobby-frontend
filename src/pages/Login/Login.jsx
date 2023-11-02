@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   const goToMain = () => {
-    fetch('http://10.58.52.105:8000/users/login', {
+    fetch('http://10.58.52.189:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -44,6 +44,7 @@ const Login = () => {
           alert('로그인 되었습니다.');
           localStorage.setItem('nickname', data.nickname);
           localStorage.setItem('token', data.token);
+          navigate('/main?dobbybox=basic');
         } else if (data.message === 'INVALID EMAIL OR PASSWORD') {
           alert('가입되지 않은 정보입니다.');
         }
