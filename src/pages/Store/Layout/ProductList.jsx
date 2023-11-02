@@ -4,7 +4,7 @@ import './ProductList.scss';
 import { Link } from 'react-router-dom';
 import Sorting from './Sorting';
 
-const ProductList = ({ productData, menuList, queryString }) => {
+const ProductList = ({ productData, menuList }) => {
   return (
     <div className="productList">
       <div className="menuWrapper">
@@ -24,7 +24,7 @@ const ProductList = ({ productData, menuList, queryString }) => {
       </div>
 
       <div className="sorting">
-        <Sorting queryString={queryString} />
+        <Sorting />
       </div>
       <div className="listData">
         {productData.map(data => (

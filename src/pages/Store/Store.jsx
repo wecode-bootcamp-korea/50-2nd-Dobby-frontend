@@ -60,7 +60,6 @@ const Store = () => {
         productData={productData}
         menuList={menuList}
         id={menuList.id}
-        queryString={queryString}
       />
     </div>
   );
