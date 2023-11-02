@@ -1,0 +1,128 @@
+import React, { useState } from 'react';
+import './FindID.scss';
+
+const FindID = () => {
+  // 이름, 휴대폰 번호 입력시
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  // 이름, 휴대폰 유효성 검사
+  const [nameMessage, setNameMessage] = useState('');
+  const [phoneNumberMessage, setPhoneNumberMessage] = useState('');
+  // 이름, 휴대폰 오류 메세지
+  const [isName, setIsName] = useState(false);
+  const [isPhoneNumber, setIsPhoneNumber] = useState(false);
+
+  const [foundId, setFoundId] = useState(''); // 아이디를 표시할 상태
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창의 표시 여부
+  // 이름 조건식
+  const onChangeName = event => {
+    const nameRagex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const nameCurrent = event.target.value;
+    setName(nameCurrent);
+    if (!nameRagex.test(nameCurrent)) {
+      setNameMessage('이름은 한글로 입력해주세요');
+      setIsName(false);
+    } else {
+      setNameMessage('확인되었습니다.');
+      setIsName(true);
+    }
+  };
+  // 전화번호 조건식
+  const onChangePhoneNumber = event => {
+    const phoneNumberRagex = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
+    const phoneNumberCurrent = event.target.value;
+    setPhoneNumber(phoneNumberCurrent);
+    if (!phoneNumberRagex.test(phoneNumberCurrent)) {
+      setPhoneNumberMessage('입력한 전화번호를 다시한번 확인해주세요');
+      setIsPhoneNumber(false);
+    } else {
+      setPhoneNumberMessage('확인되었습니다.');
+      setIsPhoneNumber(true);
+    }
+  };
+  // 이름과 휴대폰 번호 입력값이 모두 비어있지 않을때 버튼 활성화
+  const inValid = !name || phoneNumber.length !== 11;
+  // 모달 창 열기
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  // 모달 창 닫기
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  // 아이디 찾기 버튼
+  const handleIDFind = () => {
+    fetch('http://10.58.52.105:8000/users/findid', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        name: name,
+        phoneNumber: phoneNumber,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'FIND_ID_SUCCESS') {
+          setFoundId(data.name);
+          openModal(); // 모달창 열기
+        } else {
+          alert('아이디를 찾을 수 없습니다.');
+        }
+      });
+  };
+  return (
+    <div className="idFindFrame">
+      <h1 className="idText">아이디 찾기</h1>
+      <form className="findIDFrame">
+        <input
+          className="userInput"
+          type="text"
+          placeholder="이름을 입력해주세요"
+          onChange={onChangeName}
+        />
+        {name.length > 0 && (
+          <span className={`message ${isName ? 'success' : 'error'}`}>
+            {nameMessage}
+          </span>
+        )}
+      </form>
+      <form className="findIDFrame">
+        <input
+          className="userInput"
+          type="phomenumber"
+          maxLength={11}
+          onChange={onChangePhoneNumber}
+          placeholder="휴대폰 번호를 입력해주세요 (- 제외)"
+        />
+        {phoneNumber.length > 0 && (
+          <span className={`message ${isPhoneNumber ? 'success' : 'error'}`}>
+            {phoneNumberMessage}
+          </span>
+        )}
+      </form>
+      <div className="IDButtonFrame">
+        <button
+          className={inValid ? 'disabledButton' : 'findIDButton'}
+          disabled={inValid}
+          onClick={handleIDFind}
+        >
+          아이디 찾기
+        </button>
+      </div>
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <p>찾은 아이디:{foundId}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default FindID;

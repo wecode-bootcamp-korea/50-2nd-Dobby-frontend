@@ -7,4 +7,13 @@
   .contentsArea {
     background-color: white;
   }
+
+  .navHeader {
+    + div {
+      overflow-y: auto;
+      height: calc(100% - 60px);
+      margin-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
 }

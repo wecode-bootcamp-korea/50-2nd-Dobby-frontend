@@ -7,26 +7,55 @@
   padding: 13px;
   color: #fff;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &.active {
     background-color: #fff;
     color: #000;
 
-    &.blue {
+    &.basic {
       box-shadow: #329be7 0 4px inset;
     }
 
-    &.green {
+    &.creative {
       box-shadow: #a3e743 0 4px inset;
     }
 
-    &.red {
+    &.collection {
       box-shadow: #ff7d3a 0 4px inset;
     }
   }
 
-  & img {
-    margin-right: 5px;
+  .iconImg {
+    margin-right: 10px;
     width: 18px;
     height: 18px;
+    position: relative;
+
+    filter: invert(98%) sepia(11%) saturate(157%) hue-rotate(200deg)
+      brightness(117%) contrast(100%);
+
+    &.basic.active {
+      filter: invert(46%) sepia(71%) saturate(514%) hue-rotate(162deg)
+        brightness(102%) contrast(95%);
+    }
+
+    &.creative.active {
+      filter: invert(92%) sepia(13%) saturate(2202%) hue-rotate(27deg)
+        brightness(95%) contrast(91%);
+    }
+
+    &.collection.active {
+      filter: invert(71%) sepia(45%) saturate(2261%) hue-rotate(304deg)
+        brightness(103%) contrast(108%);
+    }
+  }
+  
+  .iconName {
+    position: absolute;
+    margin-left: 28px;
+    top: 15px;
   }
 }
