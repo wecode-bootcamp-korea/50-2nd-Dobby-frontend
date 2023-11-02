@@ -98,7 +98,6 @@ const FindPW = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         if (data.message === 'AUTHENTICATION_MAIL_SUCCESS') {
           alert('이메일로 인증번호를 전송했습니다. 확인해주세요');
         } else {
@@ -113,11 +112,7 @@ const FindPW = () => {
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
       },
-      body: JSON.stringify({
-        email: email,
-        number: number,
-        newPassword: newPassword,
-      }),
+      body: JSON.stringify({ email, number, newPassword }),
     })
       .then(response => response.json())
       .then(data => {
@@ -139,7 +134,7 @@ const FindPW = () => {
             type="text"
             onChange={onChangeEmail}
             placeholder="이메일을 입력해주세요"
-          ></input>
+          />
           {email.length > 0 && (
             <span className={`message ${isEmail ? 'success' : 'error'}`}>
               {emailMessage}
@@ -164,7 +159,7 @@ const FindPW = () => {
             onChange={onChangeNumber}
             maxLength={6}
             placeholder="인증번호를 입력해주세요"
-          ></input>
+          />
           {number.length > 0 && (
             <span className={`message ${isNumber ? 'success' : 'error'}`}>
               {numberMessage}
@@ -179,7 +174,7 @@ const FindPW = () => {
             type="password"
             onChange={onChangeNewPassword}
             placeholder="새 비밀번호를 입력해주세요"
-          ></input>
+          />
           {newPassword.length > 0 && (
             <span className={`message ${isNewPassword ? 'success' : 'error'}`}>
               {newpasswordMessage}
@@ -194,7 +189,7 @@ const FindPW = () => {
             type="password"
             onChange={onChangeNewPasswordConfir}
             placeholder="새 비밀번호를 다시한번 입력해주세요"
-          ></input>
+          />
           {newpasswordConfir.length > 0 && (
             <span
               className={`message ${isNewPasswordConfir ? 'success' : 'error'}`}
