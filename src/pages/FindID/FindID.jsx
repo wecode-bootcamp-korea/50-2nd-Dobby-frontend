@@ -11,6 +11,9 @@ const FindID = () => {
   // 이름, 휴대폰 오류 메세지
   const [isName, setIsName] = useState(false);
   const [isPhoneNumber, setIsPhoneNumber] = useState(false);
+
+  const [foundId, setFoundId] = useState(''); // 아이디를 표시할 상태
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 창의 표시 여부
   // 이름 조건식
   const onChangeName = event => {
     const nameRagex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
@@ -37,8 +40,38 @@ const FindID = () => {
       setIsPhoneNumber(true);
     }
   };
-  // 조건식
-  const inValid = phoneNumber >= 11;
+  // 이름과 휴대폰 번호 입력값이 모두 비어있지 않을때 버튼 활성화
+  const inValid = !name || phoneNumber.length !== 11;
+  // 모달 창 열기
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  // 모달 창 닫기
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  // 아이디 찾기 버튼
+  const handleIDFind = () => {
+    fetch('http://10.58.52.105:8000/users/findid', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        name: name,
+        phoneNumber: phoneNumber,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success === 'FIND_ID_SUCCESS') {
+          setFoundId(data.name);
+          openModal(); // 모달창 열기
+        } else {
+          alert('아이디를 찾을 수 없습니다.');
+        }
+      });
+  };
   return (
     <div className="idFindFrame">
       <h1 className="idText">아이디 찾기</h1>
@@ -71,12 +104,23 @@ const FindID = () => {
       </form>
       <div className="IDButtonFrame">
         <button
-          className={!inValid ? 'disabledButton' : 'findIDButton'}
-          disabled={!inValid}
+          className={inValid ? 'disabledButton' : 'findIDButton'}
+          disabled={inValid}
+          onClick={handleIDFind}
         >
           아이디 찾기
         </button>
       </div>
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <p>찾은 아이디:{foundId}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
