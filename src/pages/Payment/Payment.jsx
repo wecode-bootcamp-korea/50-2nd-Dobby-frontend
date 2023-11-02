@@ -137,6 +137,19 @@ const Payment = () => {
   const PayCompleteClick = () => {
     navigate('/pay-complete');
   };
+  //주문취소 눌렀을시 token을 보내서 장바구니 정보 재전송
+  const cancleOrder = () => {
+    fetch('/cart/payment/reversion', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+      },
+    })
+      .then(res => res.json())
+      .then(navigate('/cart'));
+  };
 
   return (
     <div className="payment">
@@ -272,7 +285,11 @@ const Payment = () => {
           </div>
         </form>
         <div className="btnArea">
-          <button type="button" className="btn btnSecondary">
+          <button
+            type="button"
+            className="btn btnSecondary"
+            onClick={cancleOrder}
+          >
             <span>주문취소</span>
           </button>
           <button
