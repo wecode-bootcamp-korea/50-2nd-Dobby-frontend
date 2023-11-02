@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Address from './components/Address';
 import { useDaumPostcodePopup } from 'react-daum-postcode';
+import {
+  GET_PAYMENT_ADDRESS_API,
+  POST_PAYMENT_NEW_ADDRESS_API,
+} from '../../config';
 import './Payment.scss';
 
 const Payment = () => {
@@ -18,7 +22,7 @@ const Payment = () => {
 
   //1. 백엔드 통신 작업 (첫 배송지 불러올때의 GET 함수 선언 및 실행)
   const newGet = () => {
-    fetch('http://10.58.52.196:8000/cart/payment/address', {
+    fetch(`${GET_PAYMENT_ADDRESS_API}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -36,7 +40,7 @@ const Payment = () => {
 
   //2. 새배송지 POST & 추가된 배송지(GET) 돌릴 두개의 fetch 생성
   const postData = () =>
-    fetch('http://10.58.52.196:8000/cart/payment/address/done', {
+    fetch(`${POST_PAYMENT_NEW_ADDRESS_API}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
