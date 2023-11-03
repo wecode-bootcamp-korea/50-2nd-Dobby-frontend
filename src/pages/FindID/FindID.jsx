@@ -46,7 +46,7 @@ const FindID = () => {
   const verifinValid = number.length !== 6;
   // 인증번호 받기 버튼
   const handleVerifin = () => {
-    fetch('http://10.58.52.198:8000/users/phoneauth', {
+    fetch('http://10.58.52.121:8000/users/phoneauth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -66,7 +66,7 @@ const FindID = () => {
   };
   // 아이디 찾기 버튼
   const handleIDFind = () => {
-    fetch('http://10.58.52.198:8000/users/phoneauth/phoneverifynumber', {
+    fetch('http://10.58.52.121:8000/users/phoneauth/phoneverifynumber', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

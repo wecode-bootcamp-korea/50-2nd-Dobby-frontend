@@ -10,6 +10,7 @@ const Main = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [productsData, setProductsData] = useState({});
   const [menuList, setMenuList] = useState([]);
+  const dobbyToken = localStorage.getItem('token');
   const navigate = useNavigate();
 
   const setSubTypeParams = subtype => {
@@ -51,7 +52,7 @@ const Main = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Autorization: localStorage.getItem('token'),
+        authorization: dobbyToken,
       },
     })
       .then(res => res.json())

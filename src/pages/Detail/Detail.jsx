@@ -11,6 +11,7 @@ const Detail = () => {
   const [product, setProduct] = useState({});
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(1);
+  const dobbyToken = localStorage.getItem('token');
 
   const plus = () => {
     setCount(count + 1);
@@ -35,8 +36,7 @@ const Detail = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
       body: JSON.stringify({
         quantity: count,

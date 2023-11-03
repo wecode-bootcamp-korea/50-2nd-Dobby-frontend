@@ -7,14 +7,14 @@ const Cart = () => {
   const [checkedItems, setCheckedItems] = useState([]);
   const [cartList, setCartList] = useState([]);
   const navigate = useNavigate();
+  const dobbyToken = localStorage.getItem('token');
 
   const getCartList = () => {
     fetch(`${GET_CART_API}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
     })
       .then(res => res.json())
@@ -32,8 +32,7 @@ const Cart = () => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
     }).then(res => {
       if (res.ok) {
@@ -56,8 +55,7 @@ const Cart = () => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
       body: JSON.stringify({
         quantityDifference: isPlus ? '+' : '-',
@@ -76,8 +74,7 @@ const Cart = () => {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
       body: JSON.stringify({
         id: checkedItems.map(item => item.id),

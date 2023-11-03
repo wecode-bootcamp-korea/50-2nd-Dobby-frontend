@@ -87,7 +87,7 @@ const FindPW = () => {
   };
   // 인증받기 버튼
   const handleCertificate = () => {
-    fetch('http://10.58.52.198:8000/users/emailauth', {
+    fetch('http://10.58.52.121:8000/users/emailauth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -107,7 +107,7 @@ const FindPW = () => {
   };
   // 새 비밀번호 등록하기 버튼
   const handleNewPassword = () => {
-    fetch('http://10.58.52.198:8000/users/emailauth/emailverifynumber', {
+    fetch('http://10.58.52.121:8000/users/emailauth/emailverifynumber', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

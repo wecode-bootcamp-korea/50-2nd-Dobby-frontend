@@ -6,11 +6,11 @@ import {
   PATCH_PAYMENT_ORDER_API,
   GET_PAYMENT_ADDRESS_API,
   POST_PAYMENT_NEW_ADDRESS_API,
-  GET_MOCK_API,
 } from '../../config';
 import './Payment.scss';
 
 const Payment = () => {
+  const dobbyToken = localStorage.getItem('token');
   //map함수 활용하기 위한 useState 생성
   const [fullAddress, setFullAddress] = useState([]);
 
@@ -28,8 +28,7 @@ const Payment = () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
     })
       .then(res => res.json())
@@ -46,8 +45,7 @@ const Payment = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
       body: JSON.stringify({
         name: newAddressInfo.name,
@@ -96,22 +94,22 @@ const Payment = () => {
 
   //지영님 코드(주문예정상품 불러오기)
   const [productList, setProductList] = useState([]);
+  const [credit, setCredit] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(
-      { GET_MOCK_API },
-      {
-        // fetch('http://10.58.52.239:8000/cart', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
+    fetch('http://10.58.52.121:8000/cart/payment', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: dobbyToken,
       },
-    )
+    })
       .then(res => res.json())
       .then(data => {
-        setProductList(data.data);
+        localStorage.getItem('token', data.token);
+        setProductList(data.data[0].paymentInfo);
+        setCredit(data.data[0].credit);
       });
   }, []);
 
@@ -128,16 +126,31 @@ const Payment = () => {
   const totalPrice = sumPrice + sumDeliveryCharge;
 
   const PayCompleteClick = () => {
-    navigate('/pay-complete');
+    fetch('http://10.58.52.121:8000/cart/payment', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        authorization: dobbyToken,
+      },
+      body: JSON.stringify({
+        paymentPrice: totalPrice,
+      }),
+    }).then(res => {
+      if (res.ok) {
+        navigate('/pay-complete');
+      } else {
+        alert('에러가 발생했습니다.');
+      }
+    });
   };
+
   //주문취소 눌렀을시 token을 보내서 장바구니 정보 재전송
   const rejectOrder = () => {
     fetch(`${PATCH_PAYMENT_ORDER_API}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        authorization:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiam9taW5zdTAxMDNAZ21haWwuY29tIiwiaWF0IjoxNjk4NzQwOTQ0fQ.AIgdqEfyPxTUiSthnbsIzGB3Mrj_oTrpT36BCZ-qSuI',
+        authorization: dobbyToken,
       },
     }).then(res => {
       if (res.ok) {
@@ -265,7 +278,7 @@ const Payment = () => {
             </div>
             <div className="pointHold">
               <strong className="holdText">
-                사용 가능한 포인트: <span>10,000P</span>
+                사용 가능한 포인트: <span>{credit}P</span>
               </strong>
             </div>
           </div>

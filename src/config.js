@@ -1,5 +1,5 @@
 // src/config.js
-const BASE_URL = 'http://10.58.52.189:8000';
+const BASE_URL = 'http://10.58.52.121:8000';
 // const BASE_URL6 = 'http://10.58.52.196:8000';
 
 export const GET_SUBSCRIPTION_API = `${BASE_URL}/subscription`;
