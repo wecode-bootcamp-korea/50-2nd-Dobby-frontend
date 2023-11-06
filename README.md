@@ -78,52 +78,6 @@ Front-End : 홍지영, 최민지, 박주희, 김성호
 </div>
 
 # 프로젝트
-## 설치하기
-0. npm 버전을 확인해주세요.
-    ```
-    npm -v
-    ```
-    - 명령어를 입력했을 때 **10.2.0** 미만이면 아래 명령어를 통해 버전 업그레이드를 진행해주세요.
-        ```
-        npm install npm@10.2.0 -g
-        ```
-1. 백엔드 저장소를 클론해주세요.
-    ```
-    git clone https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-backend
-    ```
-2. npm으로 패키지를 설치해주세요.
-    ```
-    npm install
-    ```
-    - 명령어는 디렉토리 최상단에서 실행해주세요.
-    - pkg list는 package.json에서 확인하시면 됩니다.
- <p></p>
-   
-3. dbmate를 (brew로도 설치 가능) 글로벌 설치하여 db 설치를 진행해 주세요
-    ```
-    $ brew install -g dbmate
-    $ npm install dbmate
-    ```
-   - dbmate를 설치하였으면 mysql 설치를 진행합니다. username과 password를 지정하고 사용할 database를 생성해 줍니다.
-   - Project 폴더 내에 .env 파일을 생성합니다.
-   ```
-   DATABASE_URL="protocol(ex.mysql)://username:password@host:port/DATABASE_NAME"
-   ```
-   - .env 파일 내에 위 내용을 추가해 줍니다. sql 파일을 Repo에서 내려받습니다.
-
-   ```
-   mkdir db
-   ```
-   - 클론받은 directory 최상단에서 db 폴더를 생성해 줍니다.
-   - <p>클론받은 sql 파일을 db 폴더 내의 <span style="color: dodgerblue"> repo의 순서와 동일하게</span> 넣어 줍니다.</p>
-
-   ```
-   dbmate up
-   ```
-   dbmate와 관련된 설명은 [여기](https://github.com/amacneil/dbmate)에서 볼 수 있습니다(공식 문서).
-
-
-
 ## 실행하기
 - 아래 명령어를 입력하여 실행해주세요.
     ```
