@@ -9,7 +9,7 @@ Front-End : 홍지영, 최민지, 박주희, 김성호
 ## 소개
 <p style="color: dodgerblue">위코드 50기 B팀의 2nd Project입니다.</p>
 
-프론트엔드 서버 코드를 저장했습니다. Back-end 소스 코드는 [여기](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend)에 있습니다.
+프론트엔드 서버 코드를 저장했습니다. Front-end 소스 코드는 [여기](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend)에 있습니다.
 
 ## Front-End 저장소 구조
 ```
