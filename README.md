@@ -29,6 +29,136 @@ Front-End : 홍지영, 최민지, 박주희, 김성호
 <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
 </div>
 
+## 저장소 구조
+```
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+│   ├── data
+│   │   ├── data.json
+│   │   ├── menu.json
+│   │   └── slideList.json
+│   ├── images
+│   │   ├── cart_sample.jpg
+│   │   ├── icon_basic.svg
+│   │   ├── icon_check.png
+│   │   ├── icon_close.png
+│   │   ├── icon_collection.svg
+│   │   ├── icon_creative.svg
+│   │   ├── icon_minus.png
+│   │   ├── icon_plus.png
+│   │   ├── icon_star.svg
+│   │   └── sample.png
+│   └── index.html
+├── pull_request_template.md
+└── src
+    ├── Router.jsx
+    ├── components
+    │   ├── Carousel
+    │   │   ├── Carousel.jsx
+    │   │   ├── Carousel.scss
+    │   │   ├── NextBtn.jsx
+    │   │   ├── NextBtn.scss
+    │   │   ├── PrevBtn.jsx
+    │   │   └── PrevBtn.scss
+    │   ├── Category
+    │   │   ├── Category.jsx
+    │   │   └── Category.scss
+    │   ├── Footer
+    │   │   └── Footer.jsx
+    │   ├── Layout
+    │   │   ├── Layout.jsx
+    │   │   └── Layout.scss
+    │   ├── Nav
+    │   │   ├── Nav.jsx
+    │   │   ├── Nav.scss
+    │   │   └── cartIcon.png
+    │   └── ProductCard
+    │       ├── ProductCard.jsx
+    │       └── ProductCard.scss
+    ├── config.js
+    ├── index.js
+    ├── pages
+    │   ├── Cart
+    │   │   ├── Cart.jsx
+    │   │   └── Cart.scss
+    │   ├── Delivery
+    │   │   ├── Delivery.jsx
+    │   │   └── Delivery.scss
+    │   ├── Detail
+    │   │   ├── Components
+    │   │   │   ├── Review.jsx
+    │   │   │   ├── Review.scss
+    │   │   │   ├── Star.jsx
+    │   │   │   ├── Star.scss
+    │   │   │   └── StarIcon.jsx
+    │   │   ├── Detail.jsx
+    │   │   ├── Detail.scss
+    │   │   └── 택배.svg
+    │   ├── FindID
+    │   │   ├── FindID.jsx
+    │   │   └── FindID.scss
+    │   ├── FindPW
+    │   │   ├── FindPW.jsx
+    │   │   └── FindPW.scss
+    │   ├── Login
+    │   │   ├── Login.jsx
+    │   │   └── Login.scss
+    │   ├── Main
+    │   │   ├── Layout
+    │   │   │   ├── CategorizedSlide
+    │   │   │   │   ├── CategorizedSlide.jsx
+    │   │   │   │   └── CategorizedSlide.scss
+    │   │   │   ├── CategoryList
+    │   │   │   │   ├── CategoryList.jsx
+    │   │   │   │   └── CategoryList.scss
+    │   │   │   ├── CategoryTitle
+    │   │   │   │   ├── CategoryTitle.jsx
+    │   │   │   │   └── CategoryTitle.scss
+    │   │   │   ├── Subscribe
+    │   │   │   │   ├── Subscribe.jsx
+    │   │   │   │   └── Subscribe.scss
+    │   │   │   ├── TabContent
+    │   │   │   │   ├── TabContent.jsx
+    │   │   │   │   └── TabContent.scss
+    │   │   │   ├── TabList
+    │   │   │   │   ├── TabList.jsx
+    │   │   │   │   └── TabList.scss
+    │   │   │   ├── TitleText
+    │   │   │   │   ├── TitleText.jsx
+    │   │   │   │   └── TitleText.scss
+    │   │   │   └── subscription.js
+    │   │   ├── Main.jsx
+    │   │   └── Main.scss
+    │   ├── PayComplete
+    │   │   ├── PayComplete.jsx
+    │   │   └── PayComplete.scss
+    │   ├── Payment
+    │   │   ├── Payment.jsx
+    │   │   ├── Payment.scss
+    │   │   └── components
+    │   │       ├── Address.jsx
+    │   │       └── Address.scss
+    │   ├── Signup
+    │   │   ├── Signup.jsx
+    │   │   └── Signup.scss
+    │   └── Store
+    │       ├── Layout
+    │       │   ├── ProductList.jsx
+    │       │   ├── ProductList.scss
+    │       │   ├── Search.jsx
+    │       │   ├── Search.scss
+    │       │   ├── Sorting.jsx
+    │       │   └── Sorting.scss
+    │       ├── Store.jsx
+    │       └── Store.scss
+    └── styles
+        ├── common.scss
+        ├── reset.scss
+        └── variable.scss
+```
+
 # 프로젝트
 ## 실행하기
 - 아래 명령어를 입력하여 실행해주세요.
