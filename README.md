@@ -8,8 +8,10 @@ Front-End : 홍지영, 최민지, 박주희, 김성호
 # Proejct - Dobby팀 
 ## 소개
 <p style="color: dodgerblue">위코드 50기 B팀의 2nd Project입니다.</p>
-
 프론트엔드 서버 코드를 저장했습니다. Front-end 소스 코드는 [여기](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend)에 있습니다.
+
+## 프로젝트 시연 영상
+- [여기](https://youtu.be/QFgF3ppFKtA)를 클릭하시면 Dobby 시연 영상을 보실수 있습니다.
 
 ## 기술스택
 - Frontend: [React.js](https://reactjs.org/)
