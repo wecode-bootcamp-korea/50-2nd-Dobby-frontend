@@ -2,12 +2,12 @@
 
 ## 나의 취미를 내 손으로 직접 다채롭게 구성해 보세요 🎈
 ![Dobby Dev UIUX Design](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend/assets/78453933/aa1b33b0-7e9a-4536-afa8-fd4719b57d14)
-
+- UI/UX 팜플릿 Designer : 김성호
 
 Front-End : 홍지영, 최민지, 박주희, 김성호
 
 
-# Proejct - Dobby팀 
+# Project - Dobby팀 
 ## 소개
 <p style="color: dodgerblue">위코드 50기 B팀의 2nd Project입니다.</p>
 프론트엔드 서버 코드를 저장했습니다. Front-end 소스 코드는 [여기](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend)에 있습니다.
