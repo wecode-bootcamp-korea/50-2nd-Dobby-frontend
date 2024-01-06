@@ -2,6 +2,9 @@
 
 ## 나의 취미를 내 손으로 직접 다채롭게 구성해 보세요 🎈
 ![Dobby Dev UIUX Design](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend/assets/78453933/aa1b33b0-7e9a-4536-afa8-fd4719b57d14)
+
+![Dobby Dev Web Design](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend/assets/78453933/882265a1-4b5d-4755-8ca3-9201b3dd16f9)
+
 - Front-End Developer : 홍지영, 최민지, 박주희, 김성호
 - Template Designer : 김성호
 
